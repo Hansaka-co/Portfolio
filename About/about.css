@@ -75,17 +75,17 @@ nav .active span {
 
 .about-section {
   display: flex;
-  gap: 10%;
+  gap: 5%;
   margin-top: 55px;
 }
 
 .image-box {
-  width: 442px;
+  width: 488px ;
   height: 588px;
   border: 1px solid rgba(255,255,255,.75);
   box-shadow: 0 0 45px rgba(235, 203, 103, .55);
   margin-left: 15%;
-  margin-top: 2%;
+  margin-top: 2.5%;
 }
 
 .image-box img {
@@ -97,7 +97,7 @@ nav .active span {
 /* TEXT */
 
 .about-content {
-  width: 675px;
+  width: 800px;
   margin-left: 10%;
 }
 
@@ -128,13 +128,14 @@ h2 {
 }
 
 .bio {
-  width: 665px;
+  width: 788px;
   font-family: Arial, sans-serif;
   font-size: 17px;
   line-height: 1.42;
   letter-spacing: 7px;
   color: rgba(255,255,255,.88);
   margin-bottom: 48px;
+  text-align: justify;
 }
 
 /* SKILLS */
@@ -143,7 +144,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 30px 10px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .skills div {
