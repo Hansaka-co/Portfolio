@@ -11,8 +11,6 @@ body {
 }
 
 .about-page {
-  width: 1440px;
-  height: 1024px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -77,9 +75,8 @@ nav .active span {
 
 .about-section {
   display: flex;
-  gap: 110px;
-  padding-left: 134px;
-  padding-top: 160px;
+  gap: 10%;
+  margin-top: 55px;
 }
 
 .image-box {
@@ -87,6 +84,8 @@ nav .active span {
   height: 588px;
   border: 1px solid rgba(255,255,255,.75);
   box-shadow: 0 0 45px rgba(235, 203, 103, .55);
+  margin-left: 15%;
+  margin-top: 2%;
 }
 
 .image-box img {
@@ -99,7 +98,7 @@ nav .active span {
 
 .about-content {
   width: 675px;
-  padding-top: 32px;
+  margin-left: 10%;
 }
 
 .subtitle {
@@ -143,7 +142,7 @@ h2 {
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px 16px;
+  gap: 30px 10px;
   justify-content: center;
 }
 
