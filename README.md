@@ -1,51 +1,79 @@
 # 🕸️ Personal Portfolio Website
 
-## The Idea Behind This Portfolio
+> More than a portfolio — a visual representation of how I see the web.
 
-A portfolio should be more than a collection of projects—it should tell a story.
+## The Idea Behind This Project
 
-While designing this portfolio, I was inspired by the word **"Web"** in *Web Development*. The same word also refers to a **spider web**, a structure built through countless connected threads. That connection sparked the core concept behind this project.
+When I started designing my portfolio, I wanted something that felt personal and memorable rather than another generic developer portfolio.
 
-A spider web represents structure, connection, creativity, and purpose. In a similar way, modern web applications are built by connecting design, logic, code, and user experience into a unified system.
+While thinking about the word **"Web"** in *Web Development*, I realized it shares the same name as a **Spider Web**. Although they exist in completely different worlds, both are built on the same principles: connection, structure, and purpose.
 
-This portfolio uses subtle spider-web-inspired visuals, dark futuristic aesthetics, and purple neon accents to reflect that idea throughout the experience.
+A spider carefully weaves threads into a network.
+
+A developer carefully builds code into digital experiences.
+
+That simple connection became the foundation of this project.
 
 ---
 
-## What This Portfolio Contains
+## About The Portfolio
+
+This portfolio was first designed in **Figma** and then developed into a fully functional website.
+
+The design follows a dark futuristic theme with purple accent colors, subtle spider-web elements, and a visual language inspired by interconnected systems.
+
+Every section represents a different part of my journey:
 
 ### 🏠 Home
 
-A brief introduction that presents who I am, what I do, and the creative identity behind the portfolio.
+A simple introduction that gives visitors a quick overview of who I am and what I do.
 
 ### 👨‍💻 About
 
-A dedicated section that introduces me as a developer, showcases my technical skills, and provides access to my CV.
+A personal section that introduces me, highlights my skills, and provides access to my CV.
 
-### 🚀 Work & Experience
+### 💼 Work
 
-A collection of selected projects, practical work, and development experience that demonstrate my growth, creativity, and problem-solving abilities.
+A showcase of my projects, development experience, and the work I have completed throughout my learning journey.
 
 ### 📬 Contact
 
-A simple way for visitors, recruiters, and collaborators to connect with me.
+A place where visitors can connect with me, collaborate, or reach out for opportunities.
 
 ---
 
 ## Design Philosophy
 
-This portfolio was created with a simple belief:
+The spider web is not used as decoration alone.
 
-> Every project, skill, and experience is a thread.
->
-> Together, those threads form a web.
+It acts as a metaphor for modern web development:
 
-The spider-web concept is not used merely as decoration. It serves as a visual metaphor for the interconnected nature of web development, where creativity, technology, and continuous learning come together to build meaningful digital experiences.
+* Connections between ideas
+* Structure behind design
+* Logic behind code
+* Creativity within complexity
+
+Just as every thread in a spider web has a purpose, every component in this portfolio is designed to contribute to a larger experience.
 
 ---
 
-## Built to Reflect My Journey
+## Built With
 
-This project represents my passion for frontend development, UI/UX design, and creative problem-solving. It is not only a portfolio of my work but also a reflection of how I think, learn, and build as a developer.
+* Figma (UI/UX Design)
+* HTML
+* CSS
+* JavaScript
+* Responsive Design Principles
 
-**Designed and developed by Hansaka.**
+---
+
+## Final Thoughts
+
+This project represents both sides of my journey:
+
+🎨 UI/UX Designer
+💻 Frontend Developer
+
+It reflects how I combine design thinking, creativity, and development skills to create meaningful digital experiences.
+
+Every project, skill, and experience displayed here is another thread in the web I continue to build.
