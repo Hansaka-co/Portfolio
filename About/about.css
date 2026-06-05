@@ -11,25 +11,53 @@ body {
 }
 
 .about-page {
-  margin: 0 auto;
   position: relative;
   overflow: hidden;
   border-radius: 0 0 26px 26px;
+  height: 100vh;
+}
 
+.web{
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.web-top-right{
+    right: 60px;
+    top: 90px;
+
+    width: 258px;
+    height: 332px;
+
+    opacity: .15;
+    transform:scaleX(-1)
+}
+
+.web-bottom{
+    bottom: -28px;
+    top:272px;
+    left: -28px;
+
+    width:790px;
+    height: 790px;
+
+    opacity: .14;
 }
 
 /* NAVBAR */
 
 .navbar {
-  height: 92px;
-  padding: 0 62px;
+  margin-top: 20px;
+  height: 100px;
+  padding: 10px 62px;
   display: flex;
   align-items: center;
 }
 
 .logo {
   position: absolute;
-  height: 32px;
+  height: 75px;
   width: 118px;
 }
 
@@ -96,21 +124,18 @@ nav .active span {
 
 .about-section {
   display: flex;
-  gap: 5%;
+  gap: 73.5px;
   margin-top: 55px;
 }
 
 .image-box {
-  width: 488px ;
-  height: 588px;
+  width: 441.59px ;
+  height: 587.38px;
   border: 1px solid rgba(255,255,255,.75);
-<<<<<<< Updated upstream
   box-shadow: 0 0 45px rgba(235, 203, 103, .55);
   margin-left: 15%;
   margin-top: 2.5%;
-=======
   box-shadow: 0 0 150px rgba(235, 203, 103, .55);
->>>>>>> Stashed changes
 }
 
 .image-box img {
@@ -122,7 +147,8 @@ nav .active span {
 /* TEXT */
 
 .about-content {
-  width: 800px;
+  width: 671px;
+  height: 429px;
   margin-left: 10%;
 }
 
@@ -168,7 +194,7 @@ h2 {
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px 10px;
+  gap: 15px 12px;
   justify-content: flex-start;
 }
 
@@ -182,7 +208,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   font-size: 13px;
   letter-spacing: 2px;
 }
