@@ -11,13 +11,11 @@ body {
 }
 
 .about-page {
-  width: 1440px;
-  height: 1024px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
   border-radius: 0 0 26px 26px;
-  background: url("../images/about-bg.jpg") center / cover no-repeat;
+
 }
 
 /* NAVBAR */
@@ -30,9 +28,30 @@ body {
 }
 
 .logo {
-  font-size: 42px;
-  letter-spacing: 2px;
-  color: rgba(130, 140, 170, .28);
+  position: absolute;
+  height: 32px;
+  width: 118px;
+}
+
+.logo img {
+  height: 75px;
+  width: 200px;
+}
+
+.navline {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 78px;
+  height: 60px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.navline img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 nav {
@@ -77,16 +96,21 @@ nav .active span {
 
 .about-section {
   display: flex;
-  gap: 110px;
-  padding-left: 134px;
-  padding-top: 160px;
+  gap: 5%;
+  margin-top: 55px;
 }
 
 .image-box {
-  width: 442px;
+  width: 488px ;
   height: 588px;
   border: 1px solid rgba(255,255,255,.75);
+<<<<<<< Updated upstream
   box-shadow: 0 0 45px rgba(235, 203, 103, .55);
+  margin-left: 15%;
+  margin-top: 2.5%;
+=======
+  box-shadow: 0 0 150px rgba(235, 203, 103, .55);
+>>>>>>> Stashed changes
 }
 
 .image-box img {
@@ -98,8 +122,8 @@ nav .active span {
 /* TEXT */
 
 .about-content {
-  width: 675px;
-  padding-top: 32px;
+  width: 800px;
+  margin-left: 10%;
 }
 
 .subtitle {
@@ -129,13 +153,14 @@ h2 {
 }
 
 .bio {
-  width: 665px;
+  width: 788px;
   font-family: Arial, sans-serif;
   font-size: 17px;
   line-height: 1.42;
   letter-spacing: 7px;
   color: rgba(255,255,255,.88);
   margin-bottom: 48px;
+  text-align: justify;
 }
 
 /* SKILLS */
@@ -143,8 +168,8 @@ h2 {
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px 16px;
-  justify-content: center;
+  gap: 30px 10px;
+  justify-content: flex-start;
 }
 
 .skills div {
