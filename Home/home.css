@@ -23,42 +23,77 @@ body {
 /* NAVBAR */
 
 .navbar {
-  position: relative;
   height: 92px;
   padding: 0 62px;
   display: flex;
   align-items: center;
-  z-index: 10;
 }
 
 .logo {
-  font-size: 42px;
-  letter-spacing: 2px;
-  color: rgba(125, 135, 165, .28);
+  position: absolute;
+  height: 32px;
+  width: 118px;
 }
 
-.nav-links {
+.logo img {
+  height: 75px;
+  width: 200px;
+}
+
+.navline {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 78px;
+  height: 60px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.navline img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+nav {
   margin-left: auto;
   display: flex;
-  align-items: center;
   gap: 66px;
+  align-items: center;
 }
 
-.nav-links a {
+nav a {
   position: relative;
-  width: 96px;
+  width: 118px;
   height: 32px;
   color: white;
   text-decoration: none;
   font-size: 16px;
   letter-spacing: 5px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border-bottom: 1px solid rgba(255,255,255,.28);
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
+
+nav .active {
+  overflow: hidden;
+}
+
+nav .active img {
+  position: absolute;
+  width: 95px;
+  opacity: .8;
+}
+
+nav .active span {
+  position: relative;
+  z-index: 2;
+}
+
 
 .home-link {
   overflow: hidden;
