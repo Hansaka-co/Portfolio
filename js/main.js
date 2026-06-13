@@ -184,18 +184,92 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ===== 9. 3D tilt on hex cards ===== */
-if (!reduceMotion && matchMedia('(hover:hover)').matches) {
-  document.querySelectorAll('.tilt').forEach(card => {
-    const frame = card.querySelector('.hex-frame');
-    card.addEventListener('pointermove', e => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - .5;
-      const py = (e.clientY - r.top) / r.height - .5;
-      frame.style.transform = `rotateY(${px * 16}deg) rotateX(${-py * 16}deg) translateY(-8px)`;
+/* ===== 9. Horizontal project carousel — drag + dots + arrows ===== */
+(function projectCarousel() {
+  const track = document.getElementById('projectTrack');
+  const dotsWrap = document.getElementById('trackDots');
+  const btnPrev = document.getElementById('trackPrev');
+  const btnNext = document.getElementById('trackNext');
+  if (!track) return;
+
+  const cards = [...track.querySelectorAll('.proj-card')];
+
+  /* ---- staggered reveal as carousel enters viewport ---- */
+  const revealCards = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('card-visible'), i * 120);
+        });
+        revealCards.disconnect();
+      }
     });
-    card.addEventListener('pointerleave', () => { frame.style.transform = ''; });
+  }, { threshold: 0.15 });
+  revealCards.observe(track);
+
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'track-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to project ' + (i + 1));
+    d.addEventListener('click', () => scrollToCard(i));
+    dotsWrap.appendChild(d);
   });
+
+  function updateDots() {
+    const dots = [...dotsWrap.querySelectorAll('.track-dot')];
+    const scrollLeft = track.scrollLeft;
+    let closest = 0, minDist = Infinity;
+    cards.forEach((c, i) => {
+      const dist = Math.abs(c.offsetLeft - scrollLeft);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }
+
+  function scrollToCard(i) {
+    track.scrollTo({ left: cards[i].offsetLeft - 4, behavior: 'smooth' });
+  }
+
+  btnPrev.addEventListener('click', () => {
+    const active = [...dotsWrap.querySelectorAll('.track-dot')].findIndex(d => d.classList.contains('active'));
+    scrollToCard(Math.max(0, active - 1));
+  });
+  btnNext.addEventListener('click', () => {
+    const active = [...dotsWrap.querySelectorAll('.track-dot')].findIndex(d => d.classList.contains('active'));
+    scrollToCard(Math.min(cards.length - 1, active + 1));
+  });
+
+  track.addEventListener('scroll', updateDots, { passive: true });
+
+  if (!reduceMotion) {
+    let isDragging = false, startX = 0, startScroll = 0;
+    track.addEventListener('pointerdown', e => {
+      isDragging = true; startX = e.clientX; startScroll = track.scrollLeft;
+      track.classList.add('is-dragging');
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+      if (!isDragging) return;
+      track.scrollLeft = startScroll - (e.clientX - startX);
+    });
+    track.addEventListener('pointerup', () => { isDragging = false; track.classList.remove('is-dragging'); });
+    track.addEventListener('pointercancel', () => { isDragging = false; track.classList.remove('is-dragging'); });
+  }
+
+  if (!reduceMotion && matchMedia('(hover:hover)').matches) {
+    cards.forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - .5;
+        const py = (e.clientY - r.top) / r.height - .5;
+        card.style.transform = `translateY(-8px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+  }
+})();
+
+if (!reduceMotion && matchMedia('(hover:hover)').matches) {
 
   /* ===== 10. Magnetic buttons ===== */
   document.querySelectorAll('.magnetic').forEach(btn => {
@@ -221,7 +295,7 @@ if (!reduceMotion && matchMedia('(hover:hover)').matches) {
     ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
     requestAnimationFrame(followRing);
   })();
-  document.querySelectorAll('a, button, .skill-chips li, .hex-card').forEach(el => {
+  document.querySelectorAll('a, button, .skill-chips li, .proj-card').forEach(el => {
     el.addEventListener('pointerenter', () => ring.classList.add('hovering'));
     el.addEventListener('pointerleave', () => ring.classList.remove('hovering'));
   });
