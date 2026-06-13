@@ -172,23 +172,108 @@
         <h2 class="title-lg center reveal">Crafting <span class="accent">Digital</span> Experiences</h2>
         <p class="section-lede center reveal">A collection of projects where design, code and creativity<br/>come together to build meaningful solutions.</p>
 
-        <div class="hex-grid">
-          <article class="hex-card reveal tilt">
-            <div class="hex-frame"><div class="hex-media flight">✈</div></div>
-            <h3>Flight Analyzer</h3>
-            <p>Flight tracking and schedule analysis system built with Python — clean, interactive data dashboards.</p>
-          </article>
-          <article class="hex-card hex-featured reveal tilt">
-            <div class="hex-frame"><div class="hex-media muc"><span>MUC<br/><small>DIGITAL</small></span></div></div>
-            <h3>MUC Digital</h3>
-            <p>Smart urban council service application — intuitive booking flows and accessible module UIs.</p>
-          </article>
-          <article class="hex-card reveal tilt">
-            <div class="hex-frame"><div class="hex-media green">🌿</div></div>
-            <h3>NextGreen</h3>
-            <p>Sustainable smart-city volunteer platform — a modern, multi-page responsive website.</p>
-          </article>
-        </div>
+        <!-- Horizontal project carousel -->
+        <div class="project-track-wrap reveal">
+          <div class="project-track" id="projectTrack">
+
+            <article class="proj-card">
+              <div class="proj-icon">
+                <div class="proj-icon-emoji">✈</div>
+                <div class="proj-icon-overlay"></div>
+              </div>
+              <div class="proj-body">
+                <span class="proj-tag">Python · Data</span>
+                <h3>Flight Analyzer</h3>
+                <p>Flight tracking and schedule analysis system built with Python — clean, interactive data dashboards.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-done">Completed</span>
+              </div>
+            </article>
+
+            <article class="proj-card proj-featured">
+              <div class="proj-icon muc-icon"><span>MUC<small>DIGITAL</small></span></div>
+              <div class="proj-body">
+                <span class="proj-tag">UI/UX · Mobile</span>
+                <h3>MUC Digital</h3>
+                <p>Smart urban council service application — intuitive booking flows and accessible module UIs.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-done">Completed</span>
+              </div>
+            </article>
+
+            <article class="proj-card">
+             <div class="proj-icon">
+              <div class="proj-icon-emoji">🌿</div>
+              <div class="proj-icon-overlay"></div>
+            </div>
+              <div class="proj-body">
+                <span class="proj-tag">HTML · CSS · JS</span>
+                <h3>NextGreen</h3>
+                <p>Sustainable smart-city volunteer platform — a modern, multi-page responsive website.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-done">Completed</span>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-icon">
+                <img src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard" loading="lazy" />
+                <div class="proj-icon-overlay"></div>
+              </div>
+              <div class="proj-body">
+                <span class="proj-tag">React · Tailwind · Supabase</span>
+                <h3>Finance Manager</h3>
+                <p>Personal finance tracker — income, expenses, budgets, savings goals and an analytics dashboard. Designed in Figma first, then built with React and Supabase.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-wip">In Progress</span>
+                <a href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener" class="proj-link">GitHub →</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-icon" style="background:linear-gradient(135deg,#0d1b2a,#1a2f4a);font-family:'Courier New',monospace;font-size:.72rem;color:#4ade80;letter-spacing:.08em;padding:16px;align-items:flex-start;justify-content:flex-start;">
+                <span style="opacity:.7;line-height:1.8;">GET /api/v1/rooms<br/>POST /api/v1/sensors<br/>GET /api/v1/sensors/{id}<br/>POST .../readings<br/><span style="color:#8b5cf6;">→ 200 OK</span></span>
+                <div class="proj-icon-overlay"></div>
+              </div>
+              <div class="proj-body">
+                <span class="proj-tag">Java · JAX-RS · REST</span>
+                <h3>Smart Campus API</h3>
+                <p>RESTful API for university smart campus sensor & room management — built with JAX-RS (Jersey) and Grizzly embedded server. Coursework 5COSC022W.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-done">Completed</span>
+                <a href="https://github.com/Hansaka-co/smart-campus-api" target="_blank" rel="noopener" class="proj-link">GitHub →</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-icon" style="background:linear-gradient(135deg,#0d0d1f,#1a1040);">
+                <div class="proj-icon-emoji">⚗️</div>
+                <div class="proj-icon-overlay"></div>
+              </div>
+              <div class="proj-body">
+                <span class="proj-tag">Coming Soon</span>
+                <h3>Next Project</h3>
+                <p>Something new is being crafted — details dropping soon. Stay tuned.</p>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-status status-soon">🔧 Processing</span>
+              </div>
+            </article>
+
+          </div><!-- end .project-track -->
+
+          <!-- drag/scroll hint + nav arrows -->
+          <div class="track-nav">
+            <button class="track-btn" id="trackPrev" aria-label="Previous projects">←</button>
+            <div class="track-dots" id="trackDots"></div>
+            <button class="track-btn" id="trackNext" aria-label="Next projects">→</button>
+          </div>
+        </div><!-- end .project-track-wrap -->
       </div>
 
       <!-- web ground glow -->
