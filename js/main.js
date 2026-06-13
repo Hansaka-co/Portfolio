@@ -184,7 +184,7 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ===== 9. Horizontal project carousel — drag + dots + arrows ===== */
+/* ===== 9. Horizontal project carousel — smooth continuous loop ===== */
 (function projectCarousel() {
   const track = document.getElementById('projectTrack');
   const dotsWrap = document.getElementById('trackDots');
@@ -192,86 +192,133 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   const btnNext = document.getElementById('trackNext');
   if (!track) return;
 
-  const cards = [...track.querySelectorAll('.proj-card')];
+  const originalCards = [...track.querySelectorAll('.proj-card')];
+  if (!originalCards.length) return;
 
-  /* ---- staggered reveal as carousel enters viewport ---- */
-  const revealCards = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        cards.forEach((card, i) => {
-          setTimeout(() => card.classList.add('card-visible'), i * 120);
-        });
-        revealCards.disconnect();
-      }
+  /* ---- helpers ---- */
+  const GAP = 28;
+  const cardW = () => originalCards[0].offsetWidth + GAP;
+  const setW = () => cardW() * originalCards.length;
+
+  /* ---- clone 3x each side ---- */
+  [1,2,3].forEach(() => {
+    originalCards.forEach(c => {
+      const cl = c.cloneNode(true);
+      cl.setAttribute('aria-hidden','true');
+      cl.classList.add('proj-clone');
+      track.appendChild(cl);
     });
-  }, { threshold: 0.15 });
-  revealCards.observe(track);
+  });
+  [1,2,3].forEach(() => {
+    [...originalCards].reverse().forEach(c => {
+      const cl = c.cloneNode(true);
+      cl.setAttribute('aria-hidden','true');
+      cl.classList.add('proj-clone');
+      track.prepend(cl);
+    });
+  });
 
-  cards.forEach((_, i) => {
+  /* ---- init scroll to middle ---- */
+  let offset = setW() * 3;
+
+  /* wait for layout before setting scrollLeft */
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      track.scrollLeft = offset;
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    offset = setW() * 3;
+    track.scrollLeft = offset;
+  });
+
+  /* ---- dots ---- */
+  originalCards.forEach((_, i) => {
     const d = document.createElement('button');
     d.className = 'track-dot' + (i === 0 ? ' active' : '');
     d.setAttribute('aria-label', 'Go to project ' + (i + 1));
-    d.addEventListener('click', () => scrollToCard(i));
+    d.addEventListener('click', () => {
+      offset = setW() * 3 + cardW() * i;
+      track.scrollLeft = offset;
+    });
     dotsWrap.appendChild(d);
   });
 
   function updateDots() {
-    const dots = [...dotsWrap.querySelectorAll('.track-dot')];
-    const scrollLeft = track.scrollLeft;
-    let closest = 0, minDist = Infinity;
-    cards.forEach((c, i) => {
-      const dist = Math.abs(c.offsetLeft - scrollLeft);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+    const rel = offset - setW() * 3;
+    const idx = Math.round(rel / cardW());
+    const norm = ((idx % originalCards.length) + originalCards.length) % originalCards.length;
+    [...dotsWrap.querySelectorAll('.track-dot')].forEach((d, i) =>
+      d.classList.toggle('active', i === norm)
+    );
   }
 
-  function scrollToCard(i) {
-    track.scrollTo({ left: cards[i].offsetLeft - 4, behavior: 'smooth' });
-  }
-
+  /* ---- arrows ---- */
   btnPrev.addEventListener('click', () => {
-    const active = [...dotsWrap.querySelectorAll('.track-dot')].findIndex(d => d.classList.contains('active'));
-    scrollToCard(Math.max(0, active - 1));
+    offset -= cardW();
+    track.scrollLeft = offset;
+    updateDots();
   });
   btnNext.addEventListener('click', () => {
-    const active = [...dotsWrap.querySelectorAll('.track-dot')].findIndex(d => d.classList.contains('active'));
-    scrollToCard(Math.min(cards.length - 1, active + 1));
+    offset += cardW();
+    track.scrollLeft = offset;
+    updateDots();
   });
 
-  track.addEventListener('scroll', updateDots, { passive: true });
+  /* ---- auto loop ---- */
+  let isPaused = false;
+  let lastTime = 0;
+  const SPEED = 0.6;
 
-  if (!reduceMotion) {
-    let isDragging = false, startX = 0, startScroll = 0;
-    track.addEventListener('pointerdown', e => {
-      isDragging = true; startX = e.clientX; startScroll = track.scrollLeft;
-      track.classList.add('is-dragging');
-      track.setPointerCapture(e.pointerId);
-    });
-    track.addEventListener('pointermove', e => {
-      if (!isDragging) return;
-      track.scrollLeft = startScroll - (e.clientX - startX);
-    });
-    track.addEventListener('pointerup', () => { isDragging = false; track.classList.remove('is-dragging'); });
-    track.addEventListener('pointercancel', () => { isDragging = false; track.classList.remove('is-dragging'); });
+  function autoLoop(ts) {
+    if (!lastTime) lastTime = ts;
+    const delta = Math.min(ts - lastTime, 50);
+    lastTime = ts;
+
+    if (!isPaused) {
+      offset += SPEED * (delta / 16);
+
+      /* seamless jump */
+      if (offset >= setW() * 4) { offset -= setW(); }
+      if (offset <= setW() * 2) { offset += setW(); }
+
+      track.scrollLeft = offset;
+      updateDots();
+    }
+
+    requestAnimationFrame(autoLoop);
   }
+  requestAnimationFrame(autoLoop);
 
+  /* ---- pause on hover ---- */
+  track.addEventListener('pointerenter', () => { isPaused = true; });
+  track.addEventListener('pointerleave', () => { isPaused = false; lastTime = 0; });
+
+  /* ---- tab visibility ---- */
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) isPaused = true;
+    else { lastTime = 0; isPaused = false; }
+  });
+
+  /* ---- 3D tilt ---- */
   if (!reduceMotion && matchMedia('(hover:hover)').matches) {
-    cards.forEach(card => {
-      card.addEventListener('pointermove', e => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - .5;
-        const py = (e.clientY - r.top) / r.height - .5;
-        card.style.transform = `translateY(-8px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
-      });
-      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    track.addEventListener('pointermove', e => {
+      const card = e.target.closest('.proj-card');
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5;
+      const py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `translateY(-8px) rotateY(${px*10}deg) rotateX(${-py*10}deg)`;
+    });
+    track.addEventListener('pointerleave', () => {
+      track.querySelectorAll('.proj-card').forEach(c => c.style.transform = '');
     });
   }
+
 })();
-
-if (!reduceMotion && matchMedia('(hover:hover)').matches) {
-
   /* ===== 10. Magnetic buttons ===== */
+if (!reduceMotion && matchMedia('(hover:hover)').matches) {
   document.querySelectorAll('.magnetic').forEach(btn => {
     btn.addEventListener('pointermove', e => {
       const r = btn.getBoundingClientRect();
@@ -299,7 +346,6 @@ if (!reduceMotion && matchMedia('(hover:hover)').matches) {
     el.addEventListener('pointerenter', () => ring.classList.add('hovering'));
     el.addEventListener('pointerleave', () => ring.classList.remove('hovering'));
   });
-}
-
+} 
 /* ===== 12. Footer year ===== */
 document.getElementById('year').textContent = new Date().getFullYear();
