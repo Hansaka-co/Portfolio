@@ -233,8 +233,10 @@ ul{list-style:none}
   position:relative;
   margin-bottom:10px;
   overflow:hidden;
-  width:100%;
+  width: 100%;
+  margin-left:0;
 }
+
 .project-track{
   display:flex;
   flex-direction:row;
@@ -246,6 +248,9 @@ ul{list-style:none}
   scrollbar-width:none;
   user-select:none;
   -webkit-overflow-scrolling:touch;
+  background:rgba(139,92,246,.03);
+  border-top:1px solid rgba(139,92,246,.12);
+  border-bottom:1px solid rgba(139,92,246,.12);
 }
 .project-track::-webkit-scrollbar{display:none}
 
@@ -267,7 +272,7 @@ ul{list-style:none}
 .proj-card{
   flex:0 0 320px;
   min-width:320px;
-  max-width:320px;
+  max-width:800px;
   display:flex;
   flex-direction:column;
   gap:0;
