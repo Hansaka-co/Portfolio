@@ -518,7 +518,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     align-items:center;
     gap:8px;
     background:rgba(5,5,12,.98);
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(50px);
     -webkit-backdrop-filter:blur(16px);
     padding:26px 0 34px;
     transform:translateY(-130%);
