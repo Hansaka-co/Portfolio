@@ -1,0 +1,30 @@
+{
+  "name": "The Island",
+  "mode": "light",
+  "colors": {
+    "background.primary": "#D8D1C3",
+    "background.secondary": "#E4DED2",
+    "surface.primary": "#EAE4D9",
+    "surface.raised": "#D0C8B9",
+    "text.primary": "#10222F",
+    "text.muted": "#526674",
+    "border": "#A8A090",
+    "accent.horizon": "#4F6C80",
+    "accent.signal": "#A97B43"
+  },
+  "typography": {
+    "display": "Cormorant Garamond",
+    "ui": "Manrope"
+  },
+  "motion": {
+    "principle": "Scroll advances the narrative",
+    "parallaxRange": "5\u201312%",
+    "preferred": "GSAP ScrollTrigger + CSS transforms",
+    "avoid": [
+      "random bounce",
+      "heavy glow",
+      "scroll hijacking",
+      "motion on every element"
+    ]
+  }
+}

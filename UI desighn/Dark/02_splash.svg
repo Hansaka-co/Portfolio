@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+<defs>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#06131E"/>
+    <stop offset="100%" stop-color="#0A1C2A"/>
+  </linearGradient>
+  <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#103D5A"/>
+    <stop offset="100%" stop-color="#0A2B43"/>
+  </linearGradient>
+  <linearGradient id="warmGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#D1AA6E"/>
+    <stop offset="100%" stop-color="#9C7440"/>
+  </linearGradient>
+</defs>
+<rect width="1440" height="1024" fill="url(#bgGrad)"/>
+<title>The Island — Splash</title>
+<path d="M0 650 C180 550 260 610 420 520 C610 410 760 490 900 430 C1050 360 1200 420 1440 300 L1440 1024 L0 1024 Z" fill="#0B2436" opacity=".75"/><path d="M760 650 L860 530 L930 600 L1040 430 L1110 560 L1200 480 L1290 600 L1440 520 L1440 800 L760 800 Z" fill="#030A10" opacity=".88"/><path d="M0 670 C180 630 310 720 500 675 C720 625 820 745 1040 690 C1210 650 1310 720 1440 680 L1440 1024 L0 1024 Z" fill="url(#seaGrad)"/><path d="M0 785 C170 730 315 830 480 790 C620 755 760 840 930 805 C1110 770 1280 855 1440 810" fill="none" stroke="#9FB8CC" stroke-width="3" opacity=".25"/><path d="M0 845 C220 790 340 900 560 848 C760 800 900 920 1120 850 C1280 800 1370 860 1440 845" fill="none" stroke="#9FB8CC" stroke-width="2" opacity=".18"/><path d="M0 130 C200 50 420 160 590 100 C760 45 990 170 1180 90 C1310 35 1370 80 1440 60 L1440 0 L0 0 Z" fill="#030A10" opacity=".7"/><line x1="330" y1="120" x2="300" y2="210" stroke="#9FB8CC" stroke-width="3" opacity="0.45"/><line x1="300" y1="210" x2="328" y2="185" stroke="#9FB8CC" stroke-width="3" opacity="0.45"/><rect x="1173.75" y="422.5" width="22.5" height="52.5" rx="2.5" fill="#EAF0F4" opacity="0.86"/><rect x="1167.5" y="412.5" width="35.0" height="12.5" rx="2.5" fill="#EAF0F4" opacity="0.86"/><circle cx="1185" cy="418.75" r="6.25" fill="#D1AA6E" opacity="1"/><path d="M 1185 418.75 L 1291.25 397.5 L 1291.25 440.0 Z" fill="#D1AA6E" opacity=".16"/><rect x="0" y="0" width="1440" height="1024" rx="0" fill="#06131E" opacity="0.12"/><text x="70" y="75" fill="#EAF0F4" font-family="Cormorant Garamond, Arial, sans-serif" font-size="34" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1" style="">H.</text><text x="1370" y="72" fill="#9FB0BC" font-family="Manrope, Arial, sans-serif" font-size="12" font-weight="600" text-anchor="end" letter-spacing="2" opacity="1" style="">01 / 12</text><text x="720" y="420" fill="#EAF0F4" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="500" text-anchor="middle" style="">THE ISLAND</text><text x="720" y="468" fill="#9FB0BC" font-family="Manrope, Arial, sans-serif" font-size="15" font-weight="500" text-anchor="middle" letter-spacing="2" opacity="1" style="">Every journey begins in the unknown.</text><line x1="570" y1="545" x2="870" y2="545" stroke="#274154" stroke-width="2" opacity="1"/><line x1="570" y1="545" x2="748" y2="545" stroke="#9FB8CC" stroke-width="3" opacity="1"/><text x="720" y="585" fill="#9FB8CC" font-family="Manrope, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing="4" opacity="1" style="">ENTERING THE JOURNEY</text><text x="720" y="930" fill="#9FB0BC" font-family="Manrope, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing="4" opacity="1" style="">SCROLL / ENTER</text></svg>
