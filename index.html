@@ -3,41 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <script>
+    (() => {
+      let saved = null;
+      try { saved = localStorage.getItem('portfolio-v2-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    })();
+  </script>
   <title>Hansaka Bandara — Frontend Developer & UI Designer</title>
   <meta name="description" content="Portfolio of Hansaka Bandara — Computer Science undergraduate at IIT, Frontend Developer & UI/UX Designer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/island.css?v=themed-navigation-1" />
-  <link rel="stylesheet" href="css/expeditions.css?v=milestone-2b" />
+  <link rel="stylesheet" href="css/theme.css?v=structure-1" />
+  <link rel="stylesheet" href="css/island.css?v=structure-1" />
+  <link rel="stylesheet" href="css/expeditions.css?v=content-audit-1" />
+  <link rel="stylesheet" href="css/structure.css?v=structure-1" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 </head>
 <body>
 
-  <!-- particle web background -->
-  <canvas hidden id="webfield" aria-hidden="true"></canvas>
-
-  <!-- scroll-progress spider -->
-  <div hidden id="scroll-spider" aria-hidden="true">
-    <span class="ss-thread"></span>
-    <svg viewBox="0 0 40 40" class="ss-spider">
-      <g fill="#0b0b14" stroke="#b9bdfb" stroke-width="1.6" stroke-linecap="round">
-        <ellipse cx="20" cy="22" rx="6" ry="8"/>
-        <circle cx="20" cy="12" r="4"/>
-        <path d="M15 14 Q6 8 4 2" fill="none"/>
-        <path d="M14 19 Q4 17 1 11" fill="none"/>
-        <path d="M14 24 Q4 27 2 34" fill="none"/>
-        <path d="M16 29 Q10 36 10 40" fill="none"/>
-        <path d="M25 14 Q34 8 36 2" fill="none"/>
-        <path d="M26 19 Q36 17 39 11" fill="none"/>
-        <path d="M26 24 Q36 27 38 34" fill="none"/>
-        <path d="M24 29 Q30 36 30 40" fill="none"/>
-      </g>
-    </svg>
-  </div>
-
+  <!-- Legacy global spider effects are retired; their source files remain for review. -->
   <a class="island-skip" href="#island-heading">Skip to content</a>
   <header class="island-nav">
     <nav aria-label="Main navigation" class="island-nav-inner">
@@ -46,9 +34,10 @@
       <ul id="island-links" class="island-links">
         <li><a href="#work" aria-label="Selected Work and Projects">EXPEDITIONS<small class="island-nav-subtitle">Selected Work</small></a></li>
         <li><a href="#about" aria-label="About Hansaka">THE EXPLORER<small class="island-nav-subtitle">About Me</small></a></li>
-        <li><a href="#about" data-journey aria-label="Experience and Education">THE TRAIL<small class="island-nav-subtitle">Experience &amp; Education</small></a></li>
+        <li><a href="#trail" data-journey aria-label="Experience and Education">THE TRAIL<small class="island-nav-subtitle">Experience &amp; Education</small></a></li>
         <li><a href="#contact" aria-label="Contact Hansaka">THE SIGNAL <span aria-hidden="true">↗</span><small class="island-nav-subtitle">Contact</small></a></li>
       </ul>
+      <button class="theme-toggle" type="button" aria-label="After the Storm light mode" aria-pressed="false" hidden><span aria-hidden="true">◐</span> <span>LIGHT MODE</span></button>
     </nav>
   </header>
   <main>
@@ -119,7 +108,7 @@
       <div class="island-shade" aria-hidden="true"></div>
       <div class="island-entry-fog" aria-hidden="true"><span></span><span></span></div>
       <div class="island-splash" hidden>
-        <button type="button" class="island-enter">ENTER THE UNKNOWN <span aria-hidden="true">→</span></button>
+        <button type="button" class="island-enter">ENTER THE ISLAND <span aria-hidden="true">→</span></button>
         <button type="button" class="island-splash-skip">Skip intro</button>
       </div>
       <div class="island-content">
@@ -128,13 +117,13 @@
         <p class="island-body">I design and build digital experiences that bring clarity to complex problems — through thoughtful interfaces and clean code.</p>
         <div class="island-actions">
           <a class="island-button island-button-primary" href="#work">EXPLORE EXPEDITIONS <span aria-hidden="true">↗</span></a>
-          <a class="island-button" href="#about" data-journey>FOLLOW THE TRAIL <span aria-hidden="true">→</span></a>
+          <a class="island-button" href="#trail" data-journey>FOLLOW THE TRAIL <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="island-bottom"><a href="#about" class="island-scroll">SCROLL TO EXPLORE <span aria-hidden="true"></span></a><p>Different paths.<br>Same purpose.</p></div>
     </section>
 
-    <!-- Portfolio V2: authorized milestone stops after The Explorer. -->
+    <!-- Portfolio V2: complete structural version, before global polish. -->
     <section id="journey" class="v2-section v2-story" aria-labelledby="journey-heading">
       <div class="v2-story-landscape" aria-hidden="true">
         <svg viewBox="0 0 1440 1050" preserveAspectRatio="xMidYMax slice">
@@ -157,53 +146,62 @@
     <section id="work" class="v2-section v2-work" aria-labelledby="expeditions-heading">
       <div class="v2-container">
         <header class="v2-section-header"><div><p class="v2-kicker">02 / EXPEDITIONS</p><h2 id="expeditions-heading" class="v2-display">Real projects.<br><em>Real impact.</em></h2></div><p class="v2-lede">Each expedition began with a real problem — and became something researched, designed and built with purpose.</p></header>
+        <article class="v2-project" aria-labelledby="muc-title">
+          <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="MUC Digital beacon — digital services and communication" focusable="false"><path d="M8 21h8M10 21l1-10h2l1 10M9 11h6V7H9zM12 3V1M5 7L2 5m17 2 3-2"/><path class="v2-symbol-signal" d="M6 11a8 8 0 0 1 0-8m12 8a8 8 0 0 0 0-8"/></svg>EXPEDITION / 01</span><span>Completed</span></div>
+          <figure class="v2-project-visual v2-visual-muc"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">01 / PUBLIC SERVICES</span><strong>MUC<br><em>Digital.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
+          <div class="v2-project-info"><div><p class="v2-kicker">SERVICE DESIGN / MOBILE INTERFACE</p><h3 id="muc-title">MUC Digital</h3></div><div><p>Making urban council services easier to navigate through focused booking flows and accessible module interfaces.</p><p class="v2-project-tech">Mobile UI · Service flows</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
+          <a class="v2-text-link field-notes-link" href="#muc-notes" aria-label="Open Field Notes for MUC Digital">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener noreferrer" aria-label="View MUC Digital on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
         <article class="v2-project" aria-labelledby="finance-title">
-          <div class="v2-project-topline"><span>EXPEDITION / 01</span><span>In progress</span></div>
-          <figure class="v2-project-visual v2-visual-finance"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">01 / FINANCIAL CLARITY</span><strong>Finance<br><em>Manager.</em></strong><span>PROJECT VISUAL PENDING</span></div><img class="v2-project-image" src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard from the project repository" loading="lazy" width="1440" height="900"><figcaption class="v2-visually-hidden">Existing project dashboard; a labelled placeholder remains if the image is unavailable.</figcaption></figure>
+          <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="Finance Manager compass — resource planning and navigation" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/><path class="v2-symbol-signal" d="m16 8-2 6-6 2 2-6z"/></svg>EXPEDITION / 02</span><span>In progress</span></div>
+          <figure class="v2-project-visual v2-visual-finance"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">02 / FINANCIAL CLARITY</span><strong>Finance<br><em>Manager.</em></strong><span>PROJECT VISUAL PENDING</span></div><img class="v2-project-image" src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard from the project repository" loading="lazy" width="1440" height="900"><figcaption class="v2-visually-hidden">Existing project dashboard; a labelled placeholder remains if the image is unavailable.</figcaption></figure>
           <div class="v2-project-info"><div><p class="v2-kicker">PRODUCT INTERFACE / WEB APPLICATION</p><h3 id="finance-title">Finance Manager</h3></div><div><p>Bringing income, expenses, budgets and savings goals into one personal finance workspace.</p><p class="v2-project-tech">React · Tailwind · Supabase</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
-          <details class="v2-field-notes" id="finance-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
-            <header><p class="v2-kicker">FIELD NOTES / 01</p><h4>Finance Manager</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
+          <a class="v2-text-link field-notes-link" href="#finance-notes" aria-label="Open Field Notes for Finance Manager">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener noreferrer" aria-label="View Finance Manager on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="v2-project" aria-labelledby="estate-title">
+          <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="Estate Agent SPA map — property locations and destinations" focusable="false"><path d="m2 6 6-3 8 3 6-3v16l-6 3-8-3-6 3zM8 3v16m8-5v8"/><path class="v2-symbol-signal" d="M19 8c0 3-3 6-3 6s-3-3-3-6a3 3 0 0 1 6 0Z"/><circle class="v2-symbol-signal" cx="16" cy="8" r=".5"/></svg>EXPEDITION / 03</span><span>Client-side application</span></div>
+          <figure class="v2-project-visual v2-visual-estate"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">03 / PROPERTY SEARCH</span><strong>Estate Agent<br><em>SPA.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
+          <div class="v2-project-info"><div><p class="v2-kicker">FRONTEND DEVELOPMENT / PROPERTY SEARCH</p><h3 id="estate-title">Estate Agent SPA</h3></div><div><p>Search properties, explore listing details and save favourites in a client-side application.</p><p class="v2-project-tech">React · Vite · React Router</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
+          <a class="v2-text-link field-notes-link" href="#estate-notes" aria-label="Open Field Notes for Estate Agent SPA">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/estate-agent-spa.git" target="_blank" rel="noopener noreferrer" aria-label="View Estate Agent SPA on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section id="field-notes" class="v2-section v2-notes-section" aria-labelledby="field-notes-heading">
+      <div class="v2-container">
+        <header class="v2-section-header"><div><p class="v2-kicker">EXPEDITION RECORDS / FIELD NOTES</p><h2 id="field-notes-heading" class="v2-display">Behind the build.<br><em>Inside the thinking.</em></h2></div><p class="v2-lede">Problem, process and implementation. These working records bring the decisions behind each expedition into view.</p></header>
+          <details class="v2-field-notes" id="muc-notes"><summary>MUC DIGITAL <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 01</p><h4>MUC Digital</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
+            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Presenting urban council services through a mobile application with clear booking flows.</p></section>
+            <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
+            <section data-note-stage="research"><h5>02 / Research</h5><p class="content-pending">Research evidence and findings to be added.</p></section>
+            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing portfolio identifies booking flows and accessible module interfaces as the focus.</p></section>
+            <!-- TODO: add verified development evidence. -->
+            <section data-note-stage="development"><h5>04 / Development</h5><p class="content-pending">Implementation details and personal contribution to be added.</p></section>
+            <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
+          </div></details>
+          <details class="v2-field-notes" id="finance-notes"><summary>FINANCE MANAGER <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 02</p><h4>Finance Manager</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
             <section data-note-stage="problem"><h5>01 / Problem</h5><p>Keeping track of income, spending, budgets and savings goals within one application.</p></section>
             <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
-            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
+            <section data-note-stage="research"><h5>02 / Research</h5><p class="content-pending">Research evidence and findings to be added.</p></section>
             <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing project description records a Figma-first design process and an analytics dashboard.</p></section>
             <section data-note-stage="development"><h5>04 / Development</h5><p>A React interface with Tailwind styling and Supabase. The documented scope includes income, expenses, budgets, savings goals and analytics.</p></section>
             <section data-note-stage="result"><h5>05 / Result</h5><p>In progress.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
           </div></details>
-          <a class="v2-repository" href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener noreferrer" aria-label="View Finance Manager on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
-        </article>
-        <article class="v2-project" aria-labelledby="muc-title">
-          <div class="v2-project-topline"><span>EXPEDITION / 02</span><span>Completed</span></div>
-          <figure class="v2-project-visual v2-visual-muc"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">02 / PUBLIC SERVICES</span><strong>MUC<br><em>Digital.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
-          <div class="v2-project-info"><div><p class="v2-kicker">SERVICE DESIGN / MOBILE INTERFACE</p><h3 id="muc-title">MUC Digital</h3></div><div><p>Making urban council services easier to navigate through focused booking flows and accessible module interfaces.</p><p class="v2-project-tech">Mobile UI · Service flows</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
-          <details class="v2-field-notes" id="muc-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
-            <header><p class="v2-kicker">FIELD NOTES / 02</p><h4>MUC Digital</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
-            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Presenting urban council services through a mobile application with clear booking flows.</p></section>
+          <details class="v2-field-notes" id="estate-notes"><summary>ESTATE AGENT SPA <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 03</p><h4>Estate Agent SPA</h4><p class="v2-note-context">An initial project record, based on the project repository README.</p></header>
+            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Helping visitors search property listings, explore details and save favourites.</p></section>
             <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
-            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
-            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing portfolio identifies booking flows and accessible module interfaces as the focus.</p></section>
-            <!-- TODO: add verified development evidence. -->
-            <section data-note-stage="development" hidden><h5>04 / Development</h5></section>
-            <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
-          </div></details>
-          <a class="v2-repository" href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener noreferrer" aria-label="View MUC Digital on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
-        </article>
-        <article class="v2-project" aria-labelledby="nextgreen-title">
-          <div class="v2-project-topline"><span>EXPEDITION / 03</span><span>Completed</span></div>
-          <figure class="v2-project-visual v2-visual-nextgreen"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">03 / SUSTAINABLE CITIES</span><strong>Next<br><em>Green.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
-          <div class="v2-project-info"><div><p class="v2-kicker">FRONTEND DEVELOPMENT / RESPONSIVE WEB</p><h3 id="nextgreen-title">NextGreen</h3></div><div><p>A responsive platform connecting sustainable smart-city initiatives with volunteering.</p><p class="v2-project-tech">HTML · CSS · JavaScript</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
-          <details class="v2-field-notes" id="nextgreen-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
-            <header><p class="v2-kicker">FIELD NOTES / 03</p><h4>NextGreen</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
-            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Presenting sustainable smart-city volunteering through a responsive, multi-page website.</p></section>
-            <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
-            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
+            <section data-note-stage="research"><h5>02 / Research</h5><p class="content-pending">Research evidence and findings to be added.</p></section>
             <!-- TODO: add verified design evidence. -->
-            <section data-note-stage="design" hidden><h5>03 / Design Decisions</h5></section>
-            <section data-note-stage="development"><h5>04 / Development</h5><p>Built with HTML, CSS and JavaScript as a multi-page responsive website.</p></section>
-            <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
+            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p class="content-pending">Design decisions and supporting evidence to be added.</p></section>
+            <section data-note-stage="development"><h5>04 / Development</h5><p>Built with React, Vite and React Router. The README documents property filters, detail pages, galleries and favourites, all running client-side.</p></section>
+            <section data-note-stage="result"><h5>05 / Result</h5><p>The repository documents a property-search application. User testing and outcome evidence remain to be added.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
           </div></details>
-          <a class="v2-repository" href="https://github.com/Hansaka-co/Nextgreen-web" target="_blank" rel="noopener noreferrer" aria-label="View NextGreen on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
-        </article>
       </div>
     </section>
 
@@ -215,99 +213,73 @@
       <div class="v2-rest-horizon" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- Legacy Experience preserved for a later approved milestone. -->
-      <div class="container experience-block">
-        <p class="eyebrow center underlined reveal">Experience</p>
-        <h2 class="title-lg center reveal">Weaving Ideas Into <span class="accent">Digital Experiences</span></h2>
-        <p class="section-lede center reveal">Like threads in a web, each project connects design, logic, and code<br/>to create meaningful and engaging user experiences.</p>
-
-        <div class="timeline">
-          <div class="t-item reveal">
-            <span class="t-dot"></span>
-            <span class="t-date">07/2025 – 01/2026</span>
-            <h3>Network Support Assistant Intern</h3>
-            <p class="t-org">People's Leasing and Finance PLC · Colombo 08</p>
-            <p>System troubleshooting, data management and supporting smooth daily operations with attention to detail.</p>
-          </div>
-          <div class="t-item reveal">
-            <span class="t-dot"></span>
-            <span class="t-date">05/2024 – 04/2025</span>
-            <h3>Customer Service Representative</h3>
-            <p class="t-org">Gamma Pizza Craft Lanka (Pvt) Ltd · Colombo 02</p>
-            <p>Handled customer inquiries and order processing in a fast-paced environment, sharpening communication and problem-solving skills.</p>
-          </div>
-          <div class="t-item reveal">
-            <span class="t-dot"></span>
-            <span class="t-date">2024 – Present</span>
-            <h3>BSc (Hons) in Computer Science</h3>
-            <p class="t-org">Informatics Institute of Technology (IIT)</p>
-            <p>Undergraduate studies focused on software development, UI/UX design and modern web technologies.</p>
-          </div>
-        </div>
+    <section id="capabilities" class="v2-section v2-capabilities structural-section" aria-labelledby="capabilities-heading">
+      <div class="v2-container"><header class="v2-section-header"><div><p class="v2-kicker">04 / SURVIVAL SKILLS</p><h2 id="capabilities-heading" class="v2-display">Adapt. Create.<br><em>Keep moving.</em></h2></div><p class="v2-lede">The capabilities I bring to unfamiliar problems — from the first question to a working interface.</p></header>
+        <dl class="capability-list">
+          <div><dt><span>01</span> UI/UX Design</dt><dd>Turning complex requirements into clear layouts, intuitive flows and considered interfaces.</dd></div>
+          <div><dt><span>02</span> Frontend Development</dt><dd>Building responsive interfaces with HTML, CSS, JavaScript and React.</dd></div>
+          <div><dt><span>03</span> Prototyping</dt><dd>Exploring an idea in Figma before moving into implementation.</dd></div>
+          <div><dt><span>04</span> Product Thinking</dt><dd>Connecting interface decisions to the problem a product is trying to solve.</dd></div>
+          <div><dt><span>05</span> Problem Solving</dt><dd>Breaking unfamiliar challenges into smaller questions, learning and iterating along the way.</dd></div>
+        </dl>
       </div>
+    </section>
 
-    <!-- ====== CONTACT ====== -->
-    <section id="contact" class="section contact">
-      <div class="corner-web flip" aria-hidden="true"></div>
-      <div class="container">
-        <p class="eyebrow center underlined reveal">Contact</p>
-        <h2 class="title-lg center reveal">Let's <span class="accent">Connect</span></h2>
-        <p class="section-lede center reveal">Open to UI/UX and Frontend internship opportunities — get caught in my web.</p>
+    <section id="trail" class="v2-section v2-trail structural-section" aria-labelledby="trail-heading">
+      <div class="v2-container"><header class="v2-section-header"><div><p class="v2-kicker">05 / THE TRAIL</p><h2 id="trail-heading" class="v2-display">Every step<br><em>leaves a lesson.</em></h2></div><p class="v2-lede">The work, learning and experiences that shape how I approach the next challenge.</p></header>
+        <ol class="trail-list">
+          <li><div class="trail-meta"><span>EDUCATION</span><p><time datetime="2024">2024</time> — Present</p></div><div><h3>BSc (Hons) in Computer Science</h3><p class="trail-org">Informatics Institute of Technology (IIT)</p><p>Undergraduate studies focused on software development, UI/UX design and modern web technologies.</p></div></li>
+          <li><div class="trail-meta"><span>EXPERIENCE</span><p><time datetime="2025-07">Jul 2025</time> — <time datetime="2026-01">Jan 2026</time></p></div><div><h3>Network Support Assistant Intern</h3><p class="trail-org">People’s Leasing and Finance PLC · Colombo 08</p><p>System troubleshooting, data management and supporting smooth daily operations with attention to detail.</p></div></li>
+          <li><div class="trail-meta"><span>EXPERIENCE</span><p><time datetime="2024-05">May 2024</time> — <time datetime="2025-04">Apr 2025</time></p></div><div><h3>Customer Service Representative</h3><p class="trail-org">Gamma Pizza Craft Lanka (Pvt) Ltd · Colombo 02</p><p>Handled customer inquiries and order processing in a fast-paced environment, sharpening communication and problem-solving skills.</p></div></li>
+          <!-- Add verified learning milestones here; never invent dates or achievements. -->
+        </ol>
+      </div>
+    </section>
 
-        <div class="contact-grid">
-          <div class="contact-cards reveal">
-            <a class="c-card" href="mailto:hansakarbandara@gmail.com">
-              <span class="c-ico">✉</span>
-              <span><strong>Email</strong><br/>hansakarbandara@gmail.com</span>
-            </a>
-            <a class="c-card" href="tel:+94752278588">
-              <span class="c-ico">☎</span>
-              <span><strong>Phone</strong><br/>075 227 8588</span>
-            </a>
-            <div class="c-card">
-              <span class="c-ico">⌖</span>
-              <span><strong>Location</strong><br/>Ganemulla, Sri Lanka</span>
-            </div>
-            <div class="socials">
-              <a href="https://github.com/Hansaka-co" target="_blank" rel="noopener" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.2 3.3 9.6 7.9 11.2.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C19.3 4.7 20.3 5 20.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6a11.8 11.8 0 0 0 7.9-11.2A11.5 11.5 0 0 0 12 .5Z"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/in/hansaka-r-bandara-408642409" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5ZM.2 8.3h4.6V23H.2V8.3Zm7.6 0h4.4v2h.1c.6-1.2 2.1-2.4 4.3-2.4 4.6 0 5.5 3 5.5 7V23h-4.6v-6.9c0-1.6 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V23H7.8V8.3Z"/></svg>
-              </a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <form class="contact-form reveal" action="mailto:hansakarbandara@gmail.com" method="post" enctype="text/plain">
-            <label>Name
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-            <label>Email
-              <input type="email" name="email" placeholder="you@email.com" required />
-            </label>
-            <label>Message
-              <textarea name="message" rows="5" placeholder="Tell me about your project or opportunity…" required></textarea>
-            </label>
-            <button type="submit" class="btn btn-fill magnetic">Send message <span class="btn-ico">→</span></button>
-          </form>
+    <section id="tools" class="v2-section v2-tools structural-section" aria-labelledby="tools-heading">
+      <div class="v2-container"><header class="v2-section-header"><div><p class="v2-kicker">06 / TOOLS I CARRY</p><h2 id="tools-heading" class="v2-display">A considered<br><em>set of tools.</em></h2></div><p class="v2-lede">Technologies used across my design, programming and web projects.</p></header>
+        <div class="tool-groups">
+          <section aria-labelledby="design-tools"><h3 id="design-tools">DESIGN</h3><ul><li>Figma</li></ul></section>
+          <section aria-labelledby="frontend-tools"><h3 id="frontend-tools">FRONTEND</h3><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Tailwind CSS</li></ul></section>
+          <section aria-labelledby="programming-tools"><h3 id="programming-tools">PROGRAMMING</h3><ul><li>Java</li><li>Python</li></ul></section>
+          <section aria-labelledby="workflow-tools"><h3 id="workflow-tools">TOOLS &amp; DATA</h3><ul><li>Git</li><li>GitHub</li><li>Supabase</li></ul></section>
+          <!-- Axure, Dart/Flutter, VS Code and Node require confirmation as personal skills before inclusion. -->
         </div>
       </div>
     </section>
+
+    <section id="contact" class="v2-section v2-signal structural-section" aria-labelledby="signal-heading">
+      <div class="v2-container"><p class="v2-kicker">07 / THE SIGNAL</p><div class="signal-grid">
+        <div><h2 id="signal-heading" class="v2-display">A signal can<br><em>change the journey.</em></h2><p class="v2-lede">Have a project, opportunity or idea?<br>Send a signal. The next route might start here.</p>
+          <a class="signal-email" href="mailto:hansakarbandara@gmail.com">hansakarbandara@gmail.com <span aria-hidden="true">↗</span></a>
+          <div class="signal-socials"><a href="https://github.com/Hansaka-co" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/hansaka-r-bandara-408642409" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+          <p class="signal-location">Ganemulla, Sri Lanka · <a href="tel:+94752278588">+94 75 227 8588</a></p>
+        </div>
+        <!-- Integration: set data-endpoint to a deployed same-origin contact API. No backend is configured yet. -->
+        <form id="signal-form" class="signal-form" method="post" action="/api/contact" data-endpoint="" aria-describedby="signal-form-help">
+          <label for="signal-name">YOUR NAME</label><input id="signal-name" name="name" autocomplete="name" required maxlength="120" placeholder="Your name">
+          <label for="signal-email">EMAIL ADDRESS</label><input id="signal-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+          <label for="signal-message">YOUR MESSAGE</label><textarea id="signal-message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Tell me about your project, opportunity or idea."></textarea>
+          <p id="signal-form-help" class="form-help">Form delivery is not connected yet. Please use the email link to get in touch.</p>
+          <button class="signal-submit" type="submit" disabled>SEND A SIGNAL <span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="signal-status" role="status" aria-live="polite"></p>
+          <noscript><p class="form-help">JavaScript is unavailable. You can contact Hansaka using the email link.</p></noscript>
+        </form>
+      </div></div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="nav-thread" aria-hidden="true"></div>
-    <p>© <span id="year"></span> Hansaka Bandara · Designed in Figma, woven in code.</p>
+  <footer id="horizon" class="v2-section v2-horizon" aria-labelledby="horizon-heading">
+    <div class="v2-container"><p class="v2-kicker">08 / THE HORIZON</p><div class="horizon-top"><h2 id="horizon-heading" class="v2-display">Still exploring.<br><em>Always building.</em></h2><a class="v2-text-link" href="#home">BACK TO TOP <span aria-hidden="true">↑</span></a></div>
+      <div class="horizon-bottom"><a class="horizon-brand" href="#home" aria-label="Hansaka Bandara"><span aria-hidden="true">HΞNSKΛ</span></a>
+        <nav aria-label="Footer navigation"><a href="#work" aria-label="Selected Work and Projects">EXPEDITIONS</a><a href="#about" aria-label="About Hansaka">THE EXPLORER</a><a href="#trail" aria-label="Experience and Education">THE TRAIL</a><a href="#contact" aria-label="Contact Hansaka">THE SIGNAL</a></nav>
+        <div class="horizon-socials"><a href="https://github.com/Hansaka-co" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/hansaka-r-bandara-408642409" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+      </div><p class="horizon-copyright">© <span id="year">2026</span> Hansaka Bandara. Designed with intention. Built with care.</p>
+    </div>
   </footer>
-
-  <div hidden class="cursor-dot" aria-hidden="true"></div>
-  <div hidden class="cursor-ring" aria-hidden="true"></div>
-
-  <script src="js/island.js?v=world-entry-2"></script>
+  <script src="js/theme.js?v=structure-1"></script>
+  <script src="js/island.js?v=structure-1"></script>
   <script src="js/expeditions.js?v=milestone-2"></script>
-  <script src="js/main.js"></script>
+  <script src="js/structure.js?v=structure-1"></script>
 </body>
 </html>

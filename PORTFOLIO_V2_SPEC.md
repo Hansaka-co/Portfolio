@@ -20,7 +20,7 @@ This is the source of truth for the rebuild on `portfolio-v2`. Later explicit us
 | Horizon | Footer; the journey continues |
 
 ## Visual system
-Primary mode: dark storm / deep navy. Secondary concept: **After the Storm**, with weathered sand, fog, stone and muted ocean tones. Do not use pure white as the main light background. Light mode is not authorized for this milestone.
+Primary mode: dark storm / deep navy. Secondary concept: **After the Storm**, with weathered sand, fog, stone and muted ocean tones. Do not use pure white as the main light background. Both modes are now authorized for the full structural version. Final cinematic polish is deferred.
 
 | Token | Hex |
 | --- | --- |
@@ -51,14 +51,14 @@ Design primarily around 1440px desktop, support tablet and approximately 390px m
 | HΞNSKΛ | Hansaka Bandara | #home |
 | EXPEDITIONS | Selected Work and Projects | #work |
 | THE EXPLORER | About Hansaka | #about |
-| THE TRAIL | Experience and Education | Existing experience block; current #about fallback |
+| THE TRAIL | Experience and Education | #trail |
 | THE SIGNAL | Contact Hansaka | #contact |
 
 Mobile toggle: **MAP**, accessible label **Open navigation menu**. Open-menu subtitles: Selected Work, About Me, Experience & Education, Contact.
 
 | Area | Themed language |
 | --- | --- |
-| Splash action | ENTER THE UNKNOWN |
+| Splash action | ENTER THE ISLAND |
 | Projects | EXPEDITIONS |
 | Case studies | FIELD NOTES |
 | About | THE EXPLORER |
@@ -72,7 +72,7 @@ CTA vocabulary: EXPLORE EXPEDITIONS, OPEN FIELD NOTES, MEET THE EXPLORER, FOLLOW
 
 ## Approved foundation — preserve
 Approved: Splash concept, HΞNSKΛ brand, Navbar, Hero structure, themed navigation, dark island environment, basic splash-to-hero interaction, basic parallax and current Hero copy.
-Splash is visitor-controlled: darkness, centered wordmark, emerging horizon/fog/ocean/island/lighthouse, one restrained beam sweep, then ENTER THE UNKNOWN at approximately 1.5–2 seconds. Click/tap, Enter and native scrolling enter; Skip remains available. Reduced motion shows the entry state immediately. No fake loading indicators, percentages, autoplay audio or automatic forced entry. The same environment and wordmark carry into Hero.
+Splash is visitor-controlled: darkness, centered wordmark, emerging horizon/fog/ocean/island/lighthouse, one restrained beam sweep, then ENTER THE ISLAND at approximately 1.5–2 seconds. Click/tap, Enter and native scrolling enter; Skip remains available. Reduced motion shows the entry state immediately. No fake loading indicators, percentages, autoplay audio or automatic forced entry. The same environment and wordmark carry into Hero.
 Hero copy stays:
 - UI/UX DESIGNER × FRONTEND DEVELOPER
 - Turning / Challenges / Into Solutions.
@@ -80,7 +80,26 @@ Hero copy stays:
 - EXPLORE EXPEDITIONS; FOLLOW THE TRAIL
 - Different paths. Same purpose.
 
-## Authorized milestone: stop after About
+## Current scope: complete structure in both themes
+
+The latest user instruction supersedes the earlier stop-after-About boundary. Build all eleven areas in this order: Splash, Hero, Story Transition, EXPEDITIONS, FIELD NOTES, THE EXPLORER, SURVIVAL SKILLS, THE TRAIL, TOOLS I CARRY, THE SIGNAL, THE HORIZON. Do not begin final visual/motion polishing.
+
+### Light palette — After the Storm
+| Token | Hex |
+| --- | --- |
+| Main background | #D8D1C3 |
+| Secondary background | #E4DED2 |
+| Raised surface | #EAE4D9 |
+| Secondary surface | #D0C8B9 |
+| Primary text | #10222F |
+| Muted text | #526674 |
+| Border | #A8A090 |
+| Horizon / ocean | #4F6C80 |
+| Signal | #A97B43 |
+
+Use localStorage for explicit theme choice. On a first visit respect an explicit system light preference; otherwise dark is the default. Apply the theme before first paint. The accessible toggle works throughout the page, including adapted environment colours. No pure-white site background.
+
+## Section requirements
 ### 1. Story transition
 Label: **01 / THE JOURNEY**.
 Headline: **From surviving / to thriving.**
@@ -92,9 +111,9 @@ Use a strong vertical composition, a cliff/path explorer, differentiated environ
 Label: **02 / EXPEDITIONS**.
 Headline: **Real projects. / Real impact.**
 Copy: Each expedition began with a real problem — and became something researched, designed and built with purpose.
-Prioritize HealthHub, Estate Agent SPA, then Finance Manager if sufficient real content exists. Never invent data or client results.
+The primary projects are exactly: 01 - MUC Digital, 02 - Finance Manager, 03 - Estate Agent SPA. Preserve this order in projects and Field Notes. Never invent results.
 Each large visual project presentation includes number, title, category, problem/value statement, image or clearly identified placeholder, technologies, OPEN FIELD NOTES, and real available repository/live links. Desktop may stage projects naturally; mobile is vertical, with no forced horizontal scrolling.
-Repository audit for this milestone: no HealthHub or Estate Agent SPA content was found. Use **Finance Manager**, **MUC Digital**, and **NextGreen** as the supported selection. Finance Manager is listed as in progress; MUC Digital and NextGreen are listed as completed in existing content. Repository links and descriptions are inherited records, not independently audited delivery claims.
+Content audit: all three repositories were accessible through the GitHub API. Estate Agent SPA is a React/Vite client-side property-search application with detail pages and favourites, per its README. Its repository link is https://github.com/Hansaka-co/estate-agent-spa.git. NextGreen is replaced in the featured selection. Symbols: MUC Digital beacon, Finance Manager compass, Estate Agent SPA map; use existing theme tokens and accessible labels.
 Keep Flight Analyzer and Smart Campus API records available for later curation (existing Git history retains their content). Do not invent public deployment URLs.
 
 ### 3. Case-study entry structure
@@ -111,11 +130,22 @@ Visual: a calmer cliff/rest point, horizon and restrained atmospheric movement. 
 - Explain any necessary integration change to approved sections before making the smallest required change.
 - Preserve approved Hero/Splash functionality; keep the repository working after every milestone.
 - Reuse dark tokens; scope section-specific CSS and avoid repetitive markup.
-- No light mode, Contact, Experience, Tech Stack or further sections in this milestone.
-- Leave existing legacy Experience/Contact content operational, without redesigning it. The boundary remains visibly unfinished until a future approval.
+- Complete both themes and all requested sections. Only basic motion; no final cinematic polish.
+- Rebuild legacy Experience/Contact using known records, not invented companies or achievements. Retain legacy files/assets for a later cleanup review.
 - Do not delete old assets unless confirmed unused and safe.
 - Keep IDs and working anchors stable. No unnecessary libraries or WebGL.
 
 ## Verification and completion
 Check desktop, tablet/mobile, horizontal overflow, anchors, keyboard access, reduced motion and JavaScript errors. Verify actual localhost DOM and fresh assets; never infer a live update from a file write alone.
-Report each of the four sections under Finished and Still needs later polish, followed by Created / Modified / Left untouched files. Stop after About.
+Report all eleven sections under Finished and Still needs final polish, followed by Dark mode, Light mode, Mobile, Files created/modified and Legacy items to review. Stop after the full structure audit.
+
+## Remaining structural sections
+- **SURVIVAL SKILLS**: UI/UX Design, Frontend Development, Prototyping, Product Thinking, Problem Solving. Brief capability descriptions; no percentages.
+- **THE TRAIL**: use the documented IIT degree (2024–present), Network Support Assistant Intern at People’s Leasing and Finance PLC (July 2025–January 2026), and Customer Service Representative at Gamma Pizza Craft Lanka (May 2024–April 2025). Do not invent milestones or outcomes.
+- **TOOLS I CARRY**: group known tools into Design, Frontend, Programming and Tools. Figma; HTML/CSS/JavaScript/React/Tailwind; Java/Python; Git/GitHub/Supabase. Axure, Dart/Flutter, VS Code and Node are not verified personal skills here and should not be claimed merely because suggested.
+- **THE SIGNAL**: “A signal can / change the journey.” Copy: “Have a project, opportunity or idea? Send a signal. The next route might start here.” Include actual email, GitHub and LinkedIn; a semantic form with a future API endpoint, validation, status/error handling and an explicit unconnected state. No mailto-only form; no false sent confirmations.
+- **THE HORIZON**: “Still exploring. / Always building.” Include brand, themed navigation, social links, copyright and back-to-top.
+- **FIELD NOTES**: its own entry area between projects and About. Reuse the native record template and show clearly identified content gaps for structural review. Project links target their specific records.
+
+## Integration and audit status
+The legacy stylesheet `css/style.css` and script `js/main.js` are retained for review but are no longer required by the V2 entry page after full structure integration. Older Home/About pages and assets remain on disk. No aggressive asset deletion.

@@ -69,17 +69,6 @@
   nav.addEventListener('focusout', e => { if (!nav.contains(e.relatedTarget)) closeMenu(); });
   small.addEventListener('change', () => closeMenu());
 
-  // Temporary destination: existing experience content, with no markup edits below Hero.
-  document.querySelectorAll('[data-journey]').forEach(link => {
-    link.addEventListener('click', event => {
-      const destination = document.querySelector('.experience-block');
-      if (!destination) return;
-      event.preventDefault();
-      finishIntro();
-      destination.scrollIntoView({ behavior: motion.matches ? 'instant' : 'smooth', block: 'start' });
-    });
-  });
-
   const layers = [...hero.querySelectorAll('[data-depth]')];
   let frame = 0;
   function render() {

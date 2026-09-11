@@ -1,0 +1,69 @@
+/* Structural completion: theme control, records, capabilities, trail, tools, signal, horizon. */
+.theme-toggle{flex:none;display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted);border:1px solid var(--border);padding:10px 12px;font-size:8px;letter-spacing:.06em;min-height:42px;border-radius:2px;transition:opacity .4s ease .35s}
+.theme-toggle>span:first-child{font-size:17px}
+.theme-toggle[aria-pressed="true"]{background:var(--raised);color:var(--text)}
+.island-nav-inner{gap:24px}
+.island-links{margin-left:auto}
+.island-nav.is-opening .theme-toggle{opacity:0;visibility:hidden;transition:none}
+.island-nav:not(.is-opening) .theme-toggle{visibility:visible}
+.v2-notes-section{padding:90px 0 110px;background:var(--storm)}
+.v2-notes-section .v2-field-notes+.v2-field-notes{border-top:0}
+.v2-notes-section .v2-field-notes>summary{padding-block:25px;font-size:12px}
+.v2-notes-section .v2-notes-body{background:var(--surface)}
+.v2-notes-body .content-pending{font-style:italic;color:var(--muted)}
+.v2-project .field-notes-link{margin-top:0;margin-right:35px}
+.structural-section{padding:110px 0}
+.v2-capabilities{background:var(--ocean)}
+.capability-list>div{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:32px 0;border-top:1px solid var(--border)}
+.capability-list>div:last-child{border-bottom:1px solid var(--border)}
+.capability-list dt{display:flex;align-items:center;gap:26px;font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;line-height:1.2}
+.capability-list dt span{font-family:'Manrope',sans-serif;font-size:9px;color:var(--horizon)}
+.capability-list dd{font-size:13px;line-height:1.9;color:var(--muted);max-width:430px}
+.v2-trail{background:var(--storm)}
+.trail-list{list-style:none}
+.trail-list>li{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;padding:38px 0;border-top:1px solid var(--border)}
+.trail-meta{font-size:11px;color:var(--muted)}
+.trail-meta>span{font-size:9px;letter-spacing:.18em;color:var(--horizon);display:block;margin-bottom:12px}
+.trail-list h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:500;line-height:1.2;margin-bottom:12px}
+.trail-list li>div:last-child>p{font-size:13px;color:var(--muted);line-height:1.9;max-width:600px}
+.trail-list .trail-org{margin-bottom:12px;color:var(--horizon)!important;font-size:11px!important}
+.tool-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:45px}
+.tool-groups section{border-top:1px solid var(--border);padding-top:25px}
+.tool-groups h3{font-size:10px;letter-spacing:.15em;color:var(--horizon);margin-bottom:22px;font-weight:500}
+.tool-groups li{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;line-height:1.55}
+.v2-signal{background:var(--storm)}
+.signal-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:90px}
+.signal-grid .v2-display{font-size:clamp(48px,5.2vw,76px)}
+.signal-grid .v2-lede{margin-top:30px;font-size:13px}
+.signal-email{display:inline-flex;gap:16px;align-items:center;max-width:100%;overflow-wrap:anywhere;font-size:clamp(13px,1.5vw,19px);margin-top:36px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.signal-email span{color:var(--signal)}
+.signal-socials{display:flex;gap:28px;margin-top:22px;font-size:11px;color:var(--horizon)}
+.signal-location{font-size:10px;color:var(--muted);margin-top:32px;line-height:1.8}
+.signal-form{display:flex;flex-direction:column;align-self:start;padding:30px;border:1px solid var(--border);background:var(--surface);border-radius:2px}
+.signal-form label{font-size:9px;letter-spacing:.15em;margin-bottom:10px;color:var(--horizon)}
+.signal-form input,.signal-form textarea{width:100%;padding:13px 14px;margin-bottom:23px;background:var(--ocean);color:var(--text);border:1px solid var(--border);border-radius:2px;font-size:13px;line-height:1.6;resize:vertical}
+.signal-form input::placeholder,.signal-form textarea::placeholder{color:var(--muted);opacity:1}
+.signal-form .form-help,.signal-form .form-status{font-size:11px;line-height:1.8;color:var(--muted)}
+.signal-submit{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding:16px 20px;min-height:50px;background:var(--text);color:var(--ocean);border:1px solid var(--text);border-radius:2px;font-size:10px;letter-spacing:.12em}
+.signal-submit:disabled{opacity:.55;cursor:not-allowed}
+.signal-form .form-status:not(:empty){margin-top:18px;border-top:1px solid var(--border);padding-top:15px}
+.v2-horizon{padding:90px 0 30px;background:var(--ocean)}
+.horizon-top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-bottom:65px}
+.horizon-top .v2-display{font-size:clamp(45px,5.4vw,78px)}
+.horizon-bottom{display:grid;grid-template-columns:.7fr 1.7fr .7fr;gap:30px;border-top:1px solid var(--border);padding:35px 0}
+.horizon-brand{font-size:22px;letter-spacing:.16em;align-self:start}
+.horizon-bottom nav{display:flex;flex-wrap:wrap;gap:18px 25px;font-size:9px;letter-spacing:.06em;align-self:center;color:var(--horizon)}
+.horizon-socials{display:flex;gap:20px;font-size:10px;color:var(--muted);align-self:center;justify-content:flex-end}
+.horizon-copyright{font-size:9px;color:var(--muted);padding-top:20px;border-top:1px solid var(--border);line-height:1.8}
+@media(max-width:1000px){.island-links{gap:22px;font-size:11px}.island-nav-inner{gap:16px}.signal-grid{gap:45px}.horizon-bottom{grid-template-columns:1fr 2fr}.horizon-socials{justify-content:flex-start}.capability-list>div,.trail-list>li{gap:40px}.tool-groups{gap:25px}}
+@media(max-width:700px){
+ .island-nav-inner{gap:10px}.island-mark{margin-right:auto}.island-nav.is-enhanced .island-menu{padding:10px 12px;gap:12px}.theme-toggle{font-size:7px;padding:8px;gap:5px}.theme-toggle>span:first-child{font-size:15px}.island-links{margin-left:0}
+ .island-nav.is-enhanced .island-links{max-height:calc(100svh - 100px);overflow:auto}
+ .v2-notes-section,.structural-section{padding:75px 0}.v2-notes-section .v2-field-notes>summary{font-size:10px}
+ .capability-list>div,.trail-list>li{grid-template-columns:1fr;gap:16px;padding:28px 0}.capability-list dt{font-size:30px}.capability-list dd{font-size:12px}
+ .trail-list h3{font-size:29px}.trail-list li>div:last-child>p{font-size:12px}.trail-meta>span{margin-bottom:8px}
+ .tool-groups{grid-template-columns:1fr 1fr;gap:36px 25px}.tool-groups li{font-size:26px}.tool-groups h3{font-size:8px}
+ .signal-grid{grid-template-columns:1fr;gap:40px}.signal-grid .v2-display{font-size:48px}.signal-form{padding:22px}.signal-email{font-size:15px}
+ .v2-horizon{padding:75px 0 25px}.horizon-top{display:block;padding-bottom:40px}.horizon-top .v2-display{font-size:48px}.horizon-top .v2-text-link{margin-top:25px}
+ .horizon-bottom{grid-template-columns:1fr;gap:26px;padding:28px 0}.horizon-bottom nav{gap:18px;font-size:8px}.horizon-socials{justify-content:flex-start}
+}

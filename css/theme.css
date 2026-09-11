@@ -1,0 +1,40 @@
+/* Shared V2 foundations. Legacy css/style.css is intentionally no longer loaded. */
+:root{color-scheme:dark;--ocean:#06131E;--storm:#0A1C2A;--surface:#0D2232;--raised:#112B3D;--text:#EAF0F4;--muted:#9FB0BC;--border:#274154;--horizon:#9FB8CC;--signal:#D1AA6E;--ocean-rgb:6 19 30;--horizon-rgb:159 184 204;--project-a:#20363D;--project-b:#10232C;--project-c:#1E3433;--project-d:#0B2028}
+:root[data-theme="light"]{color-scheme:light;--ocean:#D8D1C3;--storm:#E4DED2;--surface:#D0C8B9;--raised:#EAE4D9;--text:#10222F;--muted:#526674;--border:#A8A090;--horizon:#4F6C80;--signal:#A97B43;--ocean-rgb:216 209 195;--horizon-rgb:79 108 128;--project-a:#D4D3C5;--project-b:#C0C6BB;--project-c:#D4D7C6;--project-d:#BAC6BC}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ocean)}
+body{font-family:'Manrope',sans-serif;background:var(--ocean);color:var(--text);font-weight:400;line-height:1.5}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+::selection{background:var(--signal);color:var(--ocean)}
+html.theme-ready body,html.theme-ready .v2-section{transition:background-color .25s,color .25s}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--text);outline-offset:5px}
+/* Retain the geometry and all parallax layers; only recolour the environment. */
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#06131E"],
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#040E16"]{fill:#526674}
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#112B3D"],
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#183347"]{fill:#A7B6B8}
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#0A1C2A"],
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#102A3C"]{fill:#8FA3AA}
+[data-theme="light"] .island-scene [fill="#081A26"]{fill:#526F7C}
+[data-theme="light"] .island-scene [fill="#163142"]{fill:#7E949C}
+[data-theme="light"] .island-scene [fill="#09151E"]{fill:#10222F}
+[data-theme="light"] .island-scene [fill="#193041"]{fill:#385362}
+[data-theme="light"] .island-scene [fill="#274154"]{fill:#73858A}
+[data-theme="light"] .island-scene [fill="#9FB0BC"]{fill:#EAE4D9}
+[data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#D1AA6E"]{fill:#A97B43}
+[data-theme="light"] .island-scene [stroke="#567083"]{stroke:#526674}
+[data-theme="light"] .island-scene #island-sky stop:first-child{stop-color:#D8D1C3}
+[data-theme="light"] .island-scene #island-sky stop:nth-child(2){stop-color:#B8C2BE}
+[data-theme="light"] .island-scene #island-sky stop:last-child{stop-color:#E4DED2}
+[data-theme="light"] .island-scene #island-sea stop:first-child{stop-color:#91A9AE}
+[data-theme="light"] .island-scene #island-sea stop:last-child{stop-color:#526F80}
+[data-theme="light"] .island-scene #island-beam stop{stop-color:#A97B43}
+[data-theme="light"] .island-scene #island-mist stop{stop-color:#E4DED2}
+[data-theme="light"] .island-hero.is-intro{background:#D0C8B9}
+[data-theme="light"] .v2-portrait img{filter:saturate(.8)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
