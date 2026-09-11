@@ -3,7 +3,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 /* ===== 1. Preloader ===== */
 window.addEventListener('load', () => {
   const pre = document.getElementById('preloader');
-  setTimeout(() => pre.classList.add('done'), reduceMotion ? 0 : 900);
+  setTimeout(() => pre?.classList.add('done'), reduceMotion ? 0 : 900);
 });
 
 /* ===== 2. Build the hero spider web + self-drawing animation ===== */
@@ -66,7 +66,7 @@ document.querySelectorAll('[data-splittext]').forEach(el => {
 /* ===== 4. Particle web background (mouse-reactive) ===== */
 (function webfield() {
   const canvas = document.getElementById('webfield');
-  if (!canvas || reduceMotion) { canvas?.remove(); return; }
+  if (!canvas || canvas.hidden || reduceMotion) { canvas?.remove(); return; }
   const ctx = canvas.getContext('2d');
   let W, H, pts = [];
   const mouse = { x: -9999, y: -9999 };
@@ -133,7 +133,7 @@ document.querySelectorAll('[data-splittext]').forEach(el => {
 /* ===== 5. Scroll-progress spider ===== */
 (function scrollSpider() {
   const wrap = document.getElementById('scroll-spider');
-  if (!wrap || reduceMotion) { wrap?.remove(); return; }
+  if (!wrap || wrap.hidden || reduceMotion) { wrap?.remove(); return; }
   const thread = wrap.querySelector('.ss-thread');
   let ticking = false;
   function update() {
@@ -151,11 +151,11 @@ document.querySelectorAll('[data-splittext]').forEach(el => {
 /* ===== 6. Mobile nav toggle ===== */
 const toggle = document.querySelector('.nav-toggle');
 const links = document.querySelector('.nav-links');
-toggle.addEventListener('click', () => {
+toggle?.addEventListener('click', () => {
   const open = links.classList.toggle('open');
   toggle.setAttribute('aria-expanded', open);
 });
-links.querySelectorAll('a').forEach(a =>
+links?.querySelectorAll('a').forEach(a =>
   a.addEventListener('click', () => links.classList.remove('open'))
 );
 
@@ -332,6 +332,7 @@ if (!reduceMotion && matchMedia('(hover:hover)').matches) {
   /* ===== 11. Custom cursor ===== */
   const dot = document.querySelector('.cursor-dot');
   const ring = document.querySelector('.cursor-ring');
+  if (dot && ring && !dot.hidden && !ring.hidden) {
   let rx = innerWidth / 2, ry = innerHeight / 2, tx = rx, ty = ry;
   window.addEventListener('pointermove', e => {
     tx = e.clientX; ty = e.clientY;
@@ -347,5 +348,6 @@ if (!reduceMotion && matchMedia('(hover:hover)').matches) {
     el.addEventListener('pointerleave', () => ring.classList.remove('hovering'));
   });
 } 
+}
 /* ===== 12. Footer year ===== */
 document.getElementById('year').textContent = new Date().getFullYear();

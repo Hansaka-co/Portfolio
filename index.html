@@ -8,32 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/island.css?v=themed-navigation-1" />
+  <link rel="stylesheet" href="css/expeditions.css?v=milestone-2b" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 </head>
 <body>
 
-  <!-- ====== PRELOADER ====== -->
-  <div id="preloader" aria-hidden="true">
-    <svg viewBox="0 0 120 120" class="loader-web">
-      <g stroke="#8b5cf6" fill="none" stroke-width="1">
-        <circle cx="60" cy="60" r="18" class="lw-ring"/>
-        <circle cx="60" cy="60" r="34" class="lw-ring"/>
-        <circle cx="60" cy="60" r="50" class="lw-ring"/>
-        <line x1="60" y1="10" x2="60" y2="110"/>
-        <line x1="10" y1="60" x2="110" y2="60"/>
-        <line x1="25" y1="25" x2="95" y2="95"/>
-        <line x1="95" y1="25" x2="25" y2="95"/>
-      </g>
-    </svg>
-    <p class="loader-text">HANSAKA</p>
-  </div>
-
   <!-- particle web background -->
-  <canvas id="webfield" aria-hidden="true"></canvas>
+  <canvas hidden id="webfield" aria-hidden="true"></canvas>
 
   <!-- scroll-progress spider -->
-  <div id="scroll-spider" aria-hidden="true">
+  <div hidden id="scroll-spider" aria-hidden="true">
     <span class="ss-thread"></span>
     <svg viewBox="0 0 40 40" class="ss-spider">
       <g fill="#0b0b14" stroke="#b9bdfb" stroke-width="1.6" stroke-linecap="round">
@@ -51,244 +38,184 @@
     </svg>
   </div>
 
-  <!-- ====== NAVBAR ====== -->
-  <header class="nav-wrap">
-    <nav class="nav container">
-      <a href="#home" class="logo">HANSAKA</a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+  <a class="island-skip" href="#island-heading">Skip to content</a>
+  <header class="island-nav">
+    <nav aria-label="Main navigation" class="island-nav-inner">
+      <a class="island-mark" href="#home" aria-label="Hansaka Bandara"><span aria-hidden="true">HΞNSKΛ</span></a>
+      <button class="island-menu" type="button" aria-expanded="false" aria-controls="island-links" aria-label="Open navigation menu">MAP <span aria-hidden="true">＋</span></button>
+      <ul id="island-links" class="island-links">
+        <li><a href="#work" aria-label="Selected Work and Projects">EXPEDITIONS<small class="island-nav-subtitle">Selected Work</small></a></li>
+        <li><a href="#about" aria-label="About Hansaka">THE EXPLORER<small class="island-nav-subtitle">About Me</small></a></li>
+        <li><a href="#about" data-journey aria-label="Experience and Education">THE TRAIL<small class="island-nav-subtitle">Experience &amp; Education</small></a></li>
+        <li><a href="#contact" aria-label="Contact Hansaka">THE SIGNAL <span aria-hidden="true">↗</span><small class="island-nav-subtitle">Contact</small></a></li>
       </ul>
     </nav>
-    <div class="nav-thread" aria-hidden="true"></div>
   </header>
-
   <main>
-    <!-- ====== HOME / HERO ====== -->
-    <section id="home" class="hero section">
-      <!-- Glowing web with spider (signature element) -->
-      <div class="hero-web" aria-hidden="true">
-        <svg viewBox="0 0 600 600" class="web-svg">
+    <section id="home" class="island-hero" aria-labelledby="island-heading">
+      <div class="island-scene" aria-hidden="true">
+        <svg viewBox="0 0 1440 1000" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="webGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.55"/>
-              <stop offset="45%" stop-color="#312E81" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2.2" result="blur"/>
-              <feMerge>
-                <feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
+            <linearGradient id="island-sky" x2="0.8" y2="1"><stop stop-color="#06131E"/><stop offset=".65" stop-color="#193449"/><stop offset="1" stop-color="#9FB8CC" stop-opacity=".35"/></linearGradient>
+            <linearGradient id="island-sea" x2="0" y2="1"><stop stop-color="#1B4057"/><stop offset="1" stop-color="#06131E"/></linearGradient>
+            <linearGradient id="island-beam"><stop stop-color="#D1AA6E" stop-opacity=".21"/><stop offset="1" stop-color="#D1AA6E" stop-opacity="0"/></linearGradient>
+            <linearGradient id="island-mist" x2="0" y2="1"><stop stop-color="#9FB8CC" stop-opacity="0"/><stop offset=".5" stop-color="#9FB8CC" stop-opacity=".09"/><stop offset="1" stop-color="#9FB8CC" stop-opacity="0"/></linearGradient>
           </defs>
-          <circle cx="300" cy="300" r="290" fill="url(#webGlow)"/>
-          <g id="web-lines" stroke="#cfd2ff" stroke-width="1.1" fill="none" opacity="0.75" filter="url(#glow)"></g>
-          <!-- spider -->
-          <g class="spider" filter="url(#glow)">
-            <line x1="300" y1="0" x2="300" y2="268" stroke="#cfd2ff" stroke-width="1"/>
-            <g fill="#0b0b14" stroke="#c9cdff" stroke-width="2.4" stroke-linecap="round">
-              <ellipse cx="300" cy="306" rx="20" ry="28"/>
-              <circle cx="300" cy="270" r="12"/>
-              <path d="M286 276 Q244 250 230 212" fill="none"/>
-              <path d="M283 290 Q232 276 206 246" fill="none"/>
-              <path d="M283 306 Q230 314 204 346" fill="none"/>
-              <path d="M288 322 Q252 354 244 392" fill="none"/>
-              <path d="M314 276 Q356 250 370 212" fill="none"/>
-              <path d="M317 290 Q368 276 394 246" fill="none"/>
-              <path d="M317 306 Q370 314 396 346" fill="none"/>
-              <path d="M312 322 Q348 354 356 392" fill="none"/>
-            </g          </g>
+          <rect width="1440" height="1100" fill="url(#island-sky)"/>
+          <g data-depth="0.07"><g class="island-cloud-drift">
+            <path d="M-100 165 Q100 55 325 155 T730 125 T1100 110 T1540 80 L1540 -100 H-100Z" fill="#06131E" opacity=".7"/>
+            <path d="M550 260 Q790 175 1000 240 T1520 195" stroke="#9FB8CC" stroke-opacity=".045" stroke-width="65" fill="none"/>
+          </g>
+          </g>
+          <g data-depth="0.13" fill="#183347">
+            <path d="M300 650 L500 570 610 588 780 420 840 459 945 340 1005 398 1090 360 1235 487 1360 408 1520 485 V830 H300Z"/>
+            <path d="M760 650 L895 497 950 540 1060 401 1130 505 1220 463 1320 580 1460 520 V840 H760Z" fill="#102A3C"/>
+            <path d="M945 340 L909 416 950 393 982 412Z" fill="#9FB8CC" opacity=".09"/>
+          </g>
+          <g class="island-fog-drift"><rect x="-35" y="535" width="1510" height="170" fill="url(#island-mist)"/></g>
+          <g data-depth="0.2">
+            <path d="M710 685 Q810 641 920 666 L1030 601 1100 625 1170 543 1220 558 1260 605 1350 628 1480 690 V810 H710Z" fill="#081A26"/>
+            <path d="M1030 601 L1095 651 1170 543 1155 607 1210 594 1260 650" fill="#163142" opacity=".65"/>
+          </g>
+          <g data-depth="0.205">
+            <g class="island-lighthouse">
+              <path d="M1176 548 L1181 487 H1195 L1201 550Z" fill="#9FB0BC"/>
+              <path d="M1189 487 H1195 L1201 550 H1189Z" fill="#536B7C"/>
+              <path d="M1176 489 H1201 M1177 475 H1200" stroke="#EAF0F4" stroke-width="3"/>
+              <path d="M1177 473 L1188 464 1200 473Z" fill="#06131E"/>
+              <path d="M1180 476 V487 M1197 476 V487" stroke="#9FB0BC" stroke-width="2"/>
+              <path class="island-entry-beam" d="M1189 481 L1450 438 V516Z" fill="url(#island-beam)"/>
+              <rect class="island-signal" x="1183" y="478" width="11" height="7" rx="1" fill="#D1AA6E"/>
+            </g>
+          </g>
+          <g data-depth="0.29">
+            <path d="M-100 700 Q80 676 270 714 T640 702 T1000 719 T1540 690 V1150 H-100Z" fill="url(#island-sea)"/>
+            <g class="island-ocean-drift" fill="none" stroke="#9FB8CC" stroke-width="1" opacity=".18">
+              <path d="M730 739 Q850 726 955 743 M1060 733 Q1190 717 1390 737 M520 765 Q695 750 825 770 M880 788 Q1070 769 1210 790 M50 810 Q205 786 420 812 M600 839 Q780 817 990 843 M1120 852 Q1290 825 1460 845"/>
+              <path d="M1040 763 H1135 M1190 759 H1260 M1130 782 H1215" stroke="#D1AA6E" opacity=".65"/>
+            </g>
+          </g>
+          <g data-depth="0.43"><g transform="translate(1008 842) scale(1.08 1.03) translate(-1008 -842)">
+            <path d="M850 1010 L910 908 967 881 1000 836 1042 850 1082 887 1150 921 1200 1010Z" fill="#040E16"/>
+            <path d="M967 881 L1000 836 1028 862 1050 866 1030 873 1010 858Z" fill="#274154" opacity=".7"/>
+          </g></g>
+          <g data-depth="0.435"><g class="island-explorer">
+            <g transform="translate(1008 843) scale(1.12) translate(-1008 -843)" fill="#09151E" stroke="#567083" stroke-width="1.2">
+              <path d="M1004 752 Q995 740 1002 729 Q1010 720 1019 730 L1020 746 1015 753Z"/>
+              <path d="M1004 752 L1016 752 1027 776 1029 802 1014 807 992 800 997 771Z"/>
+              <path d="M997 800 L1009 804 1006 842 997 843Z M1011 804 L1022 803 1028 839 1019 842Z"/>
+              <path d="M1000 756 Q986 753 986 769 L986 788 998 789Z" fill="#193041"/>
+              <path d="M1020 760 L1033 792 1028 794 1015 776Z"/>
+              <path d="M1033 788 L1038 845" fill="none"/>
+            </g>
+          </g>
+          </g>
+          <g data-depth="0.36" fill="none" stroke="#9FB8CC" opacity=".1">
+            <path d="M-60 930 Q120 856 370 930 T780 935 M1150 955 Q1300 889 1510 940" stroke-width="2"/>
+            <path d="M-40 972 Q210 920 450 975 T850 980"/>
+          </g>
         </svg>
-        <span class="float-tag tag-code">CODE</span>
-        <span class="float-tag tag-design">DESIGN</span>
-        <span class="float-tag tag-creativity">CREATIVITY</span>
       </div>
+      <div class="island-shade" aria-hidden="true"></div>
+      <div class="island-entry-fog" aria-hidden="true"><span></span><span></span></div>
+      <div class="island-splash" hidden>
+        <button type="button" class="island-enter">ENTER THE UNKNOWN <span aria-hidden="true">→</span></button>
+        <button type="button" class="island-splash-skip">Skip intro</button>
+      </div>
+      <div class="island-content">
+        <p class="island-eyebrow">UI/UX DESIGNER × FRONTEND DEVELOPER</p>
+        <h1 id="island-heading" tabindex="-1"><span>Turning</span><span>Challenges</span><span>Into <em>Solutions.</em></span></h1>
+        <p class="island-body">I design and build digital experiences that bring clarity to complex problems — through thoughtful interfaces and clean code.</p>
+        <div class="island-actions">
+          <a class="island-button island-button-primary" href="#work">EXPLORE EXPEDITIONS <span aria-hidden="true">↗</span></a>
+          <a class="island-button" href="#about" data-journey>FOLLOW THE TRAIL <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="island-bottom"><a href="#about" class="island-scroll">SCROLL TO EXPLORE <span aria-hidden="true"></span></a><p>Different paths.<br>Same purpose.</p></div>
+    </section>
 
-      <div class="container hero-inner">
-        <p class="eyebrow reveal">Hello&nbsp;, I'm</p>
-        <h1 class="hero-name" data-splittext>HANSAKA</h1>
-        <h2 class="hero-role reveal">Frontend Developer &amp; UI Designer</h2>
-        <p class="hero-tagline reveal">I craft modern, high-performance websites<br/>with clean code and elegant designs.</p>
-        <div class="hero-actions reveal">
-          <a href="#work" class="btn btn-outline magnetic">Explore my work <span class="btn-ico">→</span></a>
-          <a href="assets/Hansaka_Bandara_CV.pdf" download class="btn btn-fill magnetic">Download CV <span class="btn-ico">↓</span></a>
-        </div>
-        <div class="socials reveal">
-          <a href="https://github.com/Hansaka-co" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.2 3.3 9.6 7.9 11.2.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C19.3 4.7 20.3 5 20.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6a11.8 11.8 0 0 0 7.9-11.2A11.5 11.5 0 0 0 12 .5Z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/hansaka-r-bandara-408642409" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5ZM.2 8.3h4.6V23H.2V8.3Zm7.6 0h4.4v2h.1c.6-1.2 2.1-2.4 4.3-2.4 4.6 0 5.5 3 5.5 7V23h-4.6v-6.9c0-1.6 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V23H7.8V8.3Z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-          </a>
-        </div>
+    <!-- Portfolio V2: authorized milestone stops after The Explorer. -->
+    <section id="journey" class="v2-section v2-story" aria-labelledby="journey-heading">
+      <div class="v2-story-landscape" aria-hidden="true">
+        <svg viewBox="0 0 1440 1050" preserveAspectRatio="xMidYMax slice">
+          <g data-story-depth="0.08" fill="#112B3D"><path d="M0 650 220 480 360 570 580 310 730 490 950 390 1100 570 1440 350V1100H0Z"/></g>
+          <g data-story-depth="0.15" fill="#0A1C2A"><path d="M0 800 260 700 410 770 640 555 840 740 1000 660 1220 720 1440 610V1100H0Z"/></g>
+          <g data-story-depth="0.23"><path d="M0 1040 180 925 360 950 510 820 700 880 860 760 1040 840 1220 710 1440 800V1100H0Z" fill="#06131E"/>
+          <path d="M140 1030 Q320 1000 510 876 T850 816 T1220 762" stroke="#D1AA6E" stroke-opacity=".35" stroke-width="1" fill="none" stroke-dasharray="3 10"/>
+          <g fill="#9FB0BC" opacity=".8" transform="translate(843 728)"><circle cx="0" cy="0" r="5"/><path d="M-4 7H5L10 31 4 33 5 51H1L-2 34-7 51H-11L-6 29Z"/><path d="M8 17 15 29 20 50" fill="none" stroke="#9FB0BC" stroke-width="2"/></g></g>
+        </svg>
+      </div>
+      <div class="v2-container v2-story-content">
+        <p class="v2-kicker">01 / THE JOURNEY</p>
+        <h2 id="journey-heading" class="v2-display">From surviving<br><em>to thriving.</em></h2>
+        <div class="v2-story-copy"><p>The software world is vast, competitive and constantly moving.</p><p>Every storm becomes a lesson.<br>Every obstacle becomes a new skill.</p></div>
+        <p class="v2-waypoints" aria-label="The journey: storms, obstacles, learning, persistence, growth"><span>STORMS</span><span>OBSTACLES</span><span>LEARNING</span><span>PERSISTENCE</span><span>GROWTH</span></p>
+      </div>
+      <a href="#work" class="v2-story-next" aria-label="Continue to Expeditions">CONTINUE THE EXPEDITION <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="work" class="v2-section v2-work" aria-labelledby="expeditions-heading">
+      <div class="v2-container">
+        <header class="v2-section-header"><div><p class="v2-kicker">02 / EXPEDITIONS</p><h2 id="expeditions-heading" class="v2-display">Real projects.<br><em>Real impact.</em></h2></div><p class="v2-lede">Each expedition began with a real problem — and became something researched, designed and built with purpose.</p></header>
+        <article class="v2-project" aria-labelledby="finance-title">
+          <div class="v2-project-topline"><span>EXPEDITION / 01</span><span>In progress</span></div>
+          <figure class="v2-project-visual v2-visual-finance"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">01 / FINANCIAL CLARITY</span><strong>Finance<br><em>Manager.</em></strong><span>PROJECT VISUAL PENDING</span></div><img class="v2-project-image" src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard from the project repository" loading="lazy" width="1440" height="900"><figcaption class="v2-visually-hidden">Existing project dashboard; a labelled placeholder remains if the image is unavailable.</figcaption></figure>
+          <div class="v2-project-info"><div><p class="v2-kicker">PRODUCT INTERFACE / WEB APPLICATION</p><h3 id="finance-title">Finance Manager</h3></div><div><p>Bringing income, expenses, budgets and savings goals into one personal finance workspace.</p><p class="v2-project-tech">React · Tailwind · Supabase</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
+          <details class="v2-field-notes" id="finance-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 01</p><h4>Finance Manager</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
+            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Keeping track of income, spending, budgets and savings goals within one application.</p></section>
+            <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
+            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
+            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing project description records a Figma-first design process and an analytics dashboard.</p></section>
+            <section data-note-stage="development"><h5>04 / Development</h5><p>A React interface with Tailwind styling and Supabase. The documented scope includes income, expenses, budgets, savings goals and analytics.</p></section>
+            <section data-note-stage="result"><h5>05 / Result</h5><p>In progress.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
+          </div></details>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener noreferrer" aria-label="View Finance Manager on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="v2-project" aria-labelledby="muc-title">
+          <div class="v2-project-topline"><span>EXPEDITION / 02</span><span>Completed</span></div>
+          <figure class="v2-project-visual v2-visual-muc"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">02 / PUBLIC SERVICES</span><strong>MUC<br><em>Digital.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
+          <div class="v2-project-info"><div><p class="v2-kicker">SERVICE DESIGN / MOBILE INTERFACE</p><h3 id="muc-title">MUC Digital</h3></div><div><p>Making urban council services easier to navigate through focused booking flows and accessible module interfaces.</p><p class="v2-project-tech">Mobile UI · Service flows</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
+          <details class="v2-field-notes" id="muc-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 02</p><h4>MUC Digital</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
+            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Presenting urban council services through a mobile application with clear booking flows.</p></section>
+            <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
+            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
+            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing portfolio identifies booking flows and accessible module interfaces as the focus.</p></section>
+            <!-- TODO: add verified development evidence. -->
+            <section data-note-stage="development" hidden><h5>04 / Development</h5></section>
+            <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
+          </div></details>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener noreferrer" aria-label="View MUC Digital on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="v2-project" aria-labelledby="nextgreen-title">
+          <div class="v2-project-topline"><span>EXPEDITION / 03</span><span>Completed</span></div>
+          <figure class="v2-project-visual v2-visual-nextgreen"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">03 / SUSTAINABLE CITIES</span><strong>Next<br><em>Green.</em></strong><span>PROJECT VISUAL PENDING</span></div><figcaption class="v2-visually-hidden">Editorial placeholder. Final project screenshots are not yet available.</figcaption></figure>
+          <div class="v2-project-info"><div><p class="v2-kicker">FRONTEND DEVELOPMENT / RESPONSIVE WEB</p><h3 id="nextgreen-title">NextGreen</h3></div><div><p>A responsive platform connecting sustainable smart-city initiatives with volunteering.</p><p class="v2-project-tech">HTML · CSS · JavaScript</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
+          <details class="v2-field-notes" id="nextgreen-notes"><summary>OPEN FIELD NOTES <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+            <header><p class="v2-kicker">FIELD NOTES / 03</p><h4>NextGreen</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
+            <section data-note-stage="problem"><h5>01 / Problem</h5><p>Presenting sustainable smart-city volunteering through a responsive, multi-page website.</p></section>
+            <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
+            <section data-note-stage="research" hidden><h5>02 / Research</h5></section>
+            <!-- TODO: add verified design evidence. -->
+            <section data-note-stage="design" hidden><h5>03 / Design Decisions</h5></section>
+            <section data-note-stage="development"><h5>04 / Development</h5><p>Built with HTML, CSS and JavaScript as a multi-page responsive website.</p></section>
+            <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
+          </div></details>
+          <a class="v2-repository" href="https://github.com/Hansaka-co/Nextgreen-web" target="_blank" rel="noopener noreferrer" aria-label="View NextGreen on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
+        </article>
       </div>
     </section>
 
-    <!-- ====== ABOUT ====== -->
-    <section id="about" class="section about">
-      <div class="corner-web" aria-hidden="true"></div>
-      <div class="container about-grid">
-        <div class="about-photo reveal">
-          <img src="assets/profile.jpg" alt="Hansaka Bandara" />
-        </div>
-        <div class="about-text">
-          <p class="eyebrow line-after reveal">About me</p>
-          <h2 class="title-xl reveal">I'm <span class="accent serif">HANSAKA</span></h2>
-          <h3 class="subtitle reveal">Frontend Developer &amp; UI Designer</h3>
-          <p class="body-copy reveal">
-            Computer Science undergraduate at Informatics Institute of Technology (IIT), with a
-            strong interest in UI/UX Design and Creative Frontend Development. Proficient in
-            designing intuitive user interfaces using Figma and implementing them with clean,
-            responsive code. Experienced in academic web and mobile projects with a focus on
-            user-centered design. A fast learner and creative thinker eager to contribute to
-            real-world projects as a UI/UX or Frontend Intern.
-          </p>
-          <ul class="skill-chips reveal">
-            <li><img src="assets/icons/java.svg" alt=""/>Java</li>
-            <li><img src="assets/icons/html5.svg" alt=""/>HTML</li>
-            <li><img src="assets/icons/css3.svg" alt=""/>CSS</li>
-            <li><img src="assets/icons/figma.svg" alt=""/>Figma</li>
-            <li><img src="assets/icons/javascript.svg" alt=""/>JavaScript</li>
-            <li><img src="assets/icons/python.svg" alt=""/>Python</li>
-          </ul>
-          <a href="assets/Hansaka_Bandara_CV.pdf" download class="btn btn-fill reveal magnetic">Download CV <span class="btn-ico">↓</span></a>
-        </div>
+    <section id="about" class="v2-section v2-about" aria-labelledby="explorer-heading">
+      <div class="v2-container v2-about-grid">
+        <figure class="v2-portrait"><img src="assets/profile.jpg" width="438" height="581" loading="lazy" alt="Hansaka Bandara standing beside a waterfront at night"><figcaption>HANSAKA BANDARA <span>SRI LANKA</span></figcaption></figure>
+        <div class="v2-about-copy"><p class="v2-kicker">03 / THE EXPLORER</p><h2 id="explorer-heading" class="v2-display">A curious mind.<br><em>A resilient builder.</em></h2><p>I’m Hansaka, a UI/UX-focused frontend developer and Computer Science undergraduate at IIT. I enjoy turning complex problems into clear, useful digital experiences.</p><p>I’m drawn to the space between understanding a problem and building something people can use. Through design and code, I keep learning, asking questions and exploring unfamiliar challenges.</p><a class="v2-text-link" href="assets/Hansaka_Bandara_CV.pdf" aria-label="Meet the Explorer — read Hansaka Bandara’s CV (PDF)">MEET THE EXPLORER <span aria-hidden="true">↗</span></a></div>
       </div>
+      <div class="v2-rest-horizon" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- ====== WORK ====== -->
-    <section id="work" class="section work">
-      <div class="container">
-        <p class="eyebrow center underlined reveal">My work</p>
-        <h2 class="title-lg center reveal">Crafting <span class="accent">Digital</span> Experiences</h2>
-        <p class="section-lede center reveal">A collection of projects where design, code and creativity<br/>come together to build meaningful solutions.</p>
-
-        <!-- Horizontal project carousel -->
-        <div class="project-track-wrap reveal">
-          <div class="project-track" id="projectTrack">
-            <a href="https://github.com/Hansaka-co/airport-flight-analyzer" target="_blank" rel="noopener" class="proj-card-link">
-              <article class="proj-card">
-                <div class="proj-icon">
-                  <div class="proj-icon-emoji">✈</div>
-                  <div class="proj-icon-overlay"></div>
-                </div>
-                <div class="proj-body">
-                  <span class="proj-tag">Python · Data</span>
-                  <h3>Flight Analyzer</h3>
-                  <p>Flight tracking and schedule analysis system built with Python — clean, interactive data dashboards.</p>
-                </div>
-                <div class="proj-foot">
-                  <span class="proj-status status-done">Completed</span>
-                </div>
-              </article>
-            </a>
-
-            <a href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener" class="proj-card-link">
-              <article class="proj-card proj-featured">
-                <div class="proj-icon muc-icon"><span>MUC<small>DIGITAL</small></span></div>
-                <div class="proj-body">
-                  <span class="proj-tag">UI/UX · Mobile</span>
-                  <h3>MUC Digital</h3>
-                  <p>Smart urban council service application — intuitive booking flows and accessible module UIs.</p>
-                </div>
-                <div class="proj-foot">
-                  <span class="proj-status status-done">Completed</span>
-                </div>
-              </article>
-            </a>
-
-            <a href="https://github.com/Hansaka-co/Nextgreen-web" target="_blank" rel="noopener" class="proj-card-link">
-            <article class="proj-card">
-             <div class="proj-icon">
-              <div class="proj-icon-emoji">🌿</div>
-              <div class="proj-icon-overlay"></div>
-            </div>
-              <div class="proj-body">
-                <span class="proj-tag">HTML · CSS · JS</span>
-                <h3>NextGreen</h3>
-                <p>Sustainable smart-city volunteer platform — a modern, multi-page responsive website.</p>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-status status-done">Completed</span>
-              </div>
-            </article>
-            </a>
-
-            <a href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener" class="proj-card-link">
-              <article class="proj-card">
-                <div class="proj-icon">
-                  <img src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard" loading="lazy" />
-                  <div class="proj-icon-overlay"></div>
-                </div>
-                <div class="proj-body">
-                  <span class="proj-tag">React · Tailwind · Supabase</span>
-                  <h3>Finance Manager</h3>
-                  <p>Personal finance tracker — income, expenses, budgets, savings goals and an analytics dashboard. Designed in Figma first, then built with React and Supabase.</p>
-                </div>
-                <div class="proj-foot">
-                  <span class="proj-status status-wip">In Progress</span>
-                  
-                </div>
-              </article>
-            </a>
-
-            <a href="https://github.com/Hansaka-co/smart-campus-api" target="_blank" rel="noopener" class="proj-card-link">
-            <article class="proj-card">
-              <div class="proj-icon" style="background:linear-gradient(135deg,#0d1b2a,#1a2f4a);font-family:'Courier New',monospace;font-size:.72rem;color:#4ade80;letter-spacing:.08em;padding:16px;align-items:flex-start;justify-content:flex-start;">
-                <span style="opacity:.7;line-height:1.8;">GET /api/v1/rooms<br/>POST /api/v1/sensors<br/>GET /api/v1/sensors/{id}<br/>POST .../readings<br/><span style="color:#8b5cf6;">→ 200 OK</span></span>
-                <div class="proj-icon-overlay"></div>
-              </div>
-              <div class="proj-body">
-                <span class="proj-tag">Java · JAX-RS · REST</span>
-                <h3>Smart Campus API</h3>
-                <p>RESTful API for university smart campus sensor & room management — built with JAX-RS (Jersey) and Grizzly embedded server. Coursework 5COSC022W.</p>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-status status-done">Completed</span>
-              </div>
-            </article>
-            </a>
-
-            <a href="#" target="_blank" rel="noopener" class="proj-card-link">
-            <article class="proj-card">
-              <div class="proj-icon" style="background:linear-gradient(135deg,#0d0d1f,#1a1040);">
-                <div class="proj-icon-emoji">⚗️</div>
-                <div class="proj-icon-overlay"></div>
-              </div>
-              <div class="proj-body">
-                <span class="proj-tag">Coming Soon</span>
-                <h3>Next Project</h3>
-                <p>Something new is being crafted — details dropping soon. Stay tuned.</p>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-status status-soon">🔧 Processing</span>
-              </div>
-            </article>
-            </a>
-
-          </div><!-- end .project-track -->
-
-          <!-- drag/scroll hint + nav arrows -->
-          <div class="track-nav">
-            <button class="track-btn" id="trackPrev" aria-label="Previous projects">←</button>
-            <div class="track-dots" id="trackDots"></div>
-            <button class="track-btn" id="trackNext" aria-label="Next projects">→</button>
-          </div>
-        </div><!-- end .project-track-wrap -->
-      </div>
-
-      <!-- web ground glow -->
-      <div class="ground-web" aria-hidden="true"></div>
-
+    <!-- Legacy Experience preserved for a later approved milestone. -->
       <div class="container experience-block">
         <p class="eyebrow center underlined reveal">Experience</p>
         <h2 class="title-lg center reveal">Weaving Ideas Into <span class="accent">Digital Experiences</span></h2>
@@ -318,7 +245,6 @@
           </div>
         </div>
       </div>
-    </section>
 
     <!-- ====== CONTACT ====== -->
     <section id="contact" class="section contact">
@@ -377,9 +303,11 @@
     <p>© <span id="year"></span> Hansaka Bandara · Designed in Figma, woven in code.</p>
   </footer>
 
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
+  <div hidden class="cursor-dot" aria-hidden="true"></div>
+  <div hidden class="cursor-ring" aria-hidden="true"></div>
 
+  <script src="js/island.js?v=world-entry-2"></script>
+  <script src="js/expeditions.js?v=milestone-2"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
