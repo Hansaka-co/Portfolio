@@ -10,20 +10,27 @@
       try { saved = localStorage.getItem('portfolio-v2-theme'); } catch (_) {}
       document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
         ? saved : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const width = document.documentElement.clientWidth;
+      const size = width <= 700 ? '768' : width <= 1400 ? '1280' : '';
+      const theme = document.documentElement.dataset.theme === 'light' ? 'island-dawn' : 'island-storm';
+      const preload = document.createElement('link');
+      preload.rel = 'preload'; preload.as = 'image'; preload.type = 'image/webp';
+      preload.href = `assets/world/${theme}${size ? `-${size}` : ''}.webp`;
+      document.head.append(preload);
     })();
   </script>
   <title>Hansaka Bandara — Frontend Developer & UI Designer</title>
   <meta name="description" content="Portfolio of Hansaka Bandara — Computer Science undergraduate at IIT, Frontend Developer & UI/UX Designer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/theme.css?v=site-refine-2" />
   <link rel="stylesheet" href="css/island.css?v=site-refine-2" />
   <link rel="stylesheet" href="css/expeditions.css?v=site-refine-2" />
   <link rel="stylesheet" href="css/structure.css?v=site-refine-2" />
-  <link rel="stylesheet" href="css/polish.css?v=final-polish-2" />
-  <link rel="stylesheet" href="css/choreography.css?v=interaction-5" />
-  <link rel="stylesheet" href="css/world.css?v=world-4" />
+  <link rel="stylesheet" href="css/polish.css?v=performance-1" />
+  <link rel="stylesheet" href="css/choreography.css?v=performance-1" />
+  <link rel="stylesheet" href="css/world.css?v=performance-1" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 </head>
 <body>
@@ -50,13 +57,13 @@
     <section id="home" class="island-hero" aria-labelledby="island-heading">
       <div class="island-scene" aria-hidden="true">
         <div class="cinematic-world">
-          <div class="cinematic-layer cinematic-sky" data-depth="0.07"><img class="world-dark" src="assets/world/island-storm.webp" alt=""><img class="world-light" src="assets/world/island-dawn.webp" alt=""></div>
-          <div class="cinematic-layer cinematic-island" data-depth="0.15"><img class="world-dark" src="assets/world/island-storm.webp" alt=""><img class="world-light" src="assets/world/island-dawn.webp" alt=""></div>
-          <div class="cinematic-layer cinematic-ocean" data-depth="0.29"><img class="world-dark" src="assets/world/island-storm.webp" alt=""><img class="world-light" src="assets/world/island-dawn.webp" alt=""></div>
+          <div class="cinematic-layer cinematic-sky" data-depth="0.07"></div>
+          <div class="cinematic-layer cinematic-island" data-depth="0.15"></div>
+          <div class="cinematic-layer cinematic-ocean" data-depth="0.29"></div>
           <div class="cinematic-fog" data-depth="0.18"><span></span><span></span></div>
           <div class="cinematic-signal" data-depth="0.16"><span></span></div>
-          <div class="cinematic-foreground" data-depth="0.43"><img src="assets/world/foreground-cliff.webp" alt=""></div>
-          <div class="island-explorer cinematic-explorer" data-depth="0.435"><img src="assets/world/explorer.webp" alt=""></div>
+          <div class="cinematic-foreground" data-depth="0.43"><img src="assets/world/foreground-cliff-960.webp" srcset="assets/world/foreground-cliff-960.webp 960w, assets/world/foreground-cliff.webp 1672w" sizes="(max-width: 900px) 125vw, 74vw" width="960" height="540" decoding="async" alt=""></div>
+          <div class="island-explorer cinematic-explorer" data-depth="0.435"><img src="assets/world/explorer-480.webp" width="480" height="720" decoding="async" alt=""></div>
         </div>
         <svg class="legacy-island-vector" viewBox="0 0 1440 1000" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -142,12 +149,12 @@
     <section id="journey" class="v2-section v2-story" aria-labelledby="journey-heading">
       <div class="v2-story-landscape" aria-hidden="true">
         <div class="cinematic-story-stack">
-          <div class="cinematic-story-layer story-sky" data-story-depth="0.08"><img class="world-dark" src="assets/world/island-storm.webp" alt=""><img class="world-light" src="assets/world/island-dawn.webp" alt=""></div>
-          <div class="cinematic-story-layer story-terrain" data-story-depth="0.15"><img class="world-dark" src="assets/world/island-storm.webp" alt=""><img class="world-light" src="assets/world/island-dawn.webp" alt=""></div>
-          <div class="cinematic-story-layer story-ground" data-story-depth="0.23"><img src="assets/world/foreground-cliff.webp" alt=""></div>
+          <div class="cinematic-story-layer story-sky" data-story-depth="0.08"></div>
+          <div class="cinematic-story-layer story-terrain" data-story-depth="0.15"></div>
+          <div class="cinematic-story-layer story-ground" data-story-depth="0.23"><img src="assets/world/foreground-cliff-960.webp" srcset="assets/world/foreground-cliff-960.webp 960w, assets/world/foreground-cliff.webp 1672w" sizes="68vw" width="960" height="540" loading="lazy" decoding="async" alt=""></div>
           <div class="cinematic-story-fog" data-story-depth="0.11"></div>
           <svg class="cinematic-story-route" viewBox="0 0 1440 1050" preserveAspectRatio="none"><path class="story-route" pathLength="1" d="M140 1030 Q320 1000 510 876 T850 816 T1220 762" fill="none"/></svg>
-          <img class="story-explorer cinematic-story-explorer" src="assets/world/explorer.webp" alt="">
+          <img class="story-explorer cinematic-story-explorer" src="assets/world/explorer-480.webp" width="480" height="720" loading="lazy" decoding="async" alt="">
         </div>
         <svg class="legacy-story-vector" viewBox="0 0 1440 1050" preserveAspectRatio="xMidYMax slice">
           <g data-story-depth="0.08" fill="#112B3D"><path d="M0 650Q70 600 124 573L171 527 198 523 220 480 254 501Q308 559 360 570L409 507 438 491 466 431 501 421 543 348 580 310 608 352 634 358Q671 432 730 490L798 451 828 453 872 421 916 416 950 390 984 437 1012 446Q1050 526 1100 570L1153 522 1184 527 1239 472 1280 458 1309 422 1351 406 1394 371 1440 350V1100H0Z"/></g>
@@ -171,21 +178,21 @@
         <header class="v2-section-header"><div><p class="v2-kicker">02 / EXPEDITIONS</p><h2 id="expeditions-heading" class="v2-display">Real projects.<br><em>Real impact.</em></h2></div><p class="v2-lede">Each expedition began with a real problem — and became something researched, designed and built with purpose.</p></header>
         <article class="v2-project" aria-labelledby="muc-title">
           <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="MUC Digital beacon — digital services and communication" focusable="false"><path d="M8 21h8M10 21l1-10h2l1 10M9 11h6V7H9zM12 3V1M5 7L2 5m17 2 3-2"/><path class="v2-symbol-signal" d="M6 11a8 8 0 0 1 0-8m12 8a8 8 0 0 0 0-8"/></svg>EXPEDITION / 01</span><span>Completed</span></div>
-          <figure class="v2-project-visual v2-visual-muc" aria-label="MUC Digital conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-muc.webp" width="1672" height="941" loading="lazy" alt=""><div class="project-cover-copy" aria-hidden="true"><span>01 / PUBLIC SERVICES</span><strong>MUC<br><em>Digital.</em></strong></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for MUC Digital.</figcaption></figure>
+          <figure class="v2-project-visual v2-visual-muc" aria-label="MUC Digital conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-muc-1280.webp" srcset="assets/world/project-muc-640.webp 640w, assets/world/project-muc-1280.webp 1280w, assets/world/project-muc.webp 1672w" sizes="(max-width: 900px) 88vw, min(90vw, 1296px)" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" alt=""><div class="project-cover-copy" aria-hidden="true"><span>01 / PUBLIC SERVICES</span><strong>MUC<br><em>Digital.</em></strong></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for MUC Digital.</figcaption></figure>
           <div class="v2-project-info"><div><p class="v2-kicker">SERVICE DESIGN / MOBILE INTERFACE</p><h3 id="muc-title">MUC Digital</h3></div><div><p>Making urban council services easier to navigate through focused booking flows and accessible module interfaces.</p><p class="v2-project-tech">Mobile UI · Service flows</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
           <a class="v2-text-link field-notes-link" href="#muc-notes" aria-label="Open Field Notes for MUC Digital">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
           <a class="v2-repository" href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener noreferrer" aria-label="View MUC Digital on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
         </article>
         <article class="v2-project" aria-labelledby="finance-title">
           <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol v2-finance-compass" viewBox="0 0 32 32" role="img" aria-label="Finance Manager compass rose — navigation and resource planning" focusable="false"><defs><symbol id="finance-compass-rose" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 1v3m0 24v3M1 16h3m24 0h3M6 6l2 2m16 16 2 2M6 26l2-2M24 8l2-2"/><path d="m16 7 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/><path class="v2-symbol-signal" d="m16 5 3 11h-6Z" fill="var(--signal)"/><path d="m16 27-3-11h6Z" fill="var(--horizon)"/><circle cx="16" cy="16" r="1.5" fill="var(--surface)"/></symbol></defs><use href="#finance-compass-rose"/></svg>EXPEDITION / 02</span><span>In progress</span></div>
-          <figure class="v2-project-visual v2-visual-finance finance-cover" aria-label="Finance Manager conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-finance.webp" width="1672" height="941" loading="lazy" alt=""><div class="project-cover-copy" aria-hidden="true"><span>02 / A FINANCIAL NAVIGATION SYSTEM</span><strong>Finance<br><em>Manager.</em></strong><small>TRACK / PLAN / NAVIGATE</small></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for Finance Manager.</figcaption></figure>
+          <figure class="v2-project-visual v2-visual-finance finance-cover" aria-label="Finance Manager conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-finance-1280.webp" srcset="assets/world/project-finance-640.webp 640w, assets/world/project-finance-1280.webp 1280w, assets/world/project-finance.webp 1672w" sizes="(max-width: 900px) 88vw, min(90vw, 1296px)" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" alt=""><div class="project-cover-copy" aria-hidden="true"><span>02 / A FINANCIAL NAVIGATION SYSTEM</span><strong>Finance<br><em>Manager.</em></strong><small>TRACK / PLAN / NAVIGATE</small></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for Finance Manager.</figcaption></figure>
           <div class="v2-project-info"><div><p class="v2-kicker">PRODUCT INTERFACE / WEB APPLICATION</p><h3 id="finance-title">Finance Manager</h3></div><div><p>Bringing income, expenses, budgets and savings goals into one personal finance workspace.</p><p class="v2-project-tech">React · Tailwind · Supabase</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
           <a class="v2-text-link field-notes-link" href="#finance-notes" aria-label="Open Field Notes for Finance Manager">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
           <a class="v2-repository" href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener noreferrer" aria-label="View Finance Manager on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
         </article>
         <article class="v2-project" aria-labelledby="estate-title">
           <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="Estate Agent SPA map — property locations and destinations" focusable="false"><path d="m2 6 6-3 8 3 6-3v16l-6 3-8-3-6 3zM8 3v16m8-5v8"/><path class="v2-symbol-signal" d="M19 8c0 3-3 6-3 6s-3-3-3-6a3 3 0 0 1 6 0Z"/><circle class="v2-symbol-signal" cx="16" cy="8" r=".5"/></svg>EXPEDITION / 03</span><span>Client-side application</span></div>
-          <figure class="v2-project-visual v2-visual-estate" aria-label="Estate Agent SPA conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-estate.webp" width="1672" height="941" loading="lazy" alt=""><div class="project-cover-copy" aria-hidden="true"><span>03 / PROPERTY SEARCH</span><strong>Estate Agent<br><em>SPA.</em></strong></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for Estate Agent SPA.</figcaption></figure>
+          <figure class="v2-project-visual v2-visual-estate" aria-label="Estate Agent SPA conceptual device presentation"><img class="project-cinematic-media" src="assets/world/project-estate-1280.webp" srcset="assets/world/project-estate-640.webp 640w, assets/world/project-estate-1280.webp 1280w, assets/world/project-estate.webp 1672w" sizes="(max-width: 900px) 88vw, min(90vw, 1296px)" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" alt=""><div class="project-cover-copy" aria-hidden="true"><span>03 / PROPERTY SEARCH</span><strong>Estate Agent<br><em>SPA.</em></strong></div><figcaption class="v2-visually-hidden">Conceptual cinematic device presentation for Estate Agent SPA.</figcaption></figure>
           <div class="v2-project-info"><div><p class="v2-kicker">FRONTEND DEVELOPMENT / PROPERTY SEARCH</p><h3 id="estate-title">Estate Agent SPA</h3></div><div><p>Search properties, explore listing details and save favourites in a client-side application.</p><p class="v2-project-tech">React · Vite · React Router</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
           <a class="v2-text-link field-notes-link" href="#estate-notes" aria-label="Open Field Notes for Estate Agent SPA">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
           <a class="v2-repository" href="https://github.com/Hansaka-co/estate-agent-spa.git" target="_blank" rel="noopener noreferrer" aria-label="View Estate Agent SPA on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
@@ -301,10 +308,10 @@
     </div>
   </footer>
   <script src="js/theme.js?v=site-refine-2"></script>
-  <script src="js/island.js?v=structure-1"></script>
-  <script src="js/expeditions.js?v=milestone-2"></script>
+  <script src="js/island.js?v=performance-1"></script>
+  <script src="js/expeditions.js?v=performance-1"></script>
   <script src="js/structure.js?v=structure-1"></script>
-  <script src="js/polish.js?v=final-polish-1"></script>
-  <script src="js/choreography.js?v=interaction-5"></script>
+  <script src="js/polish.js?v=performance-1"></script>
+  <script src="js/choreography.js?v=performance-1"></script>
 </body>
 </html>

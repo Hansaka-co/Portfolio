@@ -2,6 +2,7 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const compact = matchMedia('(max-width: 700px)');
+  const desktop = matchMedia('(min-width: 901px)');
   const nav = document.querySelector('.island-nav');
   const story = document.querySelector('.v2-story');
   const trail = document.querySelector('.trail-list');
@@ -33,6 +34,9 @@
   document.documentElement.classList.add('polish-ready');
 
   function clamp(value) { return Math.max(0, Math.min(1, value)); }
+  function choreographyOwnsScroll() {
+    return document.documentElement.classList.contains('choreography-enabled') && desktop.matches && !reduced.matches;
+  }
   function update() {
     frame = 0;
     nav?.classList.toggle('is-scrolled', scrollY > 48);
@@ -75,7 +79,7 @@
       });
     }
   }
-  function schedule() { if (!frame) frame = requestAnimationFrame(update); }
+  function schedule() { if (!frame && !document.hidden && !choreographyOwnsScroll()) frame = requestAnimationFrame(update); }
   addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule, { passive: true });
   reduced.addEventListener('change', () => {
@@ -83,6 +87,7 @@
     schedule();
   });
   compact.addEventListener('change', schedule);
+  desktop.addEventListener('change', schedule);
   document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('polish-paused', document.hidden));
   update();
 })();

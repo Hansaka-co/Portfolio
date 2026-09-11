@@ -18,7 +18,7 @@ html{overflow-x:clip}
 .choreography-enabled .v2-about .v2-about-copy{translate:0 var(--about-copy-y,0px)}
 
 /* Trail marker is scrubbed directly by document position. */
-.trail-route-marker{position:absolute;z-index:3;left:calc(32% - 7px);top:calc(var(--trail-progress) * 100%);width:14px;height:14px;border:1px solid var(--signal);border-radius:50%;background:var(--storm);translate:0 -50%;pointer-events:none;transition:top .08s linear}
+.trail-route-marker{position:absolute;z-index:3;left:calc(32% - 7px);top:0;width:14px;height:14px;border:1px solid var(--signal);border-radius:50%;background:var(--storm);transform:translate3d(0,var(--trail-y,0px),0) translateY(-50%);pointer-events:none;transition:transform .08s linear;will-change:transform}
 .trail-route-marker::after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--signal)}
 .choreography-enabled .trail-list>li{opacity:.56;transition:opacity .25s,background-color .35s}
 .choreography-enabled .trail-list>li.is-active{opacity:1}
@@ -55,9 +55,11 @@ html{overflow-x:clip}
   .choreography-enabled .v2-work.choreography-work .v2-section-header .v2-kicker{margin-bottom:8px}
   .choreography-enabled .v2-work.choreography-work .v2-section-header .v2-display{font-size:clamp(44px,4.2vw,64px)}
   .choreography-enabled .v2-work.choreography-work .expedition-track{display:flex;width:100%;will-change:transform}
+  .choreography-enabled .v2-work.choreography-work.choreography-paused .expedition-track{will-change:auto}
   .choreography-enabled .v2-work.choreography-work .v2-project{flex:0 0 100%;width:100%;margin:0;padding-right:1px;opacity:var(--project-focus,1);scale:var(--project-scale,1);transform-origin:center 58%}
   .choreography-enabled .v2-work.choreography-work .v2-project-visual{width:100%;height:clamp(270px,39vh,430px);aspect-ratio:auto;margin:0}
   .choreography-enabled .v2-work.choreography-work .v2-project-info{padding:18px 0 10px;gap:60px}
+  .choreography-enabled .v2-project-topline::after{transform:scaleX(var(--project-progress,.54))}
   .choreography-enabled .v2-work.choreography-work .v2-project-info h3{font-size:clamp(34px,3vw,44px)}
   .choreography-enabled .v2-work.choreography-work .v2-text-link,.choreography-enabled .v2-work.choreography-work .v2-repository{margin-top:4px}
   .expedition-progress{position:absolute;right:5%;top:106px;display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.16em;color:var(--muted)}

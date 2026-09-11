@@ -4,8 +4,8 @@ body{overflow-x:clip;overflow-y:visible}
 body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
 
 /* Navigation becomes a quiet instrument panel once the opening has passed. */
-.island-nav{position:fixed;transition:background-color .35s,border-color .35s,backdrop-filter .35s}
-.island-nav.is-scrolled:not(.is-opening){background:rgb(var(--ocean-rgb) / .78);border-bottom:1px solid rgb(var(--horizon-rgb) / .14);backdrop-filter:blur(14px)}
+.island-nav{position:fixed;transition:background-color .35s,border-color .35s}
+.island-nav.is-scrolled:not(.is-opening){background:rgb(var(--ocean-rgb) / .94);border-bottom:1px solid rgb(var(--horizon-rgb) / .14)}
 .island-links a{position:relative}
 .island-links a::after{content:'';position:absolute;left:0;right:0;bottom:5px;height:1px;background:var(--signal);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.22,1,.36,1)}
 .island-links a:hover::after,.island-links a:focus-visible::after{transform:scaleX(1);transform-origin:left}
@@ -43,7 +43,7 @@ body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;op
 .v2-project-visual::after{content:'';position:absolute;z-index:4;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 50%,rgb(var(--horizon-rgb) / .07)),linear-gradient(0deg,rgb(var(--ocean-rgb) / .18),transparent 35%)}
 .v2-project:hover .v2-project-visual{border-color:rgb(var(--horizon-rgb) / .46)}
 .v2-project-topline{position:relative}
-.v2-project-topline::after{content:'';position:absolute;left:0;bottom:-1px;height:1px;width:calc(var(--project-progress,0) * 100%);background:linear-gradient(90deg,var(--signal),var(--horizon));transition:width .12s linear}
+.v2-project-topline::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--signal),var(--horizon));transform:scaleX(var(--project-progress,0));transform-origin:left;transition:transform .12s linear}
 .v2-visual-muc .v2-visual-placeholder::before{content:'';position:absolute;right:16%;top:50%;width:11px;height:11px;border:2px solid var(--signal);border-radius:50%;box-shadow:0 0 0 28px rgb(var(--horizon-rgb) / .1),0 0 0 74px rgb(var(--horizon-rgb) / .06),0 0 0 128px rgb(var(--horizon-rgb) / .035)}
 .v2-visual-estate .v2-visual-placeholder::before{content:'';position:absolute;right:8%;top:10%;width:48%;height:80%;opacity:.3;background:repeating-linear-gradient(35deg,transparent 0 42px,var(--horizon) 43px,transparent 44px),repeating-linear-gradient(145deg,transparent 0 58px,var(--border) 59px,transparent 60px);clip-path:polygon(12% 0,100% 8%,86% 100%,0 86%)}
 
@@ -71,7 +71,7 @@ body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;op
 .trail-list{position:relative}
 .trail-list::before,.trail-list::after{content:'';position:absolute;left:32%;top:0;width:1px;height:100%;pointer-events:none}
 .trail-list::before{background:var(--border)}
-.trail-list::after{height:calc(var(--trail-progress) * 100%);background:linear-gradient(var(--horizon),var(--signal));transition:height .12s linear}
+.trail-list::after{background:linear-gradient(var(--horizon),var(--signal));transform:scaleY(var(--trail-progress));transform-origin:top;transition:transform .12s linear}
 .trail-list>li{position:relative;transition:background-color .35s}
 .trail-list>li::before{content:'';position:absolute;z-index:2;left:calc(32% - 4px);top:46px;width:7px;height:7px;border-radius:50%;background:var(--storm);border:1px solid var(--horizon);transition:background-color .3s,transform .3s,box-shadow .3s}
 .trail-list>li.is-active::before{background:var(--signal);border-color:var(--signal);transform:scale(1.35);box-shadow:0 0 0 5px rgb(var(--signal-rgb,209 170 110) / .08)}
@@ -86,7 +86,7 @@ body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;op
 /* Signal and Horizon share one calming coastal destination. */
 .v2-signal::before{right:7%;top:12%;width:42%;height:72%;background:radial-gradient(ellipse at 82% 28%,rgb(var(--signal-rgb,209 170 110) / .1),transparent 9%),linear-gradient(178deg,transparent 57%,rgb(var(--horizon-rgb) / .1) 57.3%,transparent 58%)}
 .v2-signal::after{content:'';position:absolute;z-index:-1;right:14%;bottom:24%;width:5px;height:54px;background:linear-gradient(var(--text),var(--horizon));clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);opacity:.45}
-.signal-form{box-shadow:0 28px 80px rgb(0 0 0 / .11);backdrop-filter:blur(8px)}
+.signal-form{box-shadow:0 22px 56px rgb(0 0 0 / .11)}
 .signal-submit{transition:background-color .25s,color .25s,transform .3s}
 .signal-submit:hover{transform:translateY(-2px);background:var(--signal);border-color:var(--signal)}
 .v2-horizon::before{left:0;right:0;top:20%;height:55%;background:linear-gradient(180deg,transparent 45%,rgb(var(--horizon-rgb) / .16) 45.3%,transparent 46%),radial-gradient(ellipse at 76% 46%,rgb(var(--signal-rgb,209 170 110) / .1),transparent 8%)}
@@ -112,7 +112,7 @@ body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;op
 }
 @media(max-width:700px){
   body::after{display:none}
-  .island-nav.is-scrolled:not(.is-opening){backdrop-filter:blur(10px)}
+  .island-nav.is-scrolled:not(.is-opening){background:rgb(var(--ocean-rgb) / .96)}
   .v2-project:nth-of-type(n) .v2-project-visual{width:100%;margin-left:0}
   .v2-work::before{height:190px;left:48%;opacity:.65}
   .v2-visual-muc .v2-visual-placeholder::before{right:15%;transform:scale(.7)}

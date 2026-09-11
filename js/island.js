@@ -4,6 +4,7 @@
   if (!hero) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const small = matchMedia('(max-width: 700px)');
+  const desktopChoreography = matchMedia('(min-width: 901px)');
   const splash = hero.querySelector('.island-splash');
   const heading = hero.querySelector('h1');
   const nav = document.querySelector('.island-nav');
@@ -69,10 +70,20 @@
   nav.addEventListener('focusout', e => { if (!nav.contains(e.relatedTarget)) closeMenu(); });
   small.addEventListener('change', () => closeMenu());
 
-  const layers = [...hero.querySelectorAll('[data-depth]')];
+  const layers = [...hero.querySelectorAll('.cinematic-world [data-depth]')];
   let frame = 0;
+  let releasedToChoreography = false;
+  function choreographyOwnsScene() {
+    return document.documentElement.classList.contains('choreography-enabled') && desktopChoreography.matches && !motion.matches;
+  }
   function render() {
     frame = 0;
+    if (choreographyOwnsScene()) {
+      if (!releasedToChoreography) layers.forEach(layer => layer.style.removeProperty('--layer-y'));
+      releasedToChoreography = true;
+      return;
+    }
+    releasedToChoreography = false;
     const rect = hero.getBoundingClientRect();
     const distance = Math.min(Math.max(-rect.top, 0), rect.height);
     layers.forEach(layer => {
@@ -83,10 +94,11 @@
   function schedule() { if (!frame) frame = requestAnimationFrame(render); }
   addEventListener('scroll', () => {
     if (scrollY > 20) finishIntro();
-    schedule();
+    if (inView && !choreographyOwnsScene()) schedule();
   }, { passive: true });
   addEventListener('resize', schedule, { passive: true });
-  motion.addEventListener('change', () => { schedule(); });
+  motion.addEventListener('change', schedule);
+  desktopChoreography.addEventListener('change', schedule);
   // Pause ambient CSS motion when the opening is offscreen or the tab is hidden.
   let inView = true;
   function pauseAtmosphere() {
