@@ -1,6 +1,6 @@
 /* Shared V2 foundations. Legacy css/style.css is intentionally no longer loaded. */
-:root{color-scheme:dark;--ocean:#06131E;--storm:#0A1C2A;--surface:#0D2232;--raised:#112B3D;--text:#EAF0F4;--muted:#9FB0BC;--border:#274154;--horizon:#9FB8CC;--signal:#D1AA6E;--ocean-rgb:6 19 30;--horizon-rgb:159 184 204;--project-a:#20363D;--project-b:#10232C;--project-c:#1E3433;--project-d:#0B2028}
-:root[data-theme="light"]{color-scheme:light;--ocean:#D8D1C3;--storm:#E4DED2;--surface:#D0C8B9;--raised:#EAE4D9;--text:#10222F;--muted:#405461;--border:#8B918D;--horizon:#4F6C80;--signal:#A97B43;--ocean-rgb:216 209 195;--horizon-rgb:79 108 128;--project-a:#D4D3C5;--project-b:#C0C6BB;--project-c:#D4D7C6;--project-d:#BAC6BC}
+:root{color-scheme:dark;--ocean:#06131E;--storm:#0A1C2A;--surface:#0D2232;--raised:#112B3D;--text:#EAF0F4;--muted:#9FB0BC;--border:#274154;--horizon:#9FB8CC;--signal:#D1AA6E;--ocean-rgb:6 19 30;--horizon-rgb:159 184 204;--signal-rgb:209 170 110;--project-a:#20363D;--project-b:#10232C;--project-c:#1E3433;--project-d:#0B2028}
+:root[data-theme="light"]{color-scheme:light;--ocean:#D8D1C3;--storm:#E4DED2;--surface:#D0C8B9;--raised:#EAE4D9;--text:#10222F;--muted:#405461;--border:#8B918D;--horizon:#4F6C80;--signal:#A97B43;--ocean-rgb:216 209 195;--horizon-rgb:79 108 128;--signal-rgb:169 123 67;--project-a:#D4D3C5;--project-b:#C0C6BB;--project-c:#D4D7C6;--project-d:#BAC6BC}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:var(--ocean)}
 body{font-family:'Manrope',sans-serif;background:var(--ocean);color:var(--text);font-weight:400;line-height:1.5}

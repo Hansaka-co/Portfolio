@@ -1,0 +1,129 @@
+/* Final visual layer. It enhances the existing semantic structure without changing content order. */
+:root{--world-shift:0px;--trail-progress:0;--section-line:rgb(var(--horizon-rgb) / .18)}
+body{overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+
+/* Navigation becomes a quiet instrument panel once the opening has passed. */
+.island-nav{position:fixed;transition:background-color .35s,border-color .35s,backdrop-filter .35s}
+.island-nav.is-scrolled:not(.is-opening){background:rgb(var(--ocean-rgb) / .78);border-bottom:1px solid rgb(var(--horizon-rgb) / .14);backdrop-filter:blur(14px)}
+.island-links a{position:relative}
+.island-links a::after{content:'';position:absolute;left:0;right:0;bottom:5px;height:1px;background:var(--signal);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.island-links a:hover::after,.island-links a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+
+/* One continuous geography: every section receives depth instead of a flat fill. */
+.v2-section{overflow:clip}
+.v2-work{background-color:var(--ocean);background-image:radial-gradient(ellipse at 88% 12%,rgb(var(--horizon-rgb) / .11),transparent 30%),linear-gradient(180deg,var(--ocean),var(--storm) 48%,var(--ocean))}
+.v2-notes-section{background-color:var(--storm);background-image:radial-gradient(ellipse at 14% 0%,rgb(var(--horizon-rgb) / .08),transparent 34%),linear-gradient(180deg,var(--storm),var(--surface))}
+.v2-about{background-color:var(--storm);background-image:radial-gradient(ellipse at 18% 42%,rgb(var(--horizon-rgb) / .1),transparent 34%),linear-gradient(180deg,var(--surface),var(--storm) 70%,var(--ocean))}
+.v2-capabilities{background-color:var(--ocean);background-image:linear-gradient(160deg,rgb(var(--horizon-rgb) / .07),transparent 28%),linear-gradient(180deg,var(--ocean),var(--storm))}
+.v2-trail{background-color:var(--storm);background-image:radial-gradient(ellipse at 75% 28%,rgb(var(--horizon-rgb) / .09),transparent 38%),linear-gradient(180deg,var(--storm),var(--surface))}
+.v2-tools{background-color:var(--surface);background-image:linear-gradient(145deg,rgb(var(--horizon-rgb) / .07),transparent 32%),linear-gradient(180deg,var(--surface),var(--storm))}
+.v2-signal{background-color:var(--storm);background-image:radial-gradient(ellipse at 78% 20%,rgb(var(--signal-rgb,209 170 110) / .08),transparent 26%),linear-gradient(180deg,var(--storm),var(--ocean))}
+.v2-horizon{background-color:var(--ocean);background-image:linear-gradient(180deg,var(--ocean),rgb(var(--horizon-rgb) / .1))}
+
+.v2-work::before,.v2-capabilities::before,.v2-trail::before,.v2-tools::before,.v2-signal::before,.v2-horizon::before{content:'';position:absolute;z-index:-1;pointer-events:none;transform:translate3d(0,var(--world-shift),0)}
+.v2-work::before{inset:4% -8% auto 42%;height:340px;border-radius:50%;border:1px solid rgb(var(--horizon-rgb) / .12);box-shadow:0 0 0 70px rgb(var(--horizon-rgb) / .025),0 0 0 145px rgb(var(--horizon-rgb) / .018)}
+.v2-capabilities::before{left:-8%;right:-8%;bottom:-1px;height:30%;background:linear-gradient(165deg,transparent 46%,rgb(var(--horizon-rgb) / .055) 46.2%,transparent 47%),linear-gradient(192deg,transparent 52%,rgb(var(--horizon-rgb) / .04) 52.2%,transparent 53%)}
+.v2-tools::before{inset:0;background:repeating-linear-gradient(110deg,transparent 0 110px,rgb(var(--horizon-rgb) / .025) 111px,transparent 112px)}
+
+/* Scroll reveals are progressive enhancement: without JS, everything remains visible. */
+.polish-ready .polish-reveal{opacity:0;transform:translate3d(0,24px,0);clip-path:inset(0 0 12% 0);transition:opacity .8s ease,transform .9s cubic-bezier(.22,1,.36,1),clip-path .9s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--reveal-index,0) * 55ms)}
+.polish-ready .polish-reveal.is-visible{opacity:1;transform:none;clip-path:inset(0)}
+
+/* Journey: the route resolves one waypoint at a time. */
+.v2-waypoints span{position:relative;transition:color .35s,transform .35s}
+.v2-waypoints span.is-reached{color:var(--text);transform:translateY(-2px)}
+.v2-waypoints span.is-reached::after{content:'';position:absolute;left:50%;bottom:-10px;width:3px;height:3px;border-radius:50%;background:var(--signal)}
+
+/* Expeditions are staged discoveries, with verified content left untouched. */
+.v2-project{isolation:isolate}
+.v2-project:nth-of-type(even) .v2-project-visual{width:92%;margin-left:auto}
+.v2-project:nth-of-type(odd) .v2-project-visual{width:96%}
+.v2-project-visual{border:1px solid rgb(var(--horizon-rgb) / .2);box-shadow:0 30px 80px rgb(0 0 0 / .13);clip-path:inset(0 0 0 0);transition:clip-path 1s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),border-color .3s}
+.v2-project-visual::after{content:'';position:absolute;z-index:4;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 50%,rgb(var(--horizon-rgb) / .07)),linear-gradient(0deg,rgb(var(--ocean-rgb) / .18),transparent 35%)}
+.v2-project:hover .v2-project-visual{border-color:rgb(var(--horizon-rgb) / .46)}
+.v2-project-topline{position:relative}
+.v2-project-topline::after{content:'';position:absolute;left:0;bottom:-1px;height:1px;width:calc(var(--project-progress,0) * 100%);background:linear-gradient(90deg,var(--signal),var(--horizon));transition:width .12s linear}
+.v2-visual-muc .v2-visual-placeholder::before{content:'';position:absolute;right:16%;top:50%;width:11px;height:11px;border:2px solid var(--signal);border-radius:50%;box-shadow:0 0 0 28px rgb(var(--horizon-rgb) / .1),0 0 0 74px rgb(var(--horizon-rgb) / .06),0 0 0 128px rgb(var(--horizon-rgb) / .035)}
+.v2-visual-estate .v2-visual-placeholder::before{content:'';position:absolute;right:8%;top:10%;width:48%;height:80%;opacity:.3;background:repeating-linear-gradient(35deg,transparent 0 42px,var(--horizon) 43px,transparent 44px),repeating-linear-gradient(145deg,transparent 0 58px,var(--border) 59px,transparent 60px);clip-path:polygon(12% 0,100% 8%,86% 100%,0 86%)}
+
+/* Expedition records use map-grid cues without covering the case-study content. */
+.v2-notes-section .v2-notes-body{position:relative;background-color:var(--surface);background-image:linear-gradient(rgb(var(--horizon-rgb) / .035) 1px,transparent 1px),linear-gradient(90deg,rgb(var(--horizon-rgb) / .035) 1px,transparent 1px);background-size:38px 38px}
+.v2-field-notes>summary{transition:color .3s,padding-left .35s}
+.v2-field-notes>summary:hover{color:var(--signal);padding-left:10px}
+.v2-field-notes[open]>summary{color:var(--horizon)}
+.v2-field-notes[open] .v2-notes-body{animation:record-open .55s cubic-bezier(.22,1,.36,1) both}
+@keyframes record-open{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* Explorer: a calm break in the route. */
+.v2-about::before{content:'';position:absolute;z-index:-1;left:-5%;right:-5%;bottom:-2%;height:38%;background:linear-gradient(174deg,transparent 45%,rgb(var(--horizon-rgb) / .06) 45.3%,transparent 46%),linear-gradient(187deg,transparent 52%,rgb(var(--ocean-rgb) / .42) 52.2%)}
+.v2-portrait{transform:rotate(-.45deg)}
+.v2-portrait img{transition:filter .5s,transform 1s cubic-bezier(.22,1,.36,1)}
+.v2-portrait:hover img{transform:scale(1.018)}
+
+/* Capabilities respond like equipment being selected. */
+.capability-list>div{position:relative;transition:padding-left .45s cubic-bezier(.22,1,.36,1),background-color .35s}
+.capability-list>div::after{content:'↗';position:absolute;right:12px;top:50%;color:var(--signal);opacity:0;transform:translate(-8px,-50%);transition:opacity .3s,transform .4s}
+.capability-list>div:hover{padding-left:18px;background:linear-gradient(90deg,rgb(var(--horizon-rgb) / .055),transparent 70%)}
+.capability-list>div:hover::after{opacity:1;transform:translate(0,-50%)}
+
+/* Trail: scroll position draws the route and selects the nearest milestone. */
+.trail-list{position:relative}
+.trail-list::before,.trail-list::after{content:'';position:absolute;left:32%;top:0;width:1px;height:100%;pointer-events:none}
+.trail-list::before{background:var(--border)}
+.trail-list::after{height:calc(var(--trail-progress) * 100%);background:linear-gradient(var(--horizon),var(--signal));transition:height .12s linear}
+.trail-list>li{position:relative;transition:background-color .35s}
+.trail-list>li::before{content:'';position:absolute;z-index:2;left:calc(32% - 4px);top:46px;width:7px;height:7px;border-radius:50%;background:var(--storm);border:1px solid var(--horizon);transition:background-color .3s,transform .3s,box-shadow .3s}
+.trail-list>li.is-active::before{background:var(--signal);border-color:var(--signal);transform:scale(1.35);box-shadow:0 0 0 5px rgb(var(--signal-rgb,209 170 110) / .08)}
+.trail-list>li.is-active h3{color:var(--text)}
+
+/* Tools remain calm; the line and text provide the interaction. */
+.tool-groups section{position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1),border-color .3s}
+.tool-groups section::before{content:'';position:absolute;left:0;top:-1px;width:0;height:1px;background:var(--signal);transition:width .5s cubic-bezier(.22,1,.36,1)}
+.tool-groups section:hover{transform:translateY(-5px);border-color:var(--horizon)}
+.tool-groups section:hover::before{width:44%}
+
+/* Signal and Horizon share one calming coastal destination. */
+.v2-signal::before{right:7%;top:12%;width:42%;height:72%;background:radial-gradient(ellipse at 82% 28%,rgb(var(--signal-rgb,209 170 110) / .1),transparent 9%),linear-gradient(178deg,transparent 57%,rgb(var(--horizon-rgb) / .1) 57.3%,transparent 58%)}
+.v2-signal::after{content:'';position:absolute;z-index:-1;right:14%;bottom:24%;width:5px;height:54px;background:linear-gradient(var(--text),var(--horizon));clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);opacity:.45}
+.signal-form{box-shadow:0 28px 80px rgb(0 0 0 / .11);backdrop-filter:blur(8px)}
+.signal-submit{transition:background-color .25s,color .25s,transform .3s}
+.signal-submit:hover{transform:translateY(-2px);background:var(--signal);border-color:var(--signal)}
+.v2-horizon::before{left:0;right:0;top:20%;height:55%;background:linear-gradient(180deg,transparent 45%,rgb(var(--horizon-rgb) / .16) 45.3%,transparent 46%),radial-gradient(ellipse at 76% 46%,rgb(var(--signal-rgb,209 170 110) / .1),transparent 8%)}
+
+/* The same coast after the storm: clearer layers, warmer air, quieter contrast. */
+[data-theme="light"] body::after{opacity:.045;mix-blend-mode:multiply}
+[data-theme="light"] .island-nav.is-scrolled:not(.is-opening){background:rgb(var(--ocean-rgb) / .82)}
+[data-theme="light"] .v2-work{background-image:radial-gradient(ellipse at 88% 12%,rgb(var(--horizon-rgb) / .14),transparent 30%),linear-gradient(180deg,var(--ocean),var(--storm) 48%,var(--ocean))}
+[data-theme="light"] .v2-notes-section{background-image:radial-gradient(ellipse at 14% 0%,rgb(var(--horizon-rgb) / .1),transparent 34%),linear-gradient(180deg,var(--storm),var(--surface))}
+[data-theme="light"] .v2-about{background-image:radial-gradient(ellipse at 18% 42%,rgb(var(--horizon-rgb) / .13),transparent 32%),linear-gradient(180deg,var(--surface),var(--storm) 70%,var(--ocean))}
+[data-theme="light"] .v2-signal{background-image:radial-gradient(ellipse at 78% 20%,rgb(169 123 67 / .1),transparent 28%),linear-gradient(180deg,var(--storm),var(--ocean))}
+[data-theme="light"] .v2-project-visual{box-shadow:0 28px 70px rgb(16 34 47 / .09)}
+[data-theme="light"] .signal-form{box-shadow:0 24px 65px rgb(16 34 47 / .08)}
+
+@media(min-width:901px){
+  .v2-project:nth-of-type(even) .v2-project-info{padding-left:8%}
+  .v2-project:nth-of-type(odd) .v2-project-info{padding-right:4%}
+}
+@media(max-width:900px){
+  .trail-list::before,.trail-list::after{left:8px}
+  .trail-list>li{padding-left:32px}
+  .trail-list>li::before{left:4px}
+}
+@media(max-width:700px){
+  body::after{display:none}
+  .island-nav.is-scrolled:not(.is-opening){backdrop-filter:blur(10px)}
+  .v2-project:nth-of-type(n) .v2-project-visual{width:100%;margin-left:0}
+  .v2-work::before{height:190px;left:48%;opacity:.65}
+  .v2-visual-muc .v2-visual-placeholder::before{right:15%;transform:scale(.7)}
+  .capability-list>div:hover{padding-left:0;background:transparent}
+  .v2-signal::before{width:70%;right:-10%;opacity:.6}
+  .v2-signal::after{right:10%;opacity:.28}
+}
+@media(hover:none){.v2-portrait:hover img,.tool-groups section:hover,.signal-submit:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .polish-ready .polish-reveal{opacity:1;transform:none;clip-path:none;transition:none}
+  .v2-field-notes[open] .v2-notes-body{animation:none}
+  .trail-list::after,.v2-project-topline::after{transition:none}
+  .v2-section::before{transform:none!important}
+}
