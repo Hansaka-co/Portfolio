@@ -17,10 +17,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/theme.css?v=structure-1" />
-  <link rel="stylesheet" href="css/island.css?v=structure-1" />
-  <link rel="stylesheet" href="css/expeditions.css?v=content-audit-1" />
-  <link rel="stylesheet" href="css/structure.css?v=structure-1" />
+  <link rel="stylesheet" href="css/theme.css?v=site-refine-2" />
+  <link rel="stylesheet" href="css/island.css?v=site-refine-2" />
+  <link rel="stylesheet" href="css/expeditions.css?v=site-refine-2" />
+  <link rel="stylesheet" href="css/structure.css?v=site-refine-2" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 </head>
 <body>
@@ -37,7 +37,10 @@
         <li><a href="#trail" data-journey aria-label="Experience and Education">THE TRAIL<small class="island-nav-subtitle">Experience &amp; Education</small></a></li>
         <li><a href="#contact" aria-label="Contact Hansaka">THE SIGNAL <span aria-hidden="true">↗</span><small class="island-nav-subtitle">Contact</small></a></li>
       </ul>
-      <button class="theme-toggle" type="button" aria-label="After the Storm light mode" aria-pressed="false" hidden><span aria-hidden="true">◐</span> <span>LIGHT MODE</span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to After the Storm light mode" aria-pressed="false" hidden>
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-night">◒</span><span class="theme-toggle-horizon"></span><span class="theme-toggle-day">☼</span></span>
+        <span class="theme-toggle-copy">AFTER THE STORM</span><span class="theme-toggle-short">LIGHT</span>
+      </button>
     </nav>
   </header>
   <main>
@@ -120,16 +123,16 @@
           <a class="island-button" href="#trail" data-journey>FOLLOW THE TRAIL <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <div class="island-bottom"><a href="#about" class="island-scroll">SCROLL TO EXPLORE <span aria-hidden="true"></span></a><p>Different paths.<br>Same purpose.</p></div>
+      <div class="island-bottom"><a href="#journey" class="island-scroll">SCROLL TO EXPLORE <span aria-hidden="true"></span></a><p>Different paths.<br>Same purpose.</p></div>
     </section>
 
     <!-- Portfolio V2: complete structural version, before global polish. -->
     <section id="journey" class="v2-section v2-story" aria-labelledby="journey-heading">
       <div class="v2-story-landscape" aria-hidden="true">
         <svg viewBox="0 0 1440 1050" preserveAspectRatio="xMidYMax slice">
-          <g data-story-depth="0.08" fill="#112B3D"><path d="M0 650 220 480 360 570 580 310 730 490 950 390 1100 570 1440 350V1100H0Z"/></g>
-          <g data-story-depth="0.15" fill="#0A1C2A"><path d="M0 800 260 700 410 770 640 555 840 740 1000 660 1220 720 1440 610V1100H0Z"/></g>
-          <g data-story-depth="0.23"><path d="M0 1040 180 925 360 950 510 820 700 880 860 760 1040 840 1220 710 1440 800V1100H0Z" fill="#06131E"/>
+          <g data-story-depth="0.08" fill="#112B3D"><path d="M0 650Q70 600 124 573L171 527 198 523 220 480 254 501Q308 559 360 570L409 507 438 491 466 431 501 421 543 348 580 310 608 352 634 358Q671 432 730 490L798 451 828 453 872 421 916 416 950 390 984 437 1012 446Q1050 526 1100 570L1153 522 1184 527 1239 472 1280 458 1309 422 1351 406 1394 371 1440 350V1100H0Z"/></g>
+          <g data-story-depth="0.15" fill="#0A1C2A"><path d="M0 800Q88 780 155 743L210 738 260 700Q323 724 365 743L410 770 462 719 491 712 520 659 558 647 610 576 640 555Q685 590 704 643L751 662 782 704 840 740Q916 724 964 681L1000 660 1037 689 1092 685Q1154 715 1220 720L1274 687 1313 690 1354 649 1391 647 1440 610V1100H0Z"/></g>
+          <g data-story-depth="0.23"><path d="M0 1040Q80 995 127 952L180 925 224 942 278 938 360 950Q420 910 458 862L485 857 510 820 549 840 592 840Q649 872 700 880L758 825 800 814 834 775 860 760 905 782 947 788 990 825 1040 840Q1104 805 1146 760L1188 749 1220 710 1251 724 1292 723Q1365 782 1440 800V1100H0Z" fill="#06131E"/>
           <path d="M140 1030 Q320 1000 510 876 T850 816 T1220 762" stroke="#D1AA6E" stroke-opacity=".35" stroke-width="1" fill="none" stroke-dasharray="3 10"/>
           <g fill="#9FB0BC" opacity=".8" transform="translate(843 728)"><circle cx="0" cy="0" r="5"/><path d="M-4 7H5L10 31 4 33 5 51H1L-2 34-7 51H-11L-6 29Z"/><path d="M8 17 15 29 20 50" fill="none" stroke="#9FB0BC" stroke-width="2"/></g></g>
         </svg>
@@ -154,8 +157,11 @@
           <a class="v2-repository" href="https://github.com/Hansaka-co/muc-digital" target="_blank" rel="noopener noreferrer" aria-label="View MUC Digital on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
         </article>
         <article class="v2-project" aria-labelledby="finance-title">
-          <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol" viewBox="0 0 24 24" role="img" aria-label="Finance Manager compass — resource planning and navigation" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/><path class="v2-symbol-signal" d="m16 8-2 6-6 2 2-6z"/></svg>EXPEDITION / 02</span><span>In progress</span></div>
-          <figure class="v2-project-visual v2-visual-finance"><div class="v2-visual-placeholder" aria-hidden="true"><span class="v2-visual-index">02 / FINANCIAL CLARITY</span><strong>Finance<br><em>Manager.</em></strong><span>PROJECT VISUAL PENDING</span></div><img class="v2-project-image" src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard from the project repository" loading="lazy" width="1440" height="900"><figcaption class="v2-visually-hidden">Existing project dashboard; a labelled placeholder remains if the image is unavailable.</figcaption></figure>
+          <div class="v2-project-topline"><span class="v2-project-number"><svg class="v2-project-symbol v2-finance-compass" viewBox="0 0 32 32" role="img" aria-label="Finance Manager compass rose — navigation and resource planning" focusable="false"><defs><symbol id="finance-compass-rose" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 1v3m0 24v3M1 16h3m24 0h3M6 6l2 2m16 16 2 2M6 26l2-2M24 8l2-2"/><path d="m16 7 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/><path class="v2-symbol-signal" d="m16 5 3 11h-6Z" fill="var(--signal)"/><path d="m16 27-3-11h6Z" fill="var(--horizon)"/><circle cx="16" cy="16" r="1.5" fill="var(--surface)"/></symbol></defs><use href="#finance-compass-rose"/></svg>EXPEDITION / 02</span><span>In progress</span></div>
+          <figure class="v2-project-visual v2-visual-finance finance-cover" aria-label="Finance Manager — a financial navigation system">
+            <svg class="finance-cover-chart" viewBox="0 0 600 600" fill="none" aria-hidden="true" focusable="false"><g class="finance-chart-lines"><circle cx="300" cy="300" r="245"/><circle cx="300" cy="300" r="208"/><circle cx="300" cy="300" r="150"/><path d="M300 25v85m0 380v85M25 300h85m380 0h85M106 106l58 58m272 272 58 58M106 494l58-58m272-272 58-58"/><path d="M60 445C170 470 155 330 265 345S370 185 530 125" stroke-dasharray="3 9"/></g><g class="finance-chart-compass" transform="translate(228 228) scale(4.5)"><use href="#finance-compass-rose" width="32" height="32"/></g><circle class="finance-chart-destination" cx="530" cy="125" r="4"/></svg>
+            <div class="finance-cover-content"><p class="finance-cover-label">02 / A FINANCIAL NAVIGATION SYSTEM</p><strong>Finance<br><em>Manager.</em></strong><div class="finance-cover-bottom"><p>Navigate income, budgets<br>and savings with clarity.</p><span>TRACK / PLAN / NAVIGATE</span></div></div>
+          </figure>
           <div class="v2-project-info"><div><p class="v2-kicker">PRODUCT INTERFACE / WEB APPLICATION</p><h3 id="finance-title">Finance Manager</h3></div><div><p>Bringing income, expenses, budgets and savings goals into one personal finance workspace.</p><p class="v2-project-tech">React · Tailwind · Supabase</p><!-- TODO: confirm exact design tools and personal contributions; do not infer them from appearance. --></div></div>
           <a class="v2-text-link field-notes-link" href="#finance-notes" aria-label="Open Field Notes for Finance Manager">OPEN FIELD NOTES <span aria-hidden="true">↗</span></a>
           <a class="v2-repository" href="https://github.com/Hansaka-co/finance-manager" target="_blank" rel="noopener noreferrer" aria-label="View Finance Manager on GitHub (opens in a new tab)">VIEW REPOSITORY <span aria-hidden="true">↗</span></a>
@@ -183,12 +189,12 @@
             <section data-note-stage="development"><h5>04 / Development</h5><p class="content-pending">Implementation details and personal contribution to be added.</p></section>
             <section data-note-stage="result"><h5>05 / Result</h5><p>Listed as completed in the existing portfolio.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
           </div></details>
-          <details class="v2-field-notes" id="finance-notes"><summary>FINANCE MANAGER <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
+          <details class="v2-field-notes" id="finance-notes"><summary><span class="v2-finance-note-label"><svg class="v2-project-symbol v2-finance-compass" viewBox="0 0 32 32" role="img" aria-label="Finance Manager compass rose — navigation and resource planning" focusable="false"><use href="#finance-compass-rose"/></svg>FINANCE MANAGER</span> <span aria-hidden="true">＋</span></summary><div class="v2-notes-body">
             <header><p class="v2-kicker">FIELD NOTES / 02</p><h4>Finance Manager</h4><p class="v2-note-context">An initial project record, based on the existing portfolio.</p></header>
             <section data-note-stage="problem"><h5>01 / Problem</h5><p>Keeping track of income, spending, budgets and savings goals within one application.</p></section>
             <!-- TODO: Research — add actual research methods, evidence, participants and findings. No invented interviews or metrics. -->
             <section data-note-stage="research"><h5>02 / Research</h5><p class="content-pending">Research evidence and findings to be added.</p></section>
-            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing project description records a Figma-first design process and an analytics dashboard.</p></section>
+            <section data-note-stage="design"><h5>03 / Design Decisions</h5><p>The existing project description records a Figma-first design process and an analytics dashboard.</p><figure class="finance-dashboard-detail"><img src="https://raw.githubusercontent.com/Hansaka-co/finance-manager/main/Desighn/Desihgn/dashboard.jpg" alt="Finance Manager dashboard showing income, expenses, budgets and savings goals" loading="lazy" width="1440" height="900"><figcaption>Supporting interface study — existing project dashboard.</figcaption></figure></section>
             <section data-note-stage="development"><h5>04 / Development</h5><p>A React interface with Tailwind styling and Supabase. The documented scope includes income, expenses, budgets, savings goals and analytics.</p></section>
             <section data-note-stage="result"><h5>05 / Result</h5><p>In progress.</p><!-- TODO: add verified outcomes, testing evidence and limitations. No client or impact metrics are available. --></section>
           </div></details>
@@ -277,7 +283,7 @@
       </div><p class="horizon-copyright">© <span id="year">2026</span> Hansaka Bandara. Designed with intention. Built with care.</p>
     </div>
   </footer>
-  <script src="js/theme.js?v=structure-1"></script>
+  <script src="js/theme.js?v=site-refine-2"></script>
   <script src="js/island.js?v=structure-1"></script>
   <script src="js/expeditions.js?v=milestone-2"></script>
   <script src="js/structure.js?v=structure-1"></script>

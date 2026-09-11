@@ -5,24 +5,24 @@
 .island-nav-inner{max-width:1440px;margin:auto;padding:26px 5%;display:flex;align-items:center;justify-content:space-between}
 .island-mark{font-family:'Manrope',sans-serif;font-size:22px;line-height:1.2;font-weight:500;letter-spacing:.16em;transform-origin:center;transition:transform .9s cubic-bezier(.22,1,.36,1)}
 .island-mark span{color:var(--text)}
-.island-links{display:flex;align-items:center;gap:42px;font-size:13px;font-weight:500}
-.island-links a{display:inline-block;padding:12px 0;color:var(--muted);transition:color .2s}
+.island-links{display:flex;align-items:center;gap:32px;font-size:14px;font-weight:600}
+.island-links a{display:inline-block;padding:12px 0;color:var(--text);transition:color .2s}
 .island-links a:hover,.island-links a[aria-current]{color:var(--text)}
 .island-links a span{margin-left:8px;color:var(--signal)}
 .island-nav-subtitle{display:none}
 .island-menu{display:none}
-.island-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--ocean);min-height:800px;height:100svh;max-height:1200px;display:flex;align-items:center}
+.island-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--ocean);min-height:800px;height:100svh;max-height:1000px;display:flex;align-items:center}
 .island-scene,.island-shade{position:absolute;inset:0;pointer-events:none}
 .island-scene{z-index:-3;transform:scale(1);transform-origin:78% 60%;transition:transform .85s cubic-bezier(.22,1,.36,1)}
 .island-scene svg{width:100%;height:100%;display:block}
 .island-scene [data-depth]{transform:translate3d(0,var(--layer-y,0px),0)}
 .island-shade{z-index:-2;background:linear-gradient(90deg,rgb(var(--ocean-rgb) / .96),rgb(var(--ocean-rgb) / .78) 30%,rgb(var(--ocean-rgb) / .2) 62%,transparent),linear-gradient(0deg,var(--ocean),transparent 19%);transition:opacity 1s}
 .island-content{width:100%;max-width:1440px;margin:0 auto;padding:106px 5% 136px;transition:opacity .6s ease .12s,transform .7s cubic-bezier(.22,1,.36,1) .12s}
-.island-eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--horizon);margin-bottom:28px}
+.island-eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--horizon);margin-bottom:28px}
 .island-content h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(68px,6.7vw,100px);font-weight:500;letter-spacing:-.035em;line-height:.96;margin:0 0 28px;width:max-content;max-width:100%}
 .island-content h1 span{display:block}
 .island-content h1 em{font-weight:400}
-.island-body{max-width:450px;font-size:15px;line-height:1.85;color:var(--muted)}
+.island-body{max-width:480px;font-size:16px;line-height:1.85;color:var(--muted)}
 .island-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
 .island-button{display:inline-flex;align-items:center;justify-content:center;gap:24px;padding:17px 24px;min-height:52px;border:1px solid var(--border);border-radius:2px;font-size:10px;letter-spacing:.12em;font-weight:700;background:rgb(var(--ocean-rgb) / .45);transition:background .2s,border-color .2s}
 .island-button-primary{background:var(--text);border-color:var(--text);color:var(--ocean)}
@@ -94,7 +94,7 @@
  .island-content{padding:145px 6% 230px}
  .island-eyebrow{font-size:9px;letter-spacing:.12em;margin-bottom:28px}
  .island-content h1{font-size:clamp(58px,12vw,78px);margin-bottom:25px}
- .island-body{font-size:13px;max-width:360px;line-height:1.85}
+ .island-body{font-size:14px;max-width:360px;line-height:1.85}
  .island-actions{gap:10px;margin-top:26px}.island-button{padding:15px 18px;gap:15px;font-size:9px}
  .island-scene svg{width:155%;max-width:none;margin-left:-12%}
  .island-shade{background:linear-gradient(180deg,rgb(var(--ocean-rgb) / .72) 0%,rgb(var(--ocean-rgb) / .83) 53%,rgb(var(--ocean-rgb) / .08) 80%,var(--ocean) 100%)}
@@ -111,3 +111,8 @@
  .island-hero.is-intro .island-entry-fog span{animation:none}
  .island-hero.is-entering [data-depth]{animation:none}
 }
+
+/* Audit: soft atmospheric depth behind existing scene layers, no extra animation. */
+.island-scene{background:radial-gradient(ellipse at 76% 42%,rgb(var(--horizon-rgb) / .12),transparent 48%),var(--ocean)}
+.island-scene:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 78% 48%,rgb(var(--horizon-rgb) / .07),transparent 42%),linear-gradient(0deg,rgb(var(--ocean-rgb) / .2),transparent 40%)}
+[data-theme="light"] .island-scene:after{opacity:.35}

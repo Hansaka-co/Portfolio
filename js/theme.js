@@ -4,8 +4,18 @@
   const system = matchMedia('(prefers-color-scheme: light)');
   const toggles = [...document.querySelectorAll('.theme-toggle')];
   function apply(theme) {
+    const isLight = theme === 'light';
     root.dataset.theme = theme;
-    toggles.forEach(button => button.setAttribute('aria-pressed', String(theme === 'light')));
+    toggles.forEach(button => {
+      button.setAttribute('aria-pressed', String(isLight));
+      button.setAttribute('aria-label', isLight
+        ? 'Switch to Into the Storm dark mode'
+        : 'Switch to After the Storm light mode');
+      const copy = button.querySelector('.theme-toggle-copy');
+      if (copy) copy.textContent = isLight ? 'INTO THE STORM' : 'AFTER THE STORM';
+      const shortCopy = button.querySelector('.theme-toggle-short');
+      if (shortCopy) shortCopy.textContent = isLight ? 'DARK' : 'LIGHT';
+    });
   }
   apply(root.dataset.theme || 'dark');
   toggles.forEach(button => {
