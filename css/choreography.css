@@ -1,0 +1,80 @@
+/* Scroll choreography. The DOM remains readable in normal flow until JS enables this layer. */
+html{overflow-x:clip}
+.hero-story-chapter,.hero-story-stage,.expedition-track{display:contents}
+.expedition-progress{display:none}
+.story-route{stroke-dasharray:1;stroke-dashoffset:0}
+.story-explorer{transform-box:fill-box;transform-origin:center}
+.island-hero.choreography-paused :is(.island-cloud-drift,.island-fog-drift,.island-ocean-drift){animation-play-state:paused}
+
+/* Field Notes always retain normal reading flow; only the record opening is staged. */
+.v2-notes-section:has(.v2-field-notes[open])::after{content:'';position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 50% 30%,rgb(var(--horizon-rgb) / .08),rgb(var(--ocean-rgb) / .2) 72%);pointer-events:none}
+.v2-field-notes[open] .v2-notes-body>section,.v2-field-notes[open] .v2-notes-body>header{animation:document-stage .65s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--record-index,0) * 70ms)}
+@keyframes document-stage{from{opacity:0;transform:translateY(14px);clip-path:inset(0 0 20%)}to{opacity:1;transform:none;clip-path:inset(0)}}
+
+/* Explorer stays deliberately slower than the surrounding journey. */
+.choreography-enabled .v2-about{min-height:125vh}
+.choreography-enabled .v2-about-grid{position:sticky;top:12vh}
+.choreography-enabled .v2-about .v2-portrait{translate:0 var(--about-image-y,0px)}
+.choreography-enabled .v2-about .v2-about-copy{translate:0 var(--about-copy-y,0px)}
+
+/* Trail marker is scrubbed directly by document position. */
+.trail-route-marker{position:absolute;z-index:3;left:calc(32% - 7px);top:calc(var(--trail-progress) * 100%);width:14px;height:14px;border:1px solid var(--signal);border-radius:50%;background:var(--storm);translate:0 -50%;pointer-events:none;transition:top .08s linear}
+.trail-route-marker::after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--signal)}
+.choreography-enabled .trail-list>li{opacity:.56;transition:opacity .25s,background-color .35s}
+.choreography-enabled .trail-list>li.is-active{opacity:1}
+
+/* Contact is revealed by the route approaching it, not by a one-off viewport fade. */
+.choreography-enabled .v2-tools::after{content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent,rgb(var(--horizon-rgb) / .12));opacity:var(--approach-signal,0)}
+.choreography-enabled .v2-signal .v2-kicker,.choreography-enabled .v2-signal .signal-grid>div:first-child{opacity:var(--signal-copy-opacity,.28);translate:0 var(--signal-copy-y,26px);clip-path:inset(var(--signal-copy-mask,18%) 0 0)}
+.choreography-enabled .v2-signal .signal-form{opacity:var(--signal-form-opacity,.2);translate:0 var(--signal-form-y,30px)}
+.choreography-enabled .v2-signal::before{opacity:var(--signal-atmosphere-opacity,.25)}
+.choreography-enabled .v2-horizon .horizon-top{opacity:var(--horizon-opacity,.35);translate:0 var(--horizon-y,18px)}
+
+@media(min-width:901px) and (prefers-reduced-motion:no-preference){
+  /* One pinned world carries Hero into Story. */
+  .choreography-enabled .hero-story-chapter{display:block;position:relative;height:320vh;background:var(--ocean)}
+  .choreography-enabled .hero-story-stage{display:block;position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
+  .choreography-enabled .hero-story-stage>.island-hero,.choreography-enabled .hero-story-stage>.v2-story{position:absolute;inset:0;width:100%;height:100%;min-height:0;max-height:none}
+  .choreography-enabled .hero-story-stage>.v2-story{z-index:2;background:transparent;pointer-events:none;padding:0;opacity:var(--story-scene-opacity,0)}
+  .choreography-enabled .hero-story-stage.story-active>.v2-story{pointer-events:auto}
+  .choreography-enabled .hero-story-stage>.v2-story::before{background:linear-gradient(180deg,transparent,rgb(var(--ocean-rgb) / .3) 58%,var(--ocean))}
+  .choreography-enabled .hero-story-stage .v2-story-landscape{opacity:var(--story-scene-opacity,0);scale:var(--story-scene-scale,.94)}
+  .choreography-enabled .hero-story-stage .v2-story-content{opacity:var(--story-content-opacity,0);translate:0 var(--story-content-y,40px);padding-left:14%;z-index:3}
+  .choreography-enabled .hero-story-stage .v2-story-next{opacity:var(--story-next-opacity,0);pointer-events:auto}
+  .choreography-enabled .hero-story-stage .island-content{opacity:var(--hero-content-opacity,1);translate:var(--hero-content-x,0px) var(--hero-content-y,0px);clip-path:inset(0 0 var(--hero-content-mask,0%) 0)}
+  .choreography-enabled .hero-story-stage .island-body,.choreography-enabled .hero-story-stage .island-actions{opacity:var(--hero-support-opacity,1);translate:0 var(--hero-support-y,0px)}
+  .choreography-enabled .hero-story-stage .island-bottom{opacity:var(--hero-support-opacity,1)}
+  .choreography-enabled .hero-story-stage .island-scene{scale:var(--hero-scene-scale,1);translate:var(--hero-scene-x,0px) var(--hero-scene-y,0px)}
+  .choreography-enabled .hero-story-stage .island-scene [data-depth]{translate:var(--choreo-x,0px) var(--choreo-y,0px)}
+  .choreography-enabled .hero-story-stage .island-explorer{translate:var(--explorer-x,0px) var(--explorer-y,0px);scale:var(--explorer-scale,1)}
+
+  /* Vertical wheel input advances through a pinned horizontal expedition track. */
+  .choreography-enabled .v2-work.choreography-work{height:380vh;padding:0;overflow:visible}
+  .choreography-enabled .v2-work.choreography-work>.v2-container{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;padding-top:96px}
+  .choreography-enabled .v2-work.choreography-work .v2-section-header{min-height:128px;margin-bottom:14px;align-items:center}
+  .choreography-enabled .v2-work.choreography-work .v2-section-header .v2-kicker{margin-bottom:8px}
+  .choreography-enabled .v2-work.choreography-work .v2-section-header .v2-display{font-size:clamp(44px,4.2vw,64px)}
+  .choreography-enabled .v2-work.choreography-work .expedition-track{display:flex;width:100%;will-change:transform}
+  .choreography-enabled .v2-work.choreography-work .v2-project{flex:0 0 100%;width:100%;margin:0;padding-right:1px;opacity:var(--project-focus,1);scale:var(--project-scale,1);transform-origin:center 58%}
+  .choreography-enabled .v2-work.choreography-work .v2-project-visual{width:100%;height:clamp(270px,39vh,430px);aspect-ratio:auto;margin:0}
+  .choreography-enabled .v2-work.choreography-work .v2-project-info{padding:18px 0 10px;gap:60px}
+  .choreography-enabled .v2-work.choreography-work .v2-project-info h3{font-size:clamp(34px,3vw,44px)}
+  .choreography-enabled .v2-work.choreography-work .v2-text-link,.choreography-enabled .v2-work.choreography-work .v2-repository{margin-top:4px}
+  .expedition-progress{position:absolute;right:5%;top:106px;display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.16em;color:var(--muted)}
+  .expedition-progress span{display:block;width:28px;height:1px;background:var(--border);transition:width .35s,background-color .35s}
+  .expedition-progress span.is-active{width:52px;background:var(--signal)}
+}
+
+@media(max-width:900px),(prefers-reduced-motion:reduce){
+  .choreography-enabled .v2-about{min-height:0}
+  .choreography-enabled .v2-about-grid{position:relative;top:auto}
+  .choreography-enabled .v2-about :is(.v2-portrait,.v2-about-copy){translate:none!important}
+  .choreography-enabled .v2-signal :is(.v2-kicker,.signal-grid>div:first-child,.signal-form),.choreography-enabled .v2-horizon .horizon-top{opacity:1;translate:none;clip-path:none}
+  .choreography-enabled .v2-signal::before{opacity:1}
+  .trail-route-marker{left:1px;transition:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .v2-field-notes[open] .v2-notes-body>*{animation:none}
+  .choreography-enabled .trail-list>li{opacity:1}
+  .trail-route-marker{display:none}
+}
