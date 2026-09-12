@@ -109,7 +109,20 @@ Tools I Carry
 - GitHub
 - Static-site deployment suitable for Vercel; the production URL is not committed
 
+### AI & Development Workflow
+
+- Agentic Development
+- AI-Assisted Coding
+- Prompt Engineering for Software Development
+- AI-Assisted Debugging & Refactoring
+
 The project does not use a package manager, framework runtime, or build step. GSAP and ScrollTrigger are not present in the production page.
+
+## AI-Assisted Development
+
+This portfolio was developed through an AI-assisted, agentic workflow. AI coding tools supported implementation, debugging, refactoring, iterative UI improvements, accessibility checks, performance reviews, and testing assistance.
+
+I remained responsible for the UI/UX direction, visual identity, storytelling concept, project requirements, interaction decisions, testing, and final validation. The process provided practical experience in agentic development, AI-assisted coding, prompt engineering for software development, AI-assisted debugging and refactoring, and working effectively with coding agents.
 
 ## Running Locally
 
