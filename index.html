@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
+  <meta id="theme-color" name="theme-color" content="#06131E" />
   <script>
     (() => {
       let saved = null;
       try { saved = localStorage.getItem('portfolio-v2-theme'); } catch (_) {}
       document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
         ? saved : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.getElementById('theme-color').content = document.documentElement.dataset.theme === 'light' ? '#D8D1C3' : '#06131E';
       const width = document.documentElement.clientWidth;
       const size = width <= 700 ? '768' : width <= 1400 ? '1280' : '';
       const theme = document.documentElement.dataset.theme === 'light' ? 'island-dawn' : 'island-storm';
@@ -19,8 +21,16 @@
       document.head.append(preload);
     })();
   </script>
-  <title>Hansaka Bandara — Frontend Developer & UI Designer</title>
-  <meta name="description" content="Portfolio of Hansaka Bandara — Computer Science undergraduate at IIT, Frontend Developer & UI/UX Designer." />
+  <title>Hansaka Bandara — UI/UX Designer &amp; Frontend Developer</title>
+  <meta name="description" content="Portfolio of Hansaka Bandara, a UI/UX Designer and Frontend Developer creating clear digital experiences through thoughtful interfaces and clean code." />
+  <meta property="og:title" content="Hansaka Bandara — UI/UX Designer &amp; Frontend Developer" />
+  <meta property="og:description" content="Thoughtful interfaces and clean frontend code for clear, useful digital experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Hansaka Bandara Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hansaka Bandara — UI/UX Designer &amp; Frontend Developer" />
+  <meta name="twitter:description" content="Thoughtful interfaces and clean frontend code for clear, useful digital experiences." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hansaka Bandara","jobTitle":"UI/UX Designer and Frontend Developer","sameAs":["https://github.com/Hansaka-co","https://www.linkedin.com/in/hansaka-r-bandara-408642409"]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -286,11 +296,11 @@
           <p class="signal-location">Ganemulla, Sri Lanka · <a href="tel:+94752278588">+94 75 227 8588</a></p>
         </div>
         <!-- Integration: set data-endpoint to a deployed same-origin contact API. No backend is configured yet. -->
-        <form id="signal-form" class="signal-form" method="post" action="/api/contact" data-endpoint="" aria-describedby="signal-form-help">
-          <label for="signal-name">YOUR NAME</label><input id="signal-name" name="name" autocomplete="name" required maxlength="120" placeholder="Your name">
-          <label for="signal-email">EMAIL ADDRESS</label><input id="signal-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
-          <label for="signal-message">YOUR MESSAGE</label><textarea id="signal-message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Tell me about your project, opportunity or idea."></textarea>
-          <p id="signal-form-help" class="form-help">Form delivery is not connected yet. Please use the email link to get in touch.</p>
+        <form id="signal-form" class="signal-form" data-endpoint="" aria-describedby="signal-form-help">
+          <label for="signal-name">YOUR NAME <span aria-hidden="true">*</span></label><input id="signal-name" name="name" autocomplete="name" required maxlength="120" placeholder="Your name">
+          <label for="signal-email">EMAIL ADDRESS <span aria-hidden="true">*</span></label><input id="signal-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+          <label for="signal-message">YOUR MESSAGE <span aria-hidden="true">*</span></label><textarea id="signal-message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Tell me about your project, opportunity or idea."></textarea>
+          <p id="signal-form-help" class="form-help">All fields are required. Form delivery is not connected yet; please use the email link to get in touch.</p>
           <button class="signal-submit" type="submit" disabled>SEND A SIGNAL <span aria-hidden="true">↗</span></button>
           <p class="form-status" id="signal-status" role="status" aria-live="polite"></p>
           <noscript><p class="form-help">JavaScript is unavailable. You can contact Hansaka using the email link.</p></noscript>
@@ -307,7 +317,7 @@
       </div><p class="horizon-copyright">© <span id="year">2026</span> Hansaka Bandara. Designed with intention. Built with care.</p>
     </div>
   </footer>
-  <script src="js/theme.js?v=site-refine-2"></script>
+  <script src="js/theme.js?v=performance-1"></script>
   <script src="js/island.js?v=performance-1"></script>
   <script src="js/expeditions.js?v=performance-1"></script>
   <script src="js/structure.js?v=structure-1"></script>

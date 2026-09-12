@@ -6,6 +6,8 @@
   function apply(theme) {
     const isLight = theme === 'light';
     root.dataset.theme = theme;
+    const themeColor = document.getElementById('theme-color');
+    if (themeColor) themeColor.content = isLight ? '#D8D1C3' : '#06131E';
     toggles.forEach(button => {
       button.setAttribute('aria-pressed', String(isLight));
       button.setAttribute('aria-label', isLight

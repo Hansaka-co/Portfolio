@@ -1,74 +1,43 @@
-<div align="center">
+# Hansaka Bandara — Portfolio V2
 
-# 🕷️ Hansaka Bandara — Portfolio
+Portfolio for Hansaka Bandara, a UI/UX Designer and Frontend Developer. “The Island” presents the work as a cinematic journey through a storm coast in dark mode and the same landscape after the storm in light mode.
 
-**Frontend Developer & UI/UX Designer** · CS Undergraduate @ IIT
+## Features
 
-Designed in Figma · Woven in code
+- Responsive Splash, Hero, Story, Expeditions, Field Notes, Explorer, capabilities, Trail, tools, Signal, and Horizon sections
+- Three primary projects in fixed order: MUC Digital, Finance Manager, and Estate Agent SPA
+- Native scroll choreography with a pinned desktop story and a vertical mobile flow
+- Dark and light themes with saved preference and system-preference fallback
+- Keyboard navigation, visible focus states, semantic landmarks, and reduced-motion support
+- Responsive WebP artwork with lazy loading below the opening experience
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-8b5cf6?style=for-the-badge)](https://hansakabandara.vercel.app/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
-[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](#)
+## Run locally
 
-<img src="assets/preview.png" alt="Portfolio preview — spider web themed hero section" width="800"/>
+Serve the repository root over HTTP. For example:
 
-</div>
-
----
-
-## 🕸️ About
-
-My personal portfolio — a spider-web themed dark site built entirely with
-**vanilla HTML, CSS and JavaScript**. No frameworks, no libraries, no build step.
-Every animation is hand-coded.
-
-> *Like threads in a web, each project connects design, logic, and code.*
-
-## ✨ Features
-
-| | Feature |
-|---|---|
-| 🕸️ | **Self-drawing hero web** — every thread animates in, then the spider drops down on its silk |
-| ⏳ | **Web-spinner preloader** with pulsing wordmark |
-| 🔤 | **Letter-by-letter name reveal** with 3D flip entrance |
-| ✨ | **Interactive particle web** background — threads connect to the visitor's cursor |
-| 🕷️ | **Scroll-progress spider** that crawls down a thread as you read |
-| 🎴 | **3D tilt** project cards + pulsing glow on the featured hexagon |
-| 🧲 | **Magnetic buttons** with shimmer sweep & a glowing custom cursor |
-| 📱 | Fully responsive · keyboard-focus visible · respects `prefers-reduced-motion` |
-
-## 🛠️ Built With
-
-- **HTML5** — semantic, accessible markup
-- **CSS3** — custom properties, clip-path hexagons, keyframe animations
-- **Vanilla JavaScript** — SVG web generation, Canvas particle system, IntersectionObserver reveals
-- **Figma** — full UI design before a single line of code
-
-## 📁 Structure
-
-```
-portfolio/
-├── index.html          # single-page site: Home · About · Work · Contact
-├── css/style.css       # design system + animations
-├── js/main.js          # web generator, particles, interactions
-└── assets/             # photo, CV, icons, favicon
+```powershell
+python -m http.server 8000
 ```
 
-## 📬 Contact
+Then open `http://localhost:8000/`.
 
-📧 hansakarbandara@gmail.com ·
-💼 [LinkedIn](https://www.linkedin.com/in/hansaka-bandara) ·
-🐙 [GitHub](https://github.com/Hansaka-co)
+No build step or JavaScript framework is required. `index.html` is the production entry point and can be deployed as a static site.
 
----
+## Structure
 
-<div align="center">
+```text
+index.html             Portfolio V2 page and metadata
+css/                   Theme, layout, cinematic world, and choreography styles
+js/                    Theme, splash, section, and scroll behavior
+assets/world/          Responsive cinematic WebP artwork
+assets/profile.jpg     Explorer portrait
+assets/Hansaka_Bandara_CV.pdf
+```
 
-*Open to UI/UX & Frontend internship opportunities — get caught in my web.* 🕸️
+The Contact / Signal form is intentionally unconnected and directs visitors to the visible email link. Configure a real endpoint in `data-endpoint` before enabling message delivery.
 
-© 2026 Hansaka Bandara
+## Contact
 
-</div>
-
+- [Email](mailto:hansakarbandara@gmail.com)
+- [GitHub](https://github.com/Hansaka-co)
+- [LinkedIn](https://www.linkedin.com/in/hansaka-r-bandara-408642409)
