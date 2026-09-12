@@ -1,12 +1,29 @@
 /* Cinematic world replacement. Structure and scroll choreography remain unchanged. */
-:root{--world-image:url('../assets/world/island-storm-1280.webp');--world-grade:rgb(4 14 22 / .56);--world-veil:rgb(6 19 30 / .92)}
-:root[data-theme="light"]{--world-image:url('../assets/world/island-dawn-1280.webp');--world-grade:rgb(228 222 210 / .2);--world-veil:rgb(216 209 195 / .88)}
+:root{
+  --scene-splash:url('../assets/world/island-storm-1280.webp');
+  --scene-hero:url('../assets/world/island-storm-1280.webp');
+  --scene-story:url('../assets/scenes/story-storm-1280.webp');
+  --scene-explorer:url('../assets/scenes/explorer-storm-1280.webp');
+  --scene-signal:url('../assets/scenes/signal-storm-1280.webp');
+  --scene-horizon:url('../assets/scenes/horizon-storm-1280.webp');
+  --world-grade:rgb(4 14 22 / .56);--world-veil:rgb(6 19 30 / .92)
+}
+:root[data-theme="light"]{
+  --scene-splash:url('../assets/world/island-dawn-1280.webp');
+  --scene-hero:url('../assets/world/island-dawn-1280.webp');
+  --scene-story:url('../assets/scenes/story-dawn-1280.webp');
+  --scene-explorer:url('../assets/scenes/explorer-dawn-1280.webp');
+  --scene-signal:url('../assets/scenes/signal-dawn-1280.webp');
+  --scene-horizon:url('../assets/scenes/horizon-dawn-1280.webp');
+  --world-grade:rgb(228 222 210 / .2);--world-veil:rgb(216 209 195 / .88)
+}
 
 /* Hero: one photographic plate is split into depth bands, with independent fog, cliff and explorer layers. */
 .legacy-island-vector,.legacy-story-vector{display:none!important}
 .cinematic-world,.cinematic-layer,.cinematic-fog,.cinematic-signal,.cinematic-foreground,.cinematic-explorer{position:absolute;inset:0}
 .cinematic-world{overflow:hidden;background:#06131e}
-.cinematic-layer{overflow:hidden;background-image:var(--world-image);background-size:cover;background-position:center;will-change:translate}
+.cinematic-layer{overflow:hidden;background-image:var(--scene-hero);background-size:cover;background-position:center;will-change:translate}
+.island-hero.is-intro .cinematic-layer{background-image:var(--scene-splash)}
 .cinematic-sky{clip-path:inset(0 0 43%)}
 .cinematic-island{clip-path:inset(28% 0 23%)}
 .cinematic-ocean{clip-path:inset(55% 0 0)}
@@ -33,7 +50,8 @@
 /* Story continues the same coast with a closer crop and a real explorer layer. */
 .cinematic-story-stack,.cinematic-story-layer,.cinematic-story-fog,.cinematic-story-route{position:absolute;inset:0}
 .cinematic-story-stack{overflow:hidden;background:var(--ocean)}
-.cinematic-story-layer{overflow:hidden;background-image:var(--world-image);background-size:cover;background-position:64% center;will-change:transform,translate}
+.cinematic-story-layer{overflow:hidden;background-image:var(--section-scene,none);background-size:cover;background-position:64% center;will-change:transform,translate}
+.v2-story.scene-ready{--section-scene:var(--scene-story)}
 .story-sky{clip-path:inset(0 0 39%)}
 .story-terrain{clip-path:inset(32% 0 0)}
 .story-ground{z-index:2;clip-path:none}
@@ -61,10 +79,12 @@
 [data-theme="light"] .project-cinematic-media{opacity:.9}
 
 /* Environmental continuity through the editorial sections. */
-.v2-work{background-color:var(--ocean);background-image:linear-gradient(180deg,var(--ocean) 0%,rgb(var(--ocean-rgb) / .84) 24%,var(--storm) 100%),var(--world-image);background-size:cover;background-position:center top}
-.v2-notes-section{background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .94),rgb(var(--ocean-rgb) / .82)),var(--world-image);background-size:cover;background-position:center 45%}
-.v2-about{background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .28),rgb(var(--ocean-rgb) / .9) 56%),linear-gradient(180deg,rgb(var(--ocean-rgb) / .74),var(--storm)),var(--world-image);background-size:cover;background-position:center 42%}
-.v2-capabilities,.v2-trail,.v2-tools{background-image:linear-gradient(125deg,rgb(var(--ocean-rgb) / .97),rgb(var(--ocean-rgb) / .84)),var(--world-image);background-size:cover;background-position:center 54%}
+.v2-work{--section-scene:none;background-color:var(--ocean);background-image:linear-gradient(180deg,var(--ocean) 0%,rgb(var(--ocean-rgb) / .84) 24%,var(--storm) 100%),var(--section-scene);background-size:cover;background-position:center top}
+.v2-notes-section{--section-scene:none;background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .94),rgb(var(--ocean-rgb) / .82)),var(--section-scene);background-size:cover;background-position:center 45%}
+.v2-about{--section-scene:none;background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .28),rgb(var(--ocean-rgb) / .9) 56%),linear-gradient(180deg,rgb(var(--ocean-rgb) / .74),var(--storm)),var(--section-scene);background-size:cover;background-position:center 42%}
+.v2-capabilities,.v2-trail,.v2-tools{--section-scene:none;background-image:linear-gradient(125deg,rgb(var(--ocean-rgb) / .97),rgb(var(--ocean-rgb) / .84)),var(--section-scene);background-size:cover;background-position:center 54%}
+.v2-work.scene-ready,.v2-notes-section.scene-ready,.v2-capabilities.scene-ready,.v2-trail.scene-ready,.v2-tools.scene-ready{--section-scene:var(--scene-story)}
+.v2-about.scene-ready{--section-scene:var(--scene-explorer)}
 .v2-portrait{overflow:hidden;transform:rotate(-.35deg);clip-path:polygon(0 0,100% 0,100% 92%,89% 100%,0 100%);background:rgb(var(--ocean-rgb) / .5);box-shadow:22px 28px 70px rgb(0 0 0 / .26)}
 .v2-portrait img{position:relative;z-index:1;filter:saturate(.54) contrast(1.14) brightness(.76);mix-blend-mode:luminosity}
 .v2-portrait:after{z-index:2;background:linear-gradient(0deg,rgb(4 14 22 / .78),transparent 46%),linear-gradient(120deg,rgb(159 184 204 / .12),transparent 50%)}
@@ -72,15 +92,17 @@
 [data-theme="light"] .v2-portrait img{filter:saturate(.68) contrast(1.08) brightness(.94);mix-blend-mode:multiply}
 
 /* Contact is the lighthouse payoff; Footer holds the same coast after motion settles. */
-.v2-signal{background-color:var(--storm);background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .96),rgb(var(--ocean-rgb) / .82) 50%,rgb(var(--ocean-rgb) / .38)),linear-gradient(0deg,var(--ocean),transparent 34%),var(--world-image);background-size:cover;background-position:center 39%}
+.v2-signal{--section-scene:none;background-color:var(--storm);background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .96),rgb(var(--ocean-rgb) / .82) 50%,rgb(var(--ocean-rgb) / .38)),linear-gradient(0deg,var(--ocean),transparent 34%),var(--section-scene);background-size:cover;background-position:center 39%}
+.v2-signal.scene-ready{--section-scene:var(--scene-signal)}
 .v2-signal::after{content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(circle at 91.6% 26%,rgb(var(--signal-rgb) / .28),transparent 4%),linear-gradient(90deg,transparent 68%,rgb(var(--signal-rgb) / .07));opacity:var(--signal-atmosphere-opacity,.25)}
 .signal-form{background:rgb(var(--surface-rgb,13 34 50) / .96);border-color:rgb(var(--horizon-rgb) / .38);box-shadow:0 24px 58px rgb(0 0 0 / .2)}
-.v2-horizon{background-color:var(--ocean);background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .72),rgb(var(--ocean-rgb) / .9)),var(--world-image);background-size:cover;background-position:center 48%}
-[data-theme="light"] .v2-work{background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .9),rgb(var(--ocean-rgb) / .76) 34%,var(--storm)),var(--world-image)}
-[data-theme="light"] .v2-notes-section,[data-theme="light"] .v2-capabilities,[data-theme="light"] .v2-trail,[data-theme="light"] .v2-tools{background-image:linear-gradient(125deg,rgb(var(--ocean-rgb) / .94),rgb(var(--ocean-rgb) / .8)),var(--world-image)}
-[data-theme="light"] .v2-about{background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .2),rgb(var(--ocean-rgb) / .9) 58%),linear-gradient(180deg,rgb(var(--ocean-rgb) / .7),var(--storm)),var(--world-image)}
-[data-theme="light"] .v2-signal{background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .96),rgb(var(--ocean-rgb) / .8) 48%,rgb(var(--ocean-rgb) / .3)),linear-gradient(0deg,var(--ocean),transparent 34%),var(--world-image)}
-[data-theme="light"] .v2-horizon{background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .58),rgb(var(--ocean-rgb) / .88)),var(--world-image)}
+.v2-horizon{--section-scene:none;background-color:var(--ocean);background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .72),rgb(var(--ocean-rgb) / .9)),var(--section-scene);background-size:cover;background-position:center 48%}
+.v2-horizon.scene-ready{--section-scene:var(--scene-horizon)}
+[data-theme="light"] .v2-work{background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .9),rgb(var(--ocean-rgb) / .76) 34%,var(--storm)),var(--section-scene)}
+[data-theme="light"] .v2-notes-section,[data-theme="light"] .v2-capabilities,[data-theme="light"] .v2-trail,[data-theme="light"] .v2-tools{background-image:linear-gradient(125deg,rgb(var(--ocean-rgb) / .94),rgb(var(--ocean-rgb) / .8)),var(--section-scene)}
+[data-theme="light"] .v2-about{background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .2),rgb(var(--ocean-rgb) / .9) 58%),linear-gradient(180deg,rgb(var(--ocean-rgb) / .7),var(--storm)),var(--section-scene)}
+[data-theme="light"] .v2-signal{background-image:linear-gradient(90deg,rgb(var(--ocean-rgb) / .96),rgb(var(--ocean-rgb) / .8) 48%,rgb(var(--ocean-rgb) / .3)),linear-gradient(0deg,var(--ocean),transparent 34%),var(--section-scene)}
+[data-theme="light"] .v2-horizon{background-image:linear-gradient(180deg,rgb(var(--ocean-rgb) / .58),rgb(var(--ocean-rgb) / .88)),var(--section-scene)}
 [data-theme="light"] .signal-form{background:rgb(234 228 217 / .96);box-shadow:0 24px 56px rgb(16 34 47 / .12)}
 
 @media(max-width:900px){
@@ -102,12 +124,12 @@
   .v2-signal{background-position:92% center}
 }
 @media(max-width:700px){
-  :root{--world-image:url('../assets/world/island-storm-768.webp')}
-  :root[data-theme="light"]{--world-image:url('../assets/world/island-dawn-768.webp')}
+  :root{--scene-splash:url('../assets/world/island-storm-768.webp');--scene-hero:url('../assets/world/island-storm-768.webp');--scene-story:url('../assets/scenes/story-storm-768.webp');--scene-explorer:url('../assets/scenes/explorer-storm-768.webp');--scene-signal:url('../assets/scenes/signal-storm-768.webp');--scene-horizon:url('../assets/scenes/horizon-storm-768.webp')}
+  :root[data-theme="light"]{--scene-splash:url('../assets/world/island-dawn-768.webp');--scene-hero:url('../assets/world/island-dawn-768.webp');--scene-story:url('../assets/scenes/story-dawn-768.webp');--scene-explorer:url('../assets/scenes/explorer-dawn-768.webp');--scene-signal:url('../assets/scenes/signal-dawn-768.webp');--scene-horizon:url('../assets/scenes/horizon-dawn-768.webp')}
   .cinematic-fog span{animation:none;will-change:auto}
 }
 @media(min-width:1401px){
-  :root{--world-image:url('../assets/world/island-storm.webp')}
-  :root[data-theme="light"]{--world-image:url('../assets/world/island-dawn.webp')}
+  :root{--scene-splash:url('../assets/world/island-storm.webp');--scene-hero:url('../assets/world/island-storm.webp');--scene-story:url('../assets/scenes/story-storm.webp');--scene-explorer:url('../assets/scenes/explorer-storm.webp');--scene-signal:url('../assets/scenes/signal-storm.webp');--scene-horizon:url('../assets/scenes/horizon-storm.webp')}
+  :root[data-theme="light"]{--scene-splash:url('../assets/world/island-dawn.webp');--scene-hero:url('../assets/world/island-dawn.webp');--scene-story:url('../assets/scenes/story-dawn.webp');--scene-explorer:url('../assets/scenes/explorer-dawn.webp');--scene-signal:url('../assets/scenes/signal-dawn.webp');--scene-horizon:url('../assets/scenes/horizon-dawn.webp')}
 }
 @media(prefers-reduced-motion:reduce){.cinematic-fog span,.cinematic-signal span{animation:none!important;will-change:auto}.project-cinematic-media{transition:none}}

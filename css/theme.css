@@ -12,8 +12,15 @@ button{cursor:pointer}
 [hidden]{display:none!important}
 ::selection{background:var(--signal);color:var(--ocean)}
 html.theme-ready body,html.theme-ready .v2-section{transition:background-color .25s,color .25s}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.72s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+::view-transition-old(root){animation-name:theme-scene-out}
+::view-transition-new(root){animation-name:theme-scene-in}
+.theme-scene-fallback{position:fixed;inset:0;z-index:2147483000;pointer-events:none;background-image:var(--theme-scene-leaving);background-size:cover;background-position:var(--theme-scene-position,center);opacity:1;transition:opacity .72s cubic-bezier(.22,1,.36,1)}
+.theme-scene-fallback.is-fading{opacity:0}
+@keyframes theme-scene-out{to{opacity:0}}
+@keyframes theme-scene-in{from{opacity:0}}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--text);outline-offset:5px}
-/* Retain the geometry and all parallax layers; only recolour the environment. */
+/* Retain the approved geometry and parallax while each theme supplies its own scene artwork. */
 [data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#06131E"],
 [data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#040E16"]{fill:#526674}
 [data-theme="light"] :is(.island-scene,.v2-story-landscape) [fill="#112B3D"],
@@ -37,7 +44,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 [data-theme="light"] .island-scene #island-mist stop{stop-color:#E4DED2}
 [data-theme="light"] .island-hero.is-intro{background:#D0C8B9}
 [data-theme="light"] .v2-portrait img{filter:saturate(.62) contrast(1.08) brightness(.94)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}::view-transition-old(root),::view-transition-new(root){animation:none!important}.theme-scene-fallback{display:none}}
 
 /* Audit: clear focus and restrained transitions across both palettes. */
 html.theme-ready :is(.signal-form input,.signal-form textarea,.v2-project-visual){transition:background-color .25s,border-color .25s,color .25s}
